@@ -1,0 +1,37 @@
+image: registry.michelada.io/michelada/checkinar:latest
+
+cache:
+  path:
+    - vendor/ruby
+    - node_modules
+    - public/packs
+
+stages:
+  - build
+  - lint
+  - test
+
+before_script:
+  - gem install bundler -v '2.0.2'  --no-rdoc --no-ri
+  - bundle install -j $(nproc) --path vendor --full-index --clean
+
+build:
+  stage: build
+  script:
+    - bundle exec rails yarn:install
+    - bundle exec rails webpacker:compile
+
+rubocop:
+  stage: lint
+  script:
+    - bundle exec rubocop
+
+test:
+  stage: test
+  script:
+    - bundle exec rails:test
+
+system_test:
+  stage: test
+  script:
+    - bundle exec rails test:system
