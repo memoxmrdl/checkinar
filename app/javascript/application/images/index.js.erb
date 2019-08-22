@@ -1,0 +1,5 @@
+<% root_path = File.expand_path File.dirname(__FILE__) %>
+<% images_glob = File.join(root_path, 'app', 'javascript', 'application', 'images', '**', '*.{png,svg,ico}') %>
+<% Dir.glob(images_glob).each do |image| %>
+  import '<%= image %>';
+<% end %>
