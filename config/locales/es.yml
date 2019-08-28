@@ -1,0 +1,16 @@
+es:
+  activerecord:
+    models:
+      user: Usuario
+    attributes:
+      user:
+        email: Correo eletrónico
+        password: Contraseña
+  users:
+    sessions:
+      new:
+        title: Iniciar sesión
+        submit: Entrar
+    shared:
+      links:
+        forgot_your_password: Recuperar mi contraseña
