@@ -276,6 +276,7 @@ DEPENDENCIES
   rubocop-rails_config
   sass-rails (~> 5)
   selenium-webdriver
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

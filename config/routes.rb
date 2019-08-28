@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-
-  root "landing_page#show"
+  root 'landing_page#show'
+  resources :organizations
 end
