@@ -1,0 +1,8 @@
+.columns.is-centered.is-flex
+  .column.is-3
+    %h2.is-size-3= @organization.name
+    = link_to 'Editar', edit_organization_path(@organization)
+  - if @organization.logo.attached?
+    .column.is-3
+      .image.is-96x96
+        = image_tag(url_for(@organization.logo))

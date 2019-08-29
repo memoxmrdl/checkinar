@@ -12,8 +12,8 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  def destroy
-    binding.pry
+  def edit
+    @organization = Organization.find(params[:id])
   end
 
   def index
@@ -26,6 +26,17 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find(params[:id])
+  end
+
+  def update
+    @organization = Organization.find(params[:id])
+    if @organization.update(organization_params)
+      flash[:notice] = "Organización actualizada correctamente"
+      redirect_to root_path
+    else
+      flash[:alert] = "Error actualizando la organización"
+      render "edit"
+    end
   end
 
   private

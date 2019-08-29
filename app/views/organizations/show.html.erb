@@ -1,7 +1,0 @@
-<h2><%= @organization.name %></h2>
-
-<% if @organization.logo.attached? %>
-  <%= image_tag(url_for(@organization.logo)) %>
-<% end %>
-
-<%= link_to 'Eliminar', organization_path(@organization), method: :delete, data: { confirm: '¿Estás seguro?' } %>

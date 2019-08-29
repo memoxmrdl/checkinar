@@ -1,0 +1,4 @@
+%ul
+  - @organizations.each do |organization|
+    %li
+      = link_to organization.name, organization_path(organization)

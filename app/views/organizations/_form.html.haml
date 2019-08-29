@@ -1,0 +1,5 @@
+= simple_form_for(@organization) do |f|
+  = f.input :name, label: 'Nombre', placeholder: 'Nombre de la organización', input_html: { class: 'input' }
+  = f.input :logo, label: 'Logotipo'
+  .is-flex.is-justified-center
+    = f.submit action, class: 'button  is-primary'
