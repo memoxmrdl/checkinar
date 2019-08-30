@@ -14,4 +14,13 @@ class OrganizationTest < ActiveSupport::TestCase
 
     assert acme.valid?
   end
+
+  test "organization can have a logo" do
+    acme = Organization.new(name: "Acme")
+    acme.logo.attach(io: File.open("#{Rails.root}/test/fixtures/files/gitlab.png"),
+                          filename: "gitlab.png",
+                          content_type: "image/png")
+
+    assert acme.valid?
+  end
 end
