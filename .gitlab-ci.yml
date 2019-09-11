@@ -29,7 +29,9 @@ test:
     - cp config/database.ci.yml config/database.yml
     - bundle exec rails db:create RAILS_ENV=test
     - bundle exec rails db:test:prepare RAILS_ENV=test
-    - bundle exec rails test
+    - yarn
+    - bundle exec rails assets:precompile RAILS_ENV=test
+    - CI=true bundle exec rails test
 
 system_test:
   stage: test
@@ -37,4 +39,6 @@ system_test:
     - cp config/database.ci.yml config/database.yml
     - bundle exec rails db:create RAILS_ENV=test
     - bundle exec rails db:test:prepare RAILS_ENV=test
-    - bundle exec rails test:system
+    - yarn
+    - bundle exec rails assets:precompile RAILS_ENV=test
+    - CI=true bundle exec rails test:system

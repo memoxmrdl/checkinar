@@ -6,6 +6,12 @@ es:
       user:
         email: Correo eletrónico
         password: Contraseña
+    errors:
+      models:
+        organization:
+          attributes:
+            name:
+              blank: "Debes agregar un nombre"
   users:
     sessions:
       new:

@@ -7,6 +7,7 @@ ruby "2.6.2"
 
 gem "rails", "~> 6.0.0"
 
+gem "administrate", git: "https://github.com/thoughtbot/administrate.git"
 gem "devise"
 gem "devise-i18n"
 gem "jbuilder", "~> 2.7"
