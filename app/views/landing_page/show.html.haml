@@ -1,4 +1,2 @@
-- if current_user
+- if user_signed_in?
   = link_to 'Cerrar sesión', destroy_user_session_path, method: :delete
-  = link_to 'Agregar organización', new_organization_path
-  = link_to 'Organizaciones', organizations_path
