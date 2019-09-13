@@ -1,0 +1,11 @@
+one:
+  activity: book_club
+  user: attender
+  attended_at: <%= Time.zone.now %>
+  status: confirmed
+
+two:
+  activity: traguitos
+  user: attender
+  attended_at: <%= Time.zone.now - 2.days %>
+  status: confirmed
