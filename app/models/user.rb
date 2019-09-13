@@ -4,6 +4,7 @@ class User < ApplicationRecord
   include RoleModel
 
   has_and_belongs_to_many :activities
+  has_many :attendances
   belongs_to :organization
 
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
