@@ -1,6 +1,8 @@
 book_club:
   name: Book Club
+  organization: michelada
 
 traguitos:
   name: Traguitos
+  organization: michelada
 
