@@ -36,6 +36,24 @@ ActiveRecord::Schema.define(version: 2019_09_13_154639) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "activities", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.string "occurs_on"
+    t.string "occurs_frequency"
+    t.date "occurs_at"
+    t.time "start_at"
+    t.integer "duration"
+    t.boolean "active", default: true
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.decimal "radius"
+    t.bigint "organization_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_activities_on_organization_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
