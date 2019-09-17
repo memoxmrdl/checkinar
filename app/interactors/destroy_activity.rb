@@ -9,7 +9,7 @@ class DestroyActivity
 
   private
     def destroy_activity
-      if context.destroy.delete
+      if context.activity.destroy
         context.status = :success
       else
         context.status = :unprocessable_entity
