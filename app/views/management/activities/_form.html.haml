@@ -1,0 +1,9 @@
+= form_with model: [:management, @activity] do |form|
+  = form.field_with_label :name
+  = form.field_with_label :description
+  = form.field_with_label :occurs_on
+  = form.field_with_label :occurs_frequency
+  = form.field_with_label :occurs_at
+  = form.field_with_label :start_at
+  = form.field_with_label :duration
+  = form.field_submit

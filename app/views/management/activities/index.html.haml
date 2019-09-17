@@ -1,0 +1,6 @@
+%table.table.is-fullwidth.is-hoverable
+  %thead
+    %th=Activity.human_attribute_name(:name)
+    %th=Activity.human_attribute_name(:occurs_at)
+    %th=Activity.human_attribute_name(:start_at)
+  %tbody= render @activities

@@ -14,14 +14,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  namespace :owner do
-    resources :activities do
-      resources :leaders, only: %i[index create destroy]
-    end
-  end
-
-  namespace :leader do
+  namespace :management do
     resources :activities, except: %i[destroy] do
+      resources :leaders, only: %i[index create destroy]
       resources :attenders, only: %i[index show create destroy] do
         resources :attendances, only: %i[create edit update destroy]
       end
