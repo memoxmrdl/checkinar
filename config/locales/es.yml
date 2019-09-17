@@ -2,21 +2,38 @@ es:
   activerecord:
     models:
       user: Usuario
+      activity: Actividad
     attributes:
       user:
-        email: Correo eletrónico
+        email: Correo electrónico
         password: Contraseña
     errors:
       models:
         organization:
           attributes:
             name:
-              blank: "Debes agregar un nombre"
+              blank: Debes agregar un nombre
   users:
     sessions:
       new:
         title: Iniciar sesión
         submit: Entrar
+    passwords:
+      new:
+        forgot_your_password: Recuperar mi contraseña
+        send_me_intruccions: Enviar instrucciones para recuperar mi contraseña
+      edit:
+        change_your_password: Cambiar mi contraseña
+        password_label: Nueva contraseña
+        password_confirmation_label: Confirmar contraseña
+        change_my_password: Actualizar mi contraseña
     shared:
       links:
         forgot_your_password: Recuperar mi contraseña
+  shared:
+    navbar:
+      menu_items_end:
+        sign_in: Acceder
+        sign_out: Salir
+  generic:
+    app_name: Checkinar

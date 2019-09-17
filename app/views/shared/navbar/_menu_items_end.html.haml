@@ -1,0 +1,7 @@
+.navbar-end
+  .navbar-item
+    .buttons
+      - if user_signed_in?
+        = link_to t(".sign_out"),  destroy_user_session_path, class: "button is-primary", method: :delete
+      - else
+        = link_to t(".sign_in"), user_session_path, class: "button is-default"

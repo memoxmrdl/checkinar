@@ -21,12 +21,16 @@ Rails.application.routes.draw do
         resources :attendances, only: %i[create edit update destroy]
       end
     end
+
+    root "management/activities#index"
   end
 
   namespace :attender do
     resources :activities, only: %i[index show] do
       resources :attendances, only: %i[create destroy]
     end
+
+    root "attender/activities#index"
   end
 
   root "landing_page#show"
