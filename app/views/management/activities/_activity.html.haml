@@ -1,4 +1,5 @@
 %tr
   %td=activity.name
-  %td=activity.occurs_at
-  %td=activity.start_at
+  %td=l(activity.created_at, format: :long)
+  %td
+    = link_to t(:show, scope: :generic), management_activity_path(activity), class: "button"

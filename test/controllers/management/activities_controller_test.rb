@@ -11,11 +11,11 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
       activity: {
         name: "English Class",
         description: "Quickly english courses",
-        occurs_on: "",
-        occurs_frequency: "",
-        occurs_at: "",
-        start_at: "",
-        duration: ""
+        occurs_on: Activity.occurs_ons[:more_than_once],
+        occurs_frequency: ["monday", "friday", "saturday"],
+        occurs_at: Time.zone.now.to_date,
+        start_at: Time.zone.now,
+        duration: 60
       }
     }
   end

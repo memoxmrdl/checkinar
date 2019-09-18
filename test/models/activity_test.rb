@@ -9,6 +9,10 @@ class ActivityTest < ActiveSupport::TestCase
 
   def test_it_creates_valid
     @subject.name = "Gym"
+    @subject.occurs_on = Activity.occurs_ons[:date]
+    @subject.occurs_at = Time.zone.now.to_date
+    @subject.start_at = Time.zone.now
+    @subject.duration = 60
     @subject.organization = organizations(:michelada)
 
     assert @subject.save
@@ -30,5 +34,23 @@ class ActivityTest < ActiveSupport::TestCase
     activity.users << users(:attender)
 
     assert activity.users.attender.any?
+  end
+
+  def test_it_valids_its_fields_occurs_on_date
+    @subject.name = "Gym"
+    @subject.occurs_on = Activity.occurs_ons[:date]
+
+    @subject.valid?
+
+    assert [:occurs_at, :start_at, :duration].any? { |field| @subject.errors.include? field }
+  end
+
+  def test_it_valids_its_fields_occurs_on_more_than_once
+    @subject.name = "Gym"
+    @subject.occurs_on = Activity.occurs_ons[:more_than_once]
+
+    @subject.valid?
+
+    assert [:occurs_frequency, :start_at, :duration].any? { |field| @subject.errors.include? field }
   end
 end

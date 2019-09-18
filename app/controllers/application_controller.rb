@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
     @_organization ||= current_user&.organization
   end
 
+  def after_sign_in_path_for(resource)
+    if resource.is_owner? || resource.is_leader?
+      management_root_path
+    elsif resource.is_attender?
+      attender_root_path
+    end
+  end
+
   private
     def user_not_authorized
       flash[:alert] = t(:no_authorized, scope: :pundit)

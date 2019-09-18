@@ -1,4 +1,4 @@
 - if user_signed_in?
   .navbar-menu
     .navbar-start
-      = link_to Activity.model_name.human.pluralize, management_activities_path, class: "navbar-item"
+      = link_to model_plural_name(Activity), management_activities_path, class: "navbar-item"

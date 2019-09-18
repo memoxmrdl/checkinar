@@ -7,6 +7,17 @@ es:
       user:
         email: Correo electrónico
         password: Contraseña
+      activity:
+        name: Nombre
+        description: Descripción
+        occurs_on: Sucede
+        occurs_frequency: Días que sucede
+        occurs_at: Fecha
+        start_at: Hora
+        duration: Tiempo de duración
+        active: Activo
+        created_at: Fecha de creación
+        updated_at: Fecha de actualización
     errors:
       models:
         organization:
@@ -35,5 +46,24 @@ es:
       menu_items_end:
         sign_in: Acceder
         sign_out: Salir
+  helpers:
+    prompt:
+      models:
+        activity:
+          attributes:
+            occurs_on: Seleccionar
+            occurs_frequency: Seleccionar
+            duration: Seleccionar
   generic:
     app_name: Checkinar
+    no_records: No hay %{model} creados todavía.
+    new_resource: Nueva %{resource}
+    show: Ver
+    edit: Editar
+    delete: Eliminar
+    cancel: Cancelar
+
+  management:
+    activities:
+      edit:
+        title: Editar %{resource_name}

@@ -1,4 +1,21 @@
-%h2 Activity
+.columns
+  .column
+    %h2.title= @activity.name
 
-%p= @activity.name
-%p= @activity.description
+.box
+  .columns
+    .column
+      = link_to t(:edit, scope: :generic), edit_management_activity_path(@activity), class: "button is-pulled-right"
+  .columns
+    .column.is-6
+      = resource_attribute_and_value @activity, :name
+      = resource_attribute_and_value @activity, :description
+      = resource_attribute_and_value @activity, :occurs_on
+      = resource_attribute_and_value @activity, :occurs_at
+      = resource_attribute_and_value @activity, :occurs_frequency
+      .columns
+        .column.is-6
+          = resource_attribute_and_value @activity, :start_at
+        .column.is-6
+          = resource_attribute_and_value @activity, :duration
+    .column.is-6

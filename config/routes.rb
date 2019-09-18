@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       end
     end
 
-    root "management/activities#index"
+    root "activities#index"
   end
 
   namespace :attender do
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       resources :attendances, only: %i[create destroy]
     end
 
-    root "attender/activities#index"
+    root "activities#index"
   end
 
   root "landing_page#show"
