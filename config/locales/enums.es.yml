@@ -1,0 +1,8 @@
+es:
+  enums:
+    models:
+      activity:
+        attributes:
+          occurs_on:
+            date: "Por fecha"
+            more_than_once: "Más de una vez"

@@ -1,8 +1,16 @@
 book_club:
   name: Book Club
+  occurs_on: "date"
+  occurs_at: 2019-09-24
+  start_at: "9:00"
+  duration: 60
   organization: michelada
 
 traguitos:
   name: Traguitos
+  occurs_on: "date"
+  occurs_at: 2019-10-24
+  start_at: "10:00"
+  duration: 60
   organization: michelada
 

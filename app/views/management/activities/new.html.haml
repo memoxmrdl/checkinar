@@ -1,0 +1,7 @@
+.columns
+  .column
+    %h2.title= t(:new_resource, scope: :generic, resource: model_singular_name(Activity))
+
+.columns
+  .column{"data-controller" => "forms activity-form"}
+    = render "form"

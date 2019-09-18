@@ -1,8 +1,6 @@
-%nav.navbar.has-shadow{"aria-label" => "main navigation", :role => "navigation"}
+%nav.navbar.is-link.has-shadow{"aria-label" => "main navigation", :role => "navigation"}
   .container
     .navbar-brand
-      = link_to "Checkinar", root_path, class: "navbar-item bold"
-      %a.navbar-burger{"aria-expanded" => "false", "aria-label" => "menu", :role => "button"}
-        %span{"aria-hidden" => "true"}
-        %span{"aria-hidden" => "true"}
-        %span{"aria-hidden" => "true"}
+      = link_to t(:app_name, scope: :generic), real_root_path, class: "navbar-item has-text-weight-bold is-size-5"
+    = render "shared/navbar/menu_items"
+    = render "shared/navbar/menu_items_end"

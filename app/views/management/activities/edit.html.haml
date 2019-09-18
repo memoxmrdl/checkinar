@@ -1,0 +1,7 @@
+.columns
+  .column
+    %h2.title=t(".title", resource_name: @activity.name)
+
+.columns
+  .column{"data-controller" => "forms activity-form"}
+    = render "form"

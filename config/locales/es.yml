@@ -2,21 +2,68 @@ es:
   activerecord:
     models:
       user: Usuario
+      activity: Actividad
     attributes:
       user:
-        email: Correo eletrónico
+        email: Correo electrónico
         password: Contraseña
+      activity:
+        name: Nombre
+        description: Descripción
+        occurs_on: Sucede
+        occurs_frequency: Días que sucede
+        occurs_at: Fecha
+        start_at: Hora
+        duration: Tiempo de duración
+        active: Activo
+        created_at: Fecha de creación
+        updated_at: Fecha de actualización
     errors:
       models:
         organization:
           attributes:
             name:
-              blank: "Debes agregar un nombre"
+              blank: Debes agregar un nombre
   users:
     sessions:
       new:
         title: Iniciar sesión
         submit: Entrar
+    passwords:
+      new:
+        forgot_your_password: Recuperar mi contraseña
+        send_me_intruccions: Enviar instrucciones para recuperar mi contraseña
+      edit:
+        change_your_password: Cambiar mi contraseña
+        password_label: Nueva contraseña
+        password_confirmation_label: Confirmar contraseña
+        change_my_password: Actualizar mi contraseña
     shared:
       links:
         forgot_your_password: Recuperar mi contraseña
+  shared:
+    navbar:
+      menu_items_end:
+        sign_in: Acceder
+        sign_out: Salir
+  helpers:
+    prompt:
+      models:
+        activity:
+          attributes:
+            occurs_on: Seleccionar
+            occurs_frequency: Seleccionar
+            duration: Seleccionar
+  generic:
+    app_name: Checkinar
+    no_records: No hay %{model} creados todavía.
+    new_resource: Nueva %{resource}
+    show: Ver
+    edit: Editar
+    delete: Eliminar
+    cancel: Cancelar
+
+  management:
+    activities:
+      edit:
+        title: Editar %{resource_name}

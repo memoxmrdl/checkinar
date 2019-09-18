@@ -18,6 +18,9 @@ gem "sass-rails", "~> 5"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
 gem "haml-rails", "~> 2.0"
+gem "interactor-rails"
+gem "pundit"
+gem "rails-i18n"
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -38,6 +41,7 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
+  gem "letter_opener"
 end
 
 group :test do
