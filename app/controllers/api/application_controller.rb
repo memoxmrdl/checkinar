@@ -2,6 +2,7 @@
 
 module API
   class ApplicationController < ActionController::Base
+    skip_before_action :verify_authenticity_token
     attr_reader :current_organization
     before_action :authenticate_by_token
 

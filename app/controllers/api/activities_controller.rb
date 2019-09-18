@@ -2,7 +2,6 @@
 
 module API
   class ActivitiesController < ApplicationController
-    protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == "application/json" }
     before_action :initialize_activity, only: %i[show edit update]
 
     def create
