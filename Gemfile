@@ -10,10 +10,12 @@ gem "rails", "~> 6.0.0"
 gem "administrate", git: "https://github.com/thoughtbot/administrate.git"
 gem "devise"
 gem "devise-i18n"
+gem "fast_jsonapi"
 gem "jbuilder", "~> 2.7"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 3.11"
 gem "role_model"
+gem "oj"
 gem "sass-rails", "~> 5"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
@@ -32,13 +34,13 @@ gem "rails-i18n"
 gem "bootsnap", ">= 1.4.2", require: false
 
 group :development, :test do
+  gem "pry"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "rubocop-rails_config"
-  gem "pry"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
