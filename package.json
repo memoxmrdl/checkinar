@@ -7,8 +7,15 @@
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
     "bulma": "^0.7.5",
+    "daterangepicker": "^3.0.5",
+    "jquery": "^3.4.1",
+    "moment": "^2.24.0",
+    "popper.js": "^1.15.0",
     "rails-erb-loader": "^5.5.2",
-    "turbolinks": "^5.2.0"
+    "stimulus": "^1.1.1",
+    "text-mask-addons": "^3.8.0",
+    "turbolinks": "^5.2.0",
+    "vanilla-text-mask": "^5.1.1"
   },
   "version": "0.1.0",
   "devDependencies": {

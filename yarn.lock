@@ -741,6 +741,30 @@
     webpack-cli "^3.3.2"
     webpack-sources "^1.3.0"
 
+"@stimulus/core@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@stimulus/core/-/core-1.1.1.tgz#42b0cfe5b73ca492f41de64b77a03980bae92c82"
+  integrity sha512-PVJv7IpuQx0MVPCBblXc6O2zbCmU8dlxXNH4bC9KK6LsvGaE+PCXXrXQfXUwAsse1/CmRu/iQG7Ov58himjiGg==
+  dependencies:
+    "@stimulus/mutation-observers" "^1.1.1"
+
+"@stimulus/multimap@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@stimulus/multimap/-/multimap-1.1.1.tgz#b95e3fd607345ab36e5d5b55486ee1a12d56b331"
+  integrity sha512-26R1fI3a8uUj0WlMmta4qcfIQGlagegdP4PTz6lz852q/dXlG6r+uPS/bx+H8GtfyS+OOXVr3SkZ0Zg0iRqRfQ==
+
+"@stimulus/mutation-observers@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@stimulus/mutation-observers/-/mutation-observers-1.1.1.tgz#0f6c6f081308427fed2a26360dda0c173b79cfc0"
+  integrity sha512-/zCnnw1KJlWO2mrx0yxYaRFZWMGnDMdOgSnI4hxDLxdWVuL2HMROU8FpHWVBLjKY3T9A+lGkcrmPGDHF3pfS9w==
+  dependencies:
+    "@stimulus/multimap" "^1.1.1"
+
+"@stimulus/webpack-helpers@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@stimulus/webpack-helpers/-/webpack-helpers-1.1.1.tgz#eff60cd4e58b921d1a2764dc5215f5141510f2c2"
+  integrity sha512-XOkqSw53N9072FLHvpLM25PIwy+ndkSSbnTtjKuyzsv8K5yfkFB2rv68jU1pzqYa9FZLcvZWP4yazC0V38dx9A==
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
@@ -2156,6 +2180,14 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
   integrity sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
+
+daterangepicker@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/daterangepicker/-/daterangepicker-3.0.5.tgz#97180f233cf9c222cd0767b9c37c2926976d633a"
+  integrity sha512-BoVV+OjVARWNE15iF+3Y2QIMioAD2UODHvJwIq+NtG0vxh61dXRmOMXlw2dsvxS8KY4n5uvIcBfIPiEiiGJcBg==
+  dependencies:
+    jquery ">=1.10"
+    moment "^2.9.0"
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"
@@ -3674,6 +3706,11 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
+jquery@>=1.10, jquery@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
+  integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
+
 js-base64@^2.1.8:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.5.1.tgz#1efa39ef2c5f7980bb1784ade4a8af2de3291121"
@@ -4170,6 +4207,11 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdir
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
   dependencies:
     minimist "0.0.8"
+
+moment@^2.24.0, moment@^2.9.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -4824,6 +4866,11 @@ pnp-webpack-plugin@^1.4.3:
   integrity sha512-jd9olUr9D7do+RN8Wspzhpxhgp1n6Vd0NtQ4SFkmIACZoEL1nkyAdW9Ygrinjec0vgDcWjscFQQ1gDW8rsfKTg==
   dependencies:
     ts-pnp "^1.1.2"
+
+popper.js@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
+  integrity sha512-w010cY1oCUmI+9KwwlWki+r5jxKfTFDVoadl7MSrIujHU5MJ5OR6HTDj6Xo8aoR/QsA56x8jKjA59qGH4ELtrA==
 
 portfinder@^1.0.21:
   version "1.0.23"
@@ -6359,6 +6406,14 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
+stimulus@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-1.1.1.tgz#53c2fded6849e7b85eed3ed8dd76e33abd74bec5"
+  integrity sha512-R0mBqKp48YnRDZOxZ8hiOH4Ilph3Yj78CIFTBkCwyHs4iGCpe7xlEdQ7cjIxb+7qVCSxFKgxO+mAQbsNgt/5XQ==
+  dependencies:
+    "@stimulus/core" "^1.1.1"
+    "@stimulus/webpack-helpers" "^1.1.1"
+
 stream-browserify@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/stream-browserify/-/stream-browserify-2.0.2.tgz#87521d38a44aa7ee91ce1cd2a47df0cb49dd660b"
@@ -6586,6 +6641,11 @@ terser@^4.1.2:
     commander "^2.20.0"
     source-map "~0.6.1"
     source-map-support "~0.5.12"
+
+text-mask-addons@^3.8.0:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/text-mask-addons/-/text-mask-addons-3.8.0.tgz#17b61ef665a4f36811f2ea1f01a223b4be61ab26"
+  integrity sha1-F7Ye9mWk82gR8uofAaIjtL5hqyY=
 
 through2@^2.0.0:
   version "2.0.5"
@@ -6884,6 +6944,11 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+vanilla-text-mask@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/vanilla-text-mask/-/vanilla-text-mask-5.1.1.tgz#f854819b2785191cef651e3ee94869f45855f365"
+  integrity sha512-JhjoMbCx3DG4GN/M/j06n1bVLeJPsZ7XelyCx8q87M9d5k3jwuWaY+a+09XBq1uOGQAW8QaWska66hOzXNKiQg==
 
 vary@~1.1.2:
   version "1.1.2"
