@@ -1,5 +1,5 @@
 puts "Creating Organization..."
-organization = Organization.create(name: "michelada.io")
+organization = Organization.create(name: "michelada.io", api_key: "SU7HSH5Yr8fXuGmfz7mD7XSHjbZ1j3gR")
 
 puts "Creating Owner User..."
 owner = User.new(

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
-  scope module: :api do
+  scope module: :api, constraints: APIConstraint do
     resources :activities
     resources :attenders
     resources :attendances
