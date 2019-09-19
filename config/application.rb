@@ -14,5 +14,6 @@ module Checkinar
     config.i18n.fallbacks = [:"es-MX"]
     config.time_zone = "Mexico City"
     config.active_record.default_timezone = :local
+    config.eager_load_paths << Rails.root.join("lib")
   end
 end
