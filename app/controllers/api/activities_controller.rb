@@ -5,18 +5,8 @@ module API
     before_action :initialize_activity, only: %i[show edit update]
 
     def create
-      result = ::CreateActivity.call(organization: current_organization, attributes: activity_params)
-      @activity = result.activity
-
-      if result.success?
-        render json: ::ActivitySerializer.new(@activity).serialized_json
-      else
-        render json: { error: t(".alert"), status: result.status }, status: result.status
-      end
-    end
-
-    def edit
-      render json: ::ActivitySerializer.new(@activity).serialized_json
+      result = API::CreateActivity.call(organization: current_organization, attributes: activity_params)
+      render json: result.response, status: result.status
     end
 
     def index
@@ -29,14 +19,8 @@ module API
     end
 
     def update
-      result = ::UpdateActivity.call(activity: @activity, attributes: activity_params)
-      @activity = result.activity
-
-      if result.success?
-        render json: ::ActivitySerializer.new(@activity).serialized_json
-      else
-        render json: { error: t(".alert"), status: result.status }, status: result.status
-      end
+      result = API::UpdateActivity.call(activity: @activity, attributes: activity_params)
+      render json: result.response, status: result.status
     end
 
     private
