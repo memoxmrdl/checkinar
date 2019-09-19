@@ -5,11 +5,9 @@ module API
     private
       def update_activity
         if context.activity.update(context.attributes)
-          context.response = ::ActivitySerializer.new(@activity).serialized_json
-          context.status = :accepted
+          context.response = { json: ::ActivitySerializer.new(@activity).serialized_json, status: :accepted }
         else
-          context.response = { error: I18n.t(".alert"), status: :unprocessable_entity }
-          context.status = :unprocessable_entity
+          context.response = { json: { status: :unprocessable_entity }, status: :unprocessable_entity }
           context.fail!
         end
       end

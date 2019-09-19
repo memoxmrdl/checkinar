@@ -7,11 +7,9 @@ module API
         context.activity = Activity.new(context.attributes.merge(organization_id: context.organization.id))
 
         if context.activity.save
-          context.response = ::ActivitySerializer.new(context.activity).serialized_json
-          context.status = :accepted
+          context.response =  { json: ::ActivitySerializer.new(context.activity).serialized_json, status: :accepted }
         else
-          context.response =  { error: I18n.t(".alert"), status:  :unprocessable_entity }
-          context.status = :unprocessable_entity
+          context.response =  { json: { status:  :unprocessable_entity }, status: :unprocessable_entity }
           context.fail!
         end
       end

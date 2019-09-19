@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :api, constraints: APIConstraint do
-    resources :activities, except: [:destroy, :edit]
+    resources :activities, except: %i[destroy edit]
     resources :attenders
     resources :attendances
   end

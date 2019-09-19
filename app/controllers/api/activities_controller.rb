@@ -6,7 +6,7 @@ module API
 
     def create
       result = API::CreateActivity.call(organization: current_organization, attributes: activity_params)
-      render json: result.response, status: result.status
+      render result.response
     end
 
     def index
@@ -20,12 +20,12 @@ module API
 
     def update
       result = API::UpdateActivity.call(activity: @activity, attributes: activity_params)
-      render json: result.response, status: result.status
+      render result.response
     end
 
     private
       def activity_params
-        params.require(:activity).permit(
+        params.permit(
           :name,
           :description,
           :occurs_on,

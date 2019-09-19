@@ -8,15 +8,13 @@ class API::ActivitiesControllerTest < ActionDispatch::IntegrationTest
     @organization_token = { ACCEPT: "application/json",
                             Authorization: "Token token=#{@activity.organization.api_key}" }
     @params = {
-      activity: {
-        name: "English Class",
-        description: "Quickly english courses",
-        occurs_on: Activity.occurs_ons[:more_than_once],
-        occurs_frequency: ["monday", "friday", "saturday"],
-        occurs_at: Time.zone.now.to_date,
-        start_at: Time.zone.now,
-        duration: 60
-      }
+      name: "English Class",
+      description: "Quickly english courses",
+      occurs_on: Activity.occurs_ons[:more_than_once],
+      occurs_frequency: ["monday", "friday", "saturday"],
+      occurs_at: Time.zone.now.to_date,
+      start_at: Time.zone.now,
+      duration: 60
     }
   end
 
@@ -53,7 +51,7 @@ class API::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_creates_an_activity_with_errors_returns_unprocessable_entity
     post activities_path, as: :json,
                           headers: @organization_token,
-                          params: { activity: { duration: 10 } }
+                          params: { duration: 10 }
 
     assert_response :unprocessable_entity
   end
@@ -61,7 +59,7 @@ class API::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_updates_an_activity_with_errors_returns_unprocessable_entity
     patch activity_path(@activity), as: :json,
                           headers: @organization_token,
-                          params: { activity: { duration: 10, name: nil } }
+                          params: { duration: 10, name: nil }
 
     assert_response :unprocessable_entity
   end
