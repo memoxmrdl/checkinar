@@ -18,6 +18,8 @@ es:
         active: Activo
         created_at: Fecha de creación
         updated_at: Fecha de actualización
+        radius: Alcance de la actividad en metros
+        mark_activity_place: ¿Marcar el lugar donde se llevara acabo la actividad?
     errors:
       models:
         organization:

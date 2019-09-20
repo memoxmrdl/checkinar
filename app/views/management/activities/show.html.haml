@@ -5,7 +5,7 @@
 .box
   .columns
     .column
-      = link_to t(:edit, scope: :generic), edit_management_activity_path(@activity), class: "button is-pulled-right"
+      = link_to t(:edit, scope: :generic), edit_management_activity_path(@activity), class: "button is-pulled-right", "data-turbolinks" => "false"
   .columns
     .column.is-6
       = resource_attribute_and_value @activity, :name

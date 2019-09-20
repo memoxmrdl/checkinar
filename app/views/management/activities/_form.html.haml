@@ -1,8 +1,5 @@
 .box
   = form_with model: [:management, @activity], local: true do |form|
-    = form.hidden_field :latitude
-    = form.hidden_field :longitude
-    = form.hidden_field :radius
     .columns
       .column.is-6
         = form.field_with_label :name
@@ -21,6 +18,22 @@
             = form.field_with_label :start_at, class: "input-time", autocomplete: "off"
           .column.is-6
             = form.select_with_label :duration, duration_options, prompt: true, class: "is-fullwidth"
+      .column.is-6
+        .field
+          .control
+            = form.label :place, class: "checkbox" do |text|
+              = form.check_box :place, class: "checkbox", "data-target": "activity-form.selectActivityPlace", "data-action": "click->activity-form#toggleMapSection"
+              = I18n.t('activerecord.attributes.activity.mark_activity_place')
+        .map-section.is-hidden{ "data-target": "activity-form.mapSection" }
+          #map-viewer.map-viewer{ "data-target": "activity-form.mapViewer" }
+          .field
+            .control
+              = form.field_with_label :radius, "data-target": "activity-form.slider", placeholder: "radius in meters", value: @activity.radius
+          .field.is-grouped
+            .control
+              = form.hidden_field :latitude, class: "input", "data-target": "activity-form.latitude", value: @activity.latitude
+            .control
+              = form.hidden_field :longitude, class: "input", "data-target": "activity-form.longitude", value: @activity.longitude
     .columns
       .column
         .field.is-grouped
