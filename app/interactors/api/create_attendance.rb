@@ -5,40 +5,49 @@ module API
     include Interactor
 
     def call
-      validate_if_user_is_in_activity_range
+      context.response = { status: :unauthorized }
+
+      find_activity
+      user_is_neart_to_location
       create_attendance
     end
 
     private
-      def attendance_params
-        {
-          activity_id: context.attributes[:activity_id],
-          user_id: context.attributes[:user_id],
-          attended_at: Time.zone.now,
-          status: @activity.validate_attendance ? "pending" : "confirmed"
-        }
+      attr_accessor :attendance
+
+      def find_activity
+        @activity = Activity.find(context.attributes[:activity_id])
+        return if @activity
+
+        response_with_error
       end
 
       def create_attendance
-        context.attendance = Attendance.new(attendance_params)
-        if context.attendance.save
+        @attendance = Attendance.new(context.attributes.merge(attended_at: Time.zone.now,
+                                                              status: (@activity.validate_attendance? ? Attendance.statuses[:pending] : Attendance.statuses[:confirmed])))
+        if attendance.save
           context.response =  { json: { status:  :accepted }, status: :accepted }
         else
-          context.response =  { json: { status:  :unprocessable_entity }, status: :unprocessable_entity }
-          context.fail!
+          response_with_error
         end
       end
 
-      def validate_if_user_is_in_activity_range
-        @activity = Activity.find(context.attributes[:activity_id])
+      def user_is_neart_to_location
         return unless @activity.latitude && @activity.longitude
 
+        latitude = context.attributes.delete(:latitude)
+        longitude = context.attributes.delete(:longitude)
         activity_location = "#{@activity.latitude},#{@activity.longitude}"
-        user_location = "#{context.attributes[:latitude]},#{context.attributes[:longitude]}"
+        user_location = "#{latitude},#{longitude}"
         distance = Distance.meassure(activity_location, user_location)
         return if distance < @activity.radius
 
-        context.response =  { json: { status:  :unprocessable_entity }, status: :unprocessable_entity }
+        response_with_error
+      end
+
+      def response_with_error
+        context.response[:json] =  ErrorSerializer.new(attendance)
+        context.response[:status] = :unprocessable_entity
         context.fail!
       end
   end
