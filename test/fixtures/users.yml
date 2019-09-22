@@ -1,17 +1,17 @@
 owner:
   email: owner@checkinar.io
   encrypted_password: <%= User.new.send(:password_digest, "12345678") %>
-  roles_mask: 1
+  roles_mask: <%= User.mask_for :owner %>
   organization: michelada
 
 leader:
   email: leader@checkinar.io
   encrypted_password: <%= User.new.send(:password_digest, "12345678") %>
-  roles_mask: 2
+  roles_mask: <%= User.mask_for :normal %>
   organization: michelada
 
 attender:
   email: attender@checkinar.io
   encrypted_password: <%= User.new.send(:password_digest, "12345678") %>
-  roles_mask: 4
+  roles_mask: <%= User.mask_for :normal %>
   organization: michelada

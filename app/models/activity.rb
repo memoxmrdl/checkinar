@@ -3,7 +3,8 @@
 class Activity < ApplicationRecord
   include I18nEnumable
 
-  has_and_belongs_to_many :users
+  has_many :participants
+  has_many :users, through: :participants
   has_many :attendances
   belongs_to :organization
 
