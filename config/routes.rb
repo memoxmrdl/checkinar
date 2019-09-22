@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :api, constraints: APIConstraint do
+    resource :authenticate_users, only: %i[create]
     resources :activities, except: %i[destroy edit]
     resources :attenders
     resources :attendances
