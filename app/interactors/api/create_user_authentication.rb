@@ -16,7 +16,7 @@ module API
 
     private
       def find_user
-        @user = context.organization.users.find_for_database_authentication(email: context.attributes[:email])
+        @user = User.find_for_database_authentication(email: context.attributes[:email])
 
         unless user
           context.response[:json] = ErrorSerializer.new(:not_authenticated, is_collection: false)

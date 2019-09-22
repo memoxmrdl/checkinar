@@ -3,7 +3,7 @@
 module API
   class AuthenticateUsersController < ApplicationController
     def create
-      result = API::CreateUserAuthentication.call(organization: current_organization, attributes: authentication_params)
+      result = API::CreateUserAuthentication.call(attributes: authentication_params)
 
       render result.response
     end
