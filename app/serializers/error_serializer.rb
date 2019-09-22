@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ErrorSerializer < ApplicationSerializer
   set_id do
     :error

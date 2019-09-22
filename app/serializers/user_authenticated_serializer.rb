@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserAuthenticatedSerializer < ApplicationSerializer
   attributes :id,
              :email
