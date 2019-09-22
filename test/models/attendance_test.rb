@@ -7,7 +7,7 @@ class AttendanceTest < ActiveSupport::TestCase
     @subject = Attendance.new
   end
 
-  def test_it_creates_valid
+  def test_it_does_not_creates_if_user_does_not_belongs_to_activity
     @subject.activity = activities(:book_club)
     @subject.user = users(:attender)
     @subject.attended_at = Time.zone.now

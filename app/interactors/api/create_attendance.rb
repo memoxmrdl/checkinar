@@ -14,7 +14,7 @@ module API
         {
           activity_id: context.attributes[:activity_id],
           user_id: context.attributes[:user_id],
-          attended_at: Time.now,
+          attended_at: Time.zone.now,
           status: @activity.validate_attendance ? "pending" : "confirmed"
         }
       end
@@ -22,7 +22,7 @@ module API
       def create_attendance
         context.attendance = Attendance.new(attendance_params)
         if context.attendance.save
-          context.response =  { json: { status:  :accept }, status: :accept }
+          context.response =  { json: { status:  :accepted }, status: :accepted }
         else
           context.response =  { json: { status:  :unprocessable_entity }, status: :unprocessable_entity }
           context.fail!

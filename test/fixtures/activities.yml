@@ -5,6 +5,9 @@ book_club:
   start_at: "9:00"
   duration: 60
   organization: michelada
+  latitude: 19.257567
+  longitude: -103.719110
+  radius: 120
 
 traguitos:
   name: Traguitos
