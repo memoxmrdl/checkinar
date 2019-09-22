@@ -22,6 +22,8 @@ es:
         mark_activity_place: ¿Marcar el lugar donde se llevara acabo la actividad?
     errors:
       models:
+        attendance:
+          invalid: Registro invalido
         organization:
           attributes:
             name:

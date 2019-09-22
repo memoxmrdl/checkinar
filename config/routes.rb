@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resource :authenticate_users, only: %i[create]
     resources :activities, except: %i[destroy edit]
     resources :attenders
-    resources :attendances
+    resources :attendances, only: %i[create]
   end
 
   devise_for :users
