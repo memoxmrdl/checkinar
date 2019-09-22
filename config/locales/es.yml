@@ -28,6 +28,9 @@ es:
           attributes:
             name:
               blank: Debes agregar un nombre
+  api:
+    errors:
+      invalid_user_location: Ubicación invalida
   users:
     sessions:
       new:
