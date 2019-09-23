@@ -24,16 +24,20 @@ class ActivityTest < ActiveSupport::TestCase
 
   def test_it_adds_a_leader
     activity = activities(:traguitos)
-    activity.users << users(:leader)
+    user = users(:leader)
 
-    assert activity.users.leader.any?
+    activity.participants.create(activity: activity, user: user, roles: :leader)
+
+    assert activity.users.exists?(user.id)
   end
 
   def test_it_adds_an_attender
     activity = activities(:traguitos)
-    activity.users << users(:attender)
+    user = users(:attender)
 
-    assert activity.users.attender.any?
+    activity.participants.create(activity: activity, user: user, roles: :attender)
+
+    assert activity.users.exists?(user.id)
   end
 
   def test_it_valids_its_fields_occurs_on_date

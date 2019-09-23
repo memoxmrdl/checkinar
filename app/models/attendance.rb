@@ -13,7 +13,7 @@ class Attendance < ApplicationRecord
   }
 
   def user_belongs_to_activity_validation
-    if user_id_changed? && activity_id_changed? && !user.activities.exists?(activity.id)
+    if user_id_changed? && activity_id_changed? && !activity.participants.exists?(user_id: user_id)
       errors.add(:user, :user_not_belongs_to_activity)
     end
   end

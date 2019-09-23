@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
+class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def setup
     @owner = users(:owner)
     @leader = users(:leader)
@@ -23,7 +23,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_index_activities_as_owner
     sign_in @owner
 
-    get management_activities_path
+    get activities_path
 
     assert_response :success
   end
@@ -31,7 +31,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_index_activities_as_leader
     sign_in @leader
 
-    get management_activities_path
+    get activities_path
 
     assert_response :success
   end
@@ -39,7 +39,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_shows_activity_owner
     sign_in @owner
 
-    get management_activity_path(@activity)
+    get activity_path(@activity)
 
     assert_response :success
   end
@@ -47,7 +47,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_shows_activity_leader
     sign_in @leader
 
-    get management_activity_path(@activity)
+    get activity_path(@activity)
 
     assert_response :success
   end
@@ -55,7 +55,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_shows_responds_redirect_when_an_activity_doesnt_exists_as_owner
     sign_in @owner
 
-    get management_activity_path(id: "not_found")
+    get activity_path(id: "not_found")
 
     assert_response :redirect
   end
@@ -63,7 +63,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_shows_responds_redirect_when_an_activity_doesnt_exists_leader
     sign_in @leader
 
-    get management_activity_path(id: "not_found")
+    get activity_path(id: "not_found")
 
     assert_response :redirect
   end
@@ -71,7 +71,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_news_activity_as_owner
     sign_in @owner
 
-    get new_management_activity_path
+    get new_activity_path
 
     assert_response :success
   end
@@ -79,7 +79,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_news_activity_responds_redirect_as_leader
     sign_in @leader
 
-    get new_management_activity_path
+    get new_activity_path
 
     assert_response :redirect
   end
@@ -88,7 +88,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
     sign_in @owner
 
     assert_difference "Activity.count" do
-      post management_activities_path, params: @params
+      post activities_path, params: @params
     end
   end
 
@@ -97,7 +97,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     @params[:activity][:name] = ""
 
-    post management_activities_path, params: @params
+    post activities_path, params: @params
 
     assert_response :unprocessable_entity
   end
@@ -106,7 +106,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
     sign_in @owner
 
     assert_difference "Activity.count" do
-      post management_activities_path, params: @params
+      post activities_path, params: @params
     end
   end
 
@@ -115,7 +115,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     activity = activities(:book_club)
 
-    get edit_management_activity_path(activity)
+    get edit_activity_path(activity)
 
     assert_response :success
   end
@@ -125,7 +125,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     activity = activities(:book_club)
 
-    get edit_management_activity_path(activity)
+    get edit_activity_path(activity)
 
     assert_response :success
   end
@@ -135,7 +135,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     activity = activities(:book_club)
 
-    patch management_activity_path(activity), params: { activity: { name: "Movie Club" } }
+    patch activity_path(activity), params: { activity: { name: "Movie Club" } }
 
     assert_response :redirect
   end
@@ -145,7 +145,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     activity = activities(:book_club)
 
-    patch management_activity_path(activity), params: { activity: { name: "Movie Club" } }
+    patch activity_path(activity), params: { activity: { name: "Movie Club" } }
 
     assert_response :redirect
   end
@@ -155,7 +155,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     activity = activities(:book_club)
 
-    patch management_activity_path(activity), params: { activity: { name: "" } }
+    patch activity_path(activity), params: { activity: { name: "" } }
 
     assert_response :unprocessable_entity
   end
@@ -165,7 +165,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     activity = activities(:book_club)
 
-    patch management_activity_path(activity), params: { activity: { name: "" } }
+    patch activity_path(activity), params: { activity: { name: "" } }
 
     assert_response :unprocessable_entity
   end
@@ -173,7 +173,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_updates_activity_not_found_responds_redirect_as_owner
     sign_in @owner
 
-    patch management_activity_path(id: "not_found"), params: { activity: { name: "Movie Club" } }
+    patch activity_path(id: "not_found"), params: { activity: { name: "Movie Club" } }
 
     assert_response :redirect
   end
@@ -181,7 +181,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def test_it_updates_activity_not_found_responds_redirect_as_leader
     sign_in @leader
 
-    patch management_activity_path(id: "not_found"), params: { activity: { name: "Movie Club" } }
+    patch activity_path(id: "not_found"), params: { activity: { name: "Movie Club" } }
 
     assert_response :redirect
   end
@@ -191,7 +191,7 @@ class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     activity = activities(:book_club)
 
-    patch management_activity_path(activity), params: { activity: { name: "Movie Club" } }
+    patch activity_path(activity), params: { activity: { name: "Movie Club" } }
 
     assert_response :redirect
   end

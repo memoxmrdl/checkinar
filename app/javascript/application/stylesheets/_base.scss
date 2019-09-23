@@ -1,5 +1,5 @@
 main {
-  padding-top: 20px;
+  margin-top: 40px;
 }
 
 .has-regular-padding {
@@ -8,4 +8,13 @@ main {
 
 .is-justified-center {
   justify-content: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 15px;
 }

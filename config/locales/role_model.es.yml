@@ -1,0 +1,8 @@
+es:
+  role_model:
+    models:
+      participant:
+        attributes:
+          roles_mask:
+            leader: Lider
+            attender: Asistente

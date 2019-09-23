@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Activity < ApplicationRecord
-  include I18nEnumable
+  include I18nEnumrable
 
-  has_and_belongs_to_many :users
+  has_many :participants
+  has_many :users, through: :participants
   has_many :attendances
   belongs_to :organization
 

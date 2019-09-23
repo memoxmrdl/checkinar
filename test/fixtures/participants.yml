@@ -1,0 +1,9 @@
+leader:
+  user: leader
+  activity: book_club
+  roles_mask: <%= Participant.mask_for :leader %>
+
+attender:
+  user: attender
+  activity: book_club
+  roles_mask: <%= Participant.mask_for :attender %>

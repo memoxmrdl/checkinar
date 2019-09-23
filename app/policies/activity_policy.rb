@@ -2,22 +2,29 @@
 
 class ActivityPolicy < ApplicationPolicy
   def index?
-    user.is_owner? || user.is_leader?
+    true
   end
 
   def new?
     user.is_owner?
   end
 
-  alias_method :create?, :new?
+  def edit?
+    user.is_owner? || record.participants.exists?(user: user, roles_mask: Participant.mask_for(:leader))
+  end
+
   alias_method :show?, :index?
-  alias_method :edit?, :index?
-  alias_method :update?, :index?
+  alias_method :create?, :new?
+  alias_method :update?, :edit?
   alias_method :destroy?, :new?
 
   class Scope < Scope
     def resolve
-      scope.all
+      if user.is_owner?
+        scope.all
+      elsif user.is_normal?
+        user.activities
+      end
     end
   end
 end

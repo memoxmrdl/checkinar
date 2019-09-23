@@ -13,11 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if resource.is_owner? || resource.is_leader?
-      management_root_path
-    elsif resource.is_attender?
-      attender_root_path
-    end
+    activities_path
   end
 
   private
