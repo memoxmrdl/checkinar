@@ -22,10 +22,15 @@ es:
         mark_activity_place: ¿Marcar el lugar donde se llevara acabo la actividad?
     errors:
       models:
+        attendance:
+          invalid: Registro invalido
         organization:
           attributes:
             name:
               blank: Debes agregar un nombre
+  api:
+    errors:
+      invalid_user_location: Ubicación invalida
   users:
     sessions:
       new:
