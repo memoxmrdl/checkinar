@@ -1,5 +1,5 @@
 .box
-  = form_with model: [:management, @activity], local: true do |form|
+  = form_with model: @activity, local: true do |form|
     .columns
       .column.is-6
         = form.field_with_label :name
@@ -38,6 +38,6 @@
       .column
         .field.is-grouped
           .control
-            = link_to t(:cancel, scope: :generic), management_activities_path, class: "button"
+            = link_to t(:cancel, scope: :generic), activities_path, class: "button"
           .control
             = form.submit class: "button is-primary"

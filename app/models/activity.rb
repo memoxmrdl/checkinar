@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Activity < ApplicationRecord
-  include I18nEnumable
+  include I18nEnumrable
 
   has_many :participants
   has_many :users, through: :participants

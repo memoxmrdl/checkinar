@@ -8,11 +8,7 @@ module ApplicationHelper
   def real_root_path
     return root_path unless user_signed_in?
 
-    if user_signed_in? && current_user.is_owner? || current_user.is_leader?
-      management_root_path
-    elsif current_user.is_attender?
-      attender_root_path
-    end
+    activities_path
   end
 
   def model_plural_name(model)
@@ -45,16 +41,55 @@ module ApplicationHelper
     ]
   end
 
-  def resource_attribute_and_value(resource = nil, attribute = nil)
-    value = resource.send(attribute)
+  def resource_attribute_and_value(resource = nil, attribute = nil, format: :default, label_text: nil, &block)
+    if block_given?
+      value = capture(&block)
+    else
+      value = resource.send(attribute)
+      value = if value.blank?
+        format = :default
+        t(:n_a, scope: :generic)
+      else
+        value
+      end
+
+      case format
+      when :default
+        value
+      when :date
+        value = l(value)
+      when :time
+        value = l(value, format: :only_time)
+      when :list
+        value = Oj.load(resource.send(attribute)).reject(&:blank?)
+        value = if value.blank?
+          t(:n_a, scope: :generic)
+        else
+          value.join(",")
+        end
+      when :enum
+        value = resource.send("i18n_#{attribute}")
+      end
+    end
+
+    label_text = label_text.present? ? label_text : resource.class.human_attribute_name(attribute)
 
     content_tag :div, class: "field" do
-      concat(content_tag(:label, resource.class.human_attribute_name(attribute), class: "label"))
+      concat(content_tag(:label, label_text, class: "label"))
       concat(
         content_tag(:div, class: "control") do
           content_tag(:p, value)
         end
       )
+    end
+  end
+
+  def see_record_cell(record_path, content, html_options = {})
+    html_options[:class] = "cursor-pointer #{html_options[:class]}"
+    html_options[:onclick] = "Turbolinks.visit('#{record_path}')"
+
+    content_tag :td, html_options do
+      content
     end
   end
 end

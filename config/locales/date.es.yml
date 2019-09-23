@@ -1,0 +1,4 @@
+es:
+  time:
+    formats:
+      only_time: "%H:%M"
