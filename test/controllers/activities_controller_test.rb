@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class Management::ActivitiesControllerTest < ActionDispatch::IntegrationTest
+class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def setup
     @owner = users(:owner)
     @leader = users(:leader)
