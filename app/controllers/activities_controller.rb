@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ActivitiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_activity, except: %i[index new create]
   before_action :authorize_activity
 

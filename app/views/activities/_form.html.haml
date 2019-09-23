@@ -4,7 +4,7 @@
       .column.is-6
         = form.field_with_label :name
         = form.field_with_label :description, type: :text_area, class: "textarea"
-        = form.select_with_label :occurs_on, Activity.i18n_occurs_ons, { prompt: true, class: "is-fullwidth" }, { "data-action": "change->activity-form#change", "data-target": "activity-form.source" }
+        = form.select_with_label :occurs_on, Activity.i18n_occurs_ons.map(&:reverse), { prompt: true, class: "is-fullwidth" }, { "data-action": "change->activity-form#change", "data-target": "activity-form.source" }
         = form.field_with_label :occurs_at, class: "input-date", autocomplete: "off", "data-target": "activity-form.inputDate"
         .field
           .control

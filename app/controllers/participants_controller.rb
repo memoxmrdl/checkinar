@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ParticipantsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     result = CreateParticipant.call(organization: current_organization, attributes: participant_params, activity_id: params[:activity_id])
 
