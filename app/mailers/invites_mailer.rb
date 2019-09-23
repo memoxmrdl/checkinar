@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InvitesMailer < ApplicationMailer
   def invite_email
     @participant = params[:participant]
