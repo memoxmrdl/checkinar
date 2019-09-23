@@ -12,8 +12,6 @@ class API::ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     activity = activities(:book_club)
 
-    @user.activities << activity
-
     get activity_path(activity), headers: headers
 
     assert_response :success

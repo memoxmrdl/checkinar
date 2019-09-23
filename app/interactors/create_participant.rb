@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateParticipant
   include Interactor
 
@@ -13,7 +15,6 @@ class CreateParticipant
   end
 
   private
-
     def find_activity
       @activity = context.organization.activities.find(context.activity_id)
     rescue ActiveRecord::RecordNotFound

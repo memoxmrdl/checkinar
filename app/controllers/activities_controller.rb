@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
   before_action :authorize_activity
 
   def index
-    @activities = current_organization.activities
+    @activities = policy_scope(Activity)
   end
 
   def show
@@ -59,27 +59,27 @@ class ActivitiesController < ApplicationController
   end
 
   private
-  def activity_params
-    params.require(:activity).permit(
-      :name,
-      :description,
-      :occurs_on,
-      :occurs_at,
-      :start_at,
-      :duration,
-      :active,
-      :latitude,
-      :longitude,
-      :radius,
-      occurs_frequency: [],
-    )
-  end
+    def activity_params
+      params.require(:activity).permit(
+        :name,
+        :description,
+        :occurs_on,
+        :occurs_at,
+        :start_at,
+        :duration,
+        :active,
+        :latitude,
+        :longitude,
+        :radius,
+        occurs_frequency: [],
+      )
+    end
 
-  def find_activity
-    @activity = current_organization.activities.find(params[:id])
-  end
+    def find_activity
+      @activity = current_organization.activities.find(params[:id])
+    end
 
-  def authorize_activity
-    authorize(@activity || Activity)
-  end
+    def authorize_activity
+      authorize(@activity || Activity)
+    end
 end

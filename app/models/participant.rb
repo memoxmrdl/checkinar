@@ -28,7 +28,6 @@ class Participant < ApplicationRecord
   end
 
   private
-
     def roles_mask_validation
       if !has_any_role?(Participant.valid_roles)
         errors.add(:roles_mask, :choose_one)
