@@ -19,9 +19,11 @@ class API::AttendancesControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_it_create_attendance
-    post attendances_path, as: :json, params: @params, headers: @organization_token
+    Distance.stubs(meassure: 1) do
+      post attendances_path, as: :json, params: @params, headers: @organization_token
 
-    assert_response :success
+      assert_response :success
+    end
   end
 
   def test_it_does_not_create_attendance_if_user_is_out_of_range
