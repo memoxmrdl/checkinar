@@ -55,14 +55,6 @@ ActiveRecord::Schema.define(version: 2019_09_22_200441) do
     t.index ["organization_id"], name: "index_activities_on_organization_id"
   end
 
-  create_table "activities_users", id: false, force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "activity_id"
-    t.index ["activity_id"], name: "index_activities_users_on_activity_id"
-    t.index ["user_id", "activity_id"], name: "index_activities_users_on_user_id_and_activity_id", unique: true
-    t.index ["user_id"], name: "index_activities_users_on_user_id"
-  end
-
   create_table "attendances", force: :cascade do |t|
     t.bigint "activity_id"
     t.bigint "user_id"
