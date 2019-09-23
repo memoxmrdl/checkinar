@@ -2,6 +2,7 @@
 
 class ParticipantsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_participant, only: :index
 
   def create
     result = CreateParticipant.call(organization: current_organization, attributes: participant_params, activity_id: params[:activity_id])
@@ -11,7 +12,10 @@ class ParticipantsController < ApplicationController
 
   def destroy
     activity = current_organization.activities.find(params[:activity_id])
-    participant = activity.participants.find(params[:id])
+
+    @participant = activity.participants.find(params[:id])
+
+    authorize @participant
 
     if participant.destroy
       redirect_to activity_path(activity), notice: t(".notice")
@@ -26,5 +30,9 @@ class ParticipantsController < ApplicationController
         :email,
         roles_mask: []
       )
+    end
+
+    def authorize_participant
+      authorize(@participant || Participant)
     end
 end

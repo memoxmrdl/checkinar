@@ -4,7 +4,8 @@
       .column
         %h3.title.is-3= "#{model_singular_name(Activity)} #{@activity.name}"
       .column
-        = link_to t(:edit, scope: :generic), edit_activity_path(@activity), class: "button is-pulled-right", "data-turbolinks" => "false"
+        - if policy(@activity).edit?
+          = link_to t(:edit, scope: :generic), edit_activity_path(@activity), class: "button is-pulled-right", "data-turbolinks" => "false"
     %hr
     .columns
       .column= resource_attribute_and_value @activity, :name
@@ -40,10 +41,11 @@
               %td=participant.user.email
               %td=participant.i18n_roles.values.to_sentence
               %td
-                = link_to "Delete", activity_participant_path(@activity, participant), method: :delete, class: "button is-danger"
+                - if policy(participant).destroy?
+                  = link_to "Delete", activity_participant_path(@activity, participant), method: :delete, class: "button is-danger"
         - else
           %tr
             %td.has-text-centered{colspan: 5}
               .has-text-weight-semibold= t(:no_records, scope: :generic, model: model_plural_name(Participant))
 
-  = render "invite_participant_modal"
+  = render "invite_participant_modal" if policy(@activity).edit?
