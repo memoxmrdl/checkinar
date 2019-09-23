@@ -64,4 +64,17 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
       end
     end
   end
+
+  def error_help(field, value_or_options = nil, options = {})
+    if value_or_options.is_a?(Hash)
+      options = value_or_options
+    else
+      value = value_or_options
+    end
+
+    options[:id] = options.dig(:id) || "#{object.class.name.underscore}_#{field}"
+    options[:class] = "help is-danger #{options[:class]}"
+
+    content_tag(:p, value, options)
+  end
 end

@@ -3,6 +3,7 @@ es:
     models:
       user: Usuario
       activity: Actividad
+      participant: Participante
     attributes:
       user:
         email: Correo electrónico
@@ -20,6 +21,9 @@ es:
         updated_at: Fecha de actualización
         radius: Alcance de la actividad en metros
         mark_activity_place: ¿Marcar el lugar donde se llevara acabo la actividad?
+        participants: No. de participantes
+      participant:
+        roles_mask: Roles
     errors:
       models:
         attendance:
@@ -28,6 +32,12 @@ es:
           attributes:
             name:
               blank: Debes agregar un nombre
+        participant:
+          attributes:
+            email:
+              user_belongs_to_activity: El correo electronico ya pertenece a la actividad
+            roles_mask:
+              choose_one: Elige que Rol tendrá el participante
   api:
     errors:
       invalid_user_location: Ubicación invalida
@@ -69,6 +79,10 @@ es:
     edit: Editar
     delete: Eliminar
     cancel: Cancelar
+    true_or_false:
+      true: Sí
+      false: No
+    n_a: N/A
 
   management:
     activities:

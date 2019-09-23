@@ -8,7 +8,7 @@ class ParticipantTest < ActiveSupport::TestCase
   end
 
   def test_it_creates_participant_valid
-    @subject.user = users(:attender)
+    @subject.user = users(:laura)
     @subject.activity = activities(:book_club)
     @subject.roles << :attender
 
