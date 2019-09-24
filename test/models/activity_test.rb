@@ -1,5 +1,28 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: activities
+#
+#  id                  :bigint           not null, primary key
+#  name                :string           not null
+#  description         :string
+#  occurs_on           :string
+#  occurs_frequency    :string
+#  occurs_at           :date
+#  start_at            :time
+#  duration            :integer
+#  active              :boolean          default(TRUE)
+#  latitude            :decimal(, )
+#  longitude           :decimal(, )
+#  radius              :decimal(, )
+#  organization_id     :bigint
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  validate_attendance :boolean          default(FALSE), not null
+#
+
+
 require "test_helper"
 
 class ActivityTest < ActiveSupport::TestCase
