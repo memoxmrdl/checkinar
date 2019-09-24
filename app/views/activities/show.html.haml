@@ -50,4 +50,5 @@
 
   = render "invite_participant_modal" if policy(@activity).edit?
 
-= render "attendances_collection"
+- if policy(@activity).edit?
+  = render "attendances_collection"

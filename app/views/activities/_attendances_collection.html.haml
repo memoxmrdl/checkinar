@@ -21,7 +21,7 @@
               %td
                 - if attendance.confirmed?
                   = attendance.i18n_status
-                - else
+                - elsif policy(attendance).update? && attendance.pending?
                   = link_to "Confirmar", activity_confirm_attendance_path(@activity, attendance), method: :patch, class: "button"
         - else
           %tr
