@@ -1,0 +1,7 @@
+%hr
+.columns
+  .column
+    = t(:records_count, scope: :generic, count: collection.size)
+  .column
+    .is-pulled-right
+      = paginate collection, param_name: param_name

@@ -84,6 +84,7 @@ es:
     edit: Editar
     delete: Eliminar
     cancel: Cancelar
+    records_count: "%{count} registros"
     true_or_false:
       true: Sí
       false: No

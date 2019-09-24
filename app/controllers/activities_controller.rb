@@ -6,12 +6,12 @@ class ActivitiesController < ApplicationController
   before_action :authorize_activity
 
   def index
-    @activities = policy_scope(Activity)
+    @activities = policy_scope(Activity).page(params[:page])
   end
 
   def show
-    @participants = @activity.participants
-    @attendances = SearchAttendances.call(activity: @activity, attributes: search_attendance_params).attendances
+    @participants = @activity.participants.page(params[:participants_page])
+    @attendances = SearchAttendances.call(activity: @activity, attributes: search_attendance_params).attendances.page(params[:attendances_page])
   end
 
   def new
