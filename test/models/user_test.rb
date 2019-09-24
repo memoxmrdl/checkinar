@@ -9,8 +9,9 @@ class UserTest < ActiveSupport::TestCase
 
   def test_it_creates_valid
     @subject.email = "correo@checkinar.io"
+    @subject.full_name = "Dummy Name"
     @subject.password = "12345678"
-    @subject.roles << :owner
+    @subject.roles << :normal
     @subject.organization = organizations(:michelada)
 
     assert @subject.save

@@ -2,6 +2,7 @@
 
 class Participant < ApplicationRecord
   include RoleModel
+  include I18nRoleModelable
 
   belongs_to :user
   belongs_to :activity
@@ -15,17 +16,6 @@ class Participant < ApplicationRecord
 
   delegate :email, to: :user
 
-  def self.i18n_valid_roles
-    @i18n_valid_roles ||= self.valid_roles.each_with_object({}) do |role, i18n_roles|
-      i18n_roles[role] = I18n.t(role, scope: "role_model.models.#{name.underscore}.attributes.roles_mask")
-    end
-  end
-
-  def i18n_roles
-    @i18n_roles ||= roles.each_with_object({}) do |role, i18n_roles|
-      i18n_roles[role] = I18n.t(role, scope: "role_model.models.#{self.class.name.underscore}.attributes.roles_mask")
-    end
-  end
 
   private
     def roles_mask_validation

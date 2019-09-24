@@ -6,3 +6,8 @@ es:
           roles_mask:
             leader: Lider
             attender: Asistente
+      user:
+        attributes:
+          roles_mask:
+            owner: Dueño
+            normal: Normal
