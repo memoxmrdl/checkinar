@@ -4,6 +4,7 @@ es:
       user: Usuario
       activity: Actividad
       participant: Participante
+      attendance: Asistencia
     attributes:
       user:
         email: Correo electrónico
@@ -24,6 +25,10 @@ es:
         participants: No. de participantes
       participant:
         roles_mask: Roles
+      attendance:
+        attended_at: Fecha de asistencia
+        status: Estatus
+        location: Ubicación
     errors:
       models:
         attendance:

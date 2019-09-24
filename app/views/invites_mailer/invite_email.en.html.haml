@@ -1,0 +1,7 @@
+%h3  Hello #{@user.email} you have been invited to Checkinar!
+
+%p You has invited you to participate in the #{@activity.name} activity as #{@participant.i18n_roles.values.to_sentence}.
+
+%p To access the application it is necessary to reset your password in the following link #{link_to "Reset my password", new_user_password_url, target: "_blank"}
+
+%p Regards!

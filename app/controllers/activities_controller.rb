@@ -11,6 +11,7 @@ class ActivitiesController < ApplicationController
 
   def show
     @participants = @activity.participants
+    @attendances = SearchAttendances.call(activity: @activity, attributes: search_attendance_params).attendances
   end
 
   def new
@@ -73,6 +74,12 @@ class ActivitiesController < ApplicationController
         :longitude,
         :radius,
         occurs_frequency: [],
+      )
+    end
+
+    def search_attendance_params
+      params.fetch(:attendance, {}).permit(
+        :date_range
       )
     end
 

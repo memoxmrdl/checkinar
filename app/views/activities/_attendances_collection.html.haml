@@ -1,0 +1,29 @@
+= render "attendances_filter"
+
+.columns
+  .column
+    %hr
+    %table.table.is-fullwidth.is-hoverable
+      %thead
+        %th= User.human_attribute_name(:email)
+        %th= Attendance.human_attribute_name(:attended_at)
+        - if @activity.has_location?
+          %th= Attendance.human_attribute_name(:location)
+        %th= Attendance.human_attribute_name(:status)
+      %tbody
+        - unless @attendances.blank?
+          - @attendances.each do |attendance|
+            %tr
+              %td= attendance.user.email
+              %td= l(attendance.attended_at, format: :long)
+              - if attendance.activity.has_location?
+                %td #{attendance.latitude} #{attendance.longitude}
+              %td
+                - if attendance.confirmed?
+                  = attendance.i18n_status
+                - elsif policy(attendance).update? && attendance.pending?
+                  = link_to "Confirmar", activity_confirm_attendance_path(@activity, attendance), method: :patch, class: "button"
+        - else
+          %tr
+            %td.has-text-centered{colspan: 2}
+              .has-text-weight-semibold= t(:no_records, scope: :generic, model: model_plural_name(Attendance))

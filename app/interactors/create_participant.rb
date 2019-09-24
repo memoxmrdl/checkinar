@@ -50,8 +50,14 @@ class CreateParticipant
       )
     end
 
+    def send_email_notification
+      InvitesMailer.with(participant: participant).invite_email.deliver_now
+    end
+
     def create_participant
       if participant.save
+        send_email_notification
+
         context.response[:json] = participant
         context.response[:status] = :created
       else

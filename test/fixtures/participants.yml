@@ -3,6 +3,11 @@ leader:
   activity: book_club
   roles_mask: <%= Participant.mask_for :leader %>
 
+leader_in_traguitos:
+  user: pedro
+  activity: traguitos
+  roles_mask: <%= Participant.mask_for :leader %>
+
 attender:
   user: attender
   activity: book_club

@@ -2,7 +2,8 @@
   .column.is-6
     %h2.title= model_plural_name(Activity)
   .column.is-6
-    = link_to t(:new_resource, scope: :generic, resource: model_singular_name(Activity)), new_activity_path, class: "button is-primary is-pulled-right"
+    - if policy(Activity).new?
+      = link_to t(:new_resource, scope: :generic, resource: model_singular_name(Activity)), new_activity_path, class: "button is-primary is-pulled-right"
 
 .columns
   .column
