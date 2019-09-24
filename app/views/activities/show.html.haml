@@ -1,4 +1,4 @@
-.columns.box{"data-controller": "modals"}
+.columns{"data-controller": "modals forms"}
   .column.is-6
     .columns.is-clearfix.is-marginless
       .column
@@ -49,3 +49,5 @@
               .has-text-weight-semibold= t(:no_records, scope: :generic, model: model_plural_name(Participant))
 
   = render "invite_participant_modal" if policy(@activity).edit?
+
+= render "attendances_collection"

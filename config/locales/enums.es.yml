@@ -4,5 +4,10 @@ es:
       activity:
         attributes:
           occurs_on:
-            date: "Por fecha"
-            more_than_once: "Más de una vez"
+            date: Por fecha
+            more_than_once: Dias de la semana
+      attendance:
+        attributes:
+          status:
+            pending: Pendiente
+            confirmed: Confirmado

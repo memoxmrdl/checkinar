@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :activities do
     resources :participants, only: %i[create destroy]
+    resources :confirm_attendances, only: %i[update]
   end
 
   root "landing_page#show"

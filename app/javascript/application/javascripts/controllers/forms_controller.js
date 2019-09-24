@@ -8,6 +8,7 @@ export default class extends Controller {
   connect() {
     this.initializeDateFields();
     this.initializeTimePicker($('.input-time'));
+    this.initializeDateRangePicker($('.input-date-range'))
   }
 
   initializeDateFields() {
@@ -59,5 +60,37 @@ export default class extends Controller {
     }).on('apply.daterangepicker', function(ev, picker) {
       $(this).val(picker.startDate.format('HH:mm'));
     });
+  }
+
+  initializeDateRangePicker(element) {
+    element.daterangepicker({
+      opens: 'center',
+      buttonClasses: 'button is-small',
+      locale: {
+        'format': 'DD/MM/YYYY',
+        'separator': ' - ',
+        'applyLabel': 'Aplicar',
+        'cancelLabel': 'Cancelar',
+        'customRangeLabel': 'Rango de fechas',
+        'daysOfWeek': 'Días de la semana',
+        'monthNames': 'Meses',
+        'firstDay': 1
+      },
+      ranges: this.generateRanges()
+    });
+  }
+
+  generateRanges () {
+    let ranges = {};
+
+    ranges['Hoy'] = [moment(), moment()];
+    ranges['Ayer'] = [moment().subtract(1, 'days'), moment().subtract(1, 'days')];
+    ranges['Últimos 7 dias'] = [moment().subtract(6, 'days'), moment()];
+    ranges['Ultimos 30 dias'] = [moment().subtract(29, 'days'), moment()];
+    ranges['Este mes'] = [moment().startOf('month'), moment().endOf('month')];
+    ranges['Ultimo mes'] = [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')];
+    ranges['Ultimos 3 meses'] = [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')];
+
+    return ranges;
   }
 }

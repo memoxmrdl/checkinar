@@ -17,7 +17,7 @@ class ParticipantsController < ApplicationController
 
     authorize @participant
 
-    if participant.destroy
+    if @participant.destroy
       redirect_to activity_path(activity), notice: t(".notice")
     else
       redirect_to activity_path(activity), alert: t(".alert")

@@ -16,10 +16,14 @@ class Activity < ApplicationRecord
             :start_at,
             :duration, presence: true, if: Proc.new { |a| a.occurs_on_changed? && a.more_than_once? }
 
-  i18n_enum_attribute :occurs_on
-
   enum occurs_on: {
     date: "date",
     more_than_once: "more_than_once"
   }
+
+  i18n_enum_attribute :occurs_on
+
+  def has_location?
+    latitude && longitude
+  end
 end
