@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: participants
+#
+#  id          :bigint           not null, primary key
+#  user_id     :bigint
+#  activity_id :bigint
+#  roles_mask  :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+
 require "test_helper"
 
 class ParticipantTest < ActiveSupport::TestCase
