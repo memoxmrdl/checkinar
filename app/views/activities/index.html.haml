@@ -21,3 +21,5 @@
           %tr
             %td.has-text-centered{colspan: 5}
               .has-text-weight-semibold= t(:no_records, scope: :generic, model: model_plural_name(Activity))
+
+= render "shared/paginate", collection: @activities, param_name: :page
