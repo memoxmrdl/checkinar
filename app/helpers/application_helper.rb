@@ -92,4 +92,16 @@ module ApplicationHelper
       content
     end
   end
+
+  def figure_image_tag(resource, options = {})
+    options[:size] = "is-256x256" unless resource.attached?
+
+    wrapper_class = "figure image #{options[:size] || "is-32x32"}"
+
+    resource = resource.attached? ? url_for(resource) : asset_pack_path("media/application/images/placeholder.png")
+
+    content_tag(:div, class: wrapper_class) do
+      image_tag(resource, class: options[:class])
+    end
+  end
 end

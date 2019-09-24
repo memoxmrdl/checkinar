@@ -3,6 +3,7 @@
 class CustomFormBuilder < ActionView::Helpers::FormBuilder
   include ActionView::Helpers::UrlHelper
   include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::TextHelper
   include ActionView::Context
 
   def field_with_label(attribute, type: :text_field, **options)

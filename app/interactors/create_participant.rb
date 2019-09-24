@@ -29,6 +29,7 @@ class CreateParticipant
       unless user
         @user = context.organization.users.create(
           email: context.attributes[:email],
+          full_name: context.attributes[:email],
           password: SecureRandom.hex(10),
           organization_id: context.organization_id,
           roles: [:normal]

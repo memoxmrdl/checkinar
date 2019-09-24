@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  helper_method :current_organization
+
   def current_organization
     @_organization ||= current_user&.organization
   end

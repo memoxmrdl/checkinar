@@ -5,10 +5,13 @@ es:
       activity: Actividad
       participant: Participante
       attendance: Asistencia
+      organization: Organización
     attributes:
       user:
+        full_name: Nombre completo
         email: Correo electrónico
         password: Contraseña
+        roles_mask: Tipo de usuario
       activity:
         name: Nombre
         description: Descripción
@@ -29,6 +32,9 @@ es:
         attended_at: Fecha de asistencia
         status: Estatus
         location: Ubicación
+      organization:
+        name: Nombre
+        api_key: API key
     errors:
       models:
         attendance:
