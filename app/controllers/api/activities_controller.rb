@@ -12,7 +12,10 @@ module API
     end
 
     def show
-      render json: ActivitySerializer.new(@activity)
+      options = {}
+      options[:include] = [:users]
+      options[:params] = { start_date: params[:start_date], end_date: params[:end_date] }
+      render json: ActivitySerializer.new(@activity, options)
     end
 
     private
