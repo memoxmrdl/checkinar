@@ -18,7 +18,7 @@
       .column= resource_attribute_and_value @activity, :duration
     .columns
       .column
-        = resource_attribute_and_value label_text: "Lugar donde se llevara acabo la actividad" do
+        = resource_attribute_and_value label_text: t("labels.activities.place") do
           load_map_here
     .columns
       .column= resource_attribute_and_value @activity, :description
@@ -28,7 +28,7 @@
       .column
         %h3.title.is-3= model_plural_name(Participant)
       .column
-        = button_tag "Invitar", class: "button is-pulled-right", data: { action: "modals#openModal" }, modalTrigger: "invite-participant-modal"
+        = button_tag t("shared.buttons.invite"), class: "button is-pulled-right", data: { action: "modals#openModal" }, modalTrigger: "invite-participant-modal"
     %hr
     .columns
       .column
@@ -45,7 +45,7 @@
                   %td=participant.i18n_roles.values.to_sentence
                   %td
                     - if policy(participant).destroy?
-                      = link_to "Delete", activity_participant_path(@activity, participant), method: :delete, class: "button is-danger"
+                      = link_to t("shared.buttons.delete"), activity_participant_path(@activity, participant), method: :delete, class: "button is-danger"
             - else
               %tr
                 %td.has-text-centered{colspan: 5}

@@ -2,7 +2,8 @@
   .modal-background{data: { action: "click->modals#closeModal" }, id: "invite-participant-modal"}
   .modal-card
     %header.modal-card-head
-      %p.modal-card-title Invitar participante
+      %p.modal-card-title
+        =t(".title")
     = form_with model: [@activity, Participant.new], html: { data: { type: "html", action: "ajax:success->modals#onSuccess ajax:error->modals#onError" } } do |form|
       %section.modal-card-body
         .field
@@ -19,5 +20,5 @@
                 = b.text
             = form.error_help :roles_mask, class: "is-invisible", id: :roles_mask, data: { target: "modals.errorField" }
       %footer.modal-card-foot
-        = form.submit "Invitar", class: "button is-pulled-right"
+        = form.submit t("shared.buttons.invite"), class: "button is-pulled-right"
         = button_tag t(:cancel, scope: :generic), class: "button is-pulled-right", data: { action: "click->modals#closeModal" }, id: "invite-participant-modal"
