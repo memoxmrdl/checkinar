@@ -29,4 +29,10 @@ class OrganizationTest < ActiveSupport::TestCase
   def test_it_creates_invalid
     assert_not @subject.save
   end
+
+  def it_is_not_valid_if_name_is_already_registered
+    @subject.name = "michelada"
+
+    assert_not @subject.save
+  end
 end
