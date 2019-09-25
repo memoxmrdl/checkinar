@@ -54,6 +54,10 @@ es:
   api:
     errors:
       invalid_user_location: Ubicación invalida
+  confirm_attendances:
+    update:
+      alert: Error confirmando asistencia
+      notice: Asistencia confirmada
   users:
     sessions:
       new:
@@ -71,7 +75,13 @@ es:
     shared:
       links:
         forgot_your_password: Recuperar mi contraseña
+  participants:
+    destroy:
+      alert: Errror eliminado al participante
+      notice: El participante ha sido eliminado
   shared:
+    buttons:
+      invite: Invitar
     navbar:
       menu_items_end:
         sign_in: Acceder
