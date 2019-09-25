@@ -25,7 +25,12 @@ module API
       end
 
       def initialize_attendance
-        @attendance = Attendance.new(context.attributes.merge(attended_at: Time.zone.now))
+        @attendance = Attendance.new(
+          context.attributes.merge(
+            attended_at: Time.zone.now,
+            status: activity.validate_attendance? ? Attendance.statuses[:pending] : Attendance.statuses[:confirmed]
+          )
+        )
       end
 
       def user_location_is_inside_at_activity_location
