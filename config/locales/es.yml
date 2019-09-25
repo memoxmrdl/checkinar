@@ -99,4 +99,4 @@ es:
     n_a: N/A
   slack:
     messages:
-      user_attended_to_activity: "%{user_name} registro una asistencia :white-check-mark:"
+      user_attended_to_activity: "%{user_name} registró una asistencia :white-check-mark:"
