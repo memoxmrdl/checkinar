@@ -17,11 +17,9 @@ class API::AttendancesControllerTest < ActionDispatch::IntegrationTest
   def test_it_create_attendance
     authenticate @user
 
-    Distance.stubs(meassure: 1) do
-      post attendances_path, params: @params, headers: headers
+    post attendances_path, params: @params, headers: headers
 
-      assert_response :success
-    end
+    assert_response :success
   end
 
   def test_it_does_not_create_attendance_if_user_is_out_of_range

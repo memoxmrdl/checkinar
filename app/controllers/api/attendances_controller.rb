@@ -5,7 +5,7 @@ module API
     before_action :authenticate_user!
 
     def create
-      result = API::CreateAttendance.call(attributes: attendance_params)
+      result = API::CreateAttendance.call(organization: current_organization, attributes: attendance_params)
 
       render result.response
     end

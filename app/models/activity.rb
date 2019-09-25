@@ -46,6 +46,10 @@ class Activity < ApplicationRecord
 
   i18n_enum_attribute :occurs_on
 
+  def location
+    [latitude.to_f, longitude.to_f]
+  end
+
   def has_location?
     latitude && longitude
   end
