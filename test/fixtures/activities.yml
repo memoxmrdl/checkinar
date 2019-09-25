@@ -26,6 +26,7 @@ book_club:
   occurs_at: 2019-09-24
   start_at: "9:00"
   duration: 60
+  occurs_frequency: '[]'
   organization: michelada
   latitude: 19.257567
   longitude: -103.719110
@@ -34,6 +35,7 @@ book_club:
 
 traguitos:
   name: Traguitos
+  occurs_frequency: '[]'
   occurs_on: "date"
   occurs_at: 2019-10-24
   start_at: "10:00"

@@ -29,7 +29,6 @@ class Participant < ApplicationRecord
 
   delegate :email, to: :user
 
-
   private
     def roles_mask_validation
       if !has_any_role?(Participant.valid_roles)

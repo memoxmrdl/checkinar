@@ -8,19 +8,26 @@ module API
     def index
       activities = current_user.activities
 
-      render json: ActivitySerializer.new(activities)
+      result_response = ActivitySerializer.new(activities)
+
+      respond_to do |format|
+        format.json { render json: result_response }
+        format.json_api_v1 { render json: result_response }
+      end
     end
 
     def show
-      options = {}
-      options[:include] = [:users]
-      options[:params] = { start_date: params[:start_date], end_date: params[:end_date] }
-      render json: ActivitySerializer.new(@activity, options)
+      result_response = ActivitySerializer.new(@activity, params: { include: params[:include] })
+
+      respond_to do |format|
+        format.json { render json: result_response }
+        format.json_api_v1 { render json: result_response }
+      end
     end
 
     private
       def find_activity
-        @activity = current_user.activities.find(params[:id])
+        @activity = current_user.activities.find_by!(uuid: params[:id])
       end
   end
 end

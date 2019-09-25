@@ -1,0 +1,245 @@
+<%- root_url = ENV["APP_DOMAIN"] || "https://www.checkinar.io" %>
+
+FORMAT: 1A
+HOST: <%= root_url %>
+
+# API de checkinar.io
+
+La API de checkinar.io esta organizada usando REST.
+
+## JSON API
+
+La API de checkinar.io solo responde a JSON, los estándares utilizados son JSON-API, a menos de que la documentación indique lo contrario.
+
+## Autenticación
+
+La autenticación utilizada es basada en tokens. Tienes que incluir la llave de autenticación del usuario en todas las peticiones realizadas, utilizando el header de `Authorization`.
+
+Para obtener un token de autorización por el usuario autenticado puede consultar en [Autenticación de Usuarios](#autenticación-de-usuarios)
+
+Todas las peticiones deben ser hechas mediante *HTTP*, he aquí un ejemplo de una petición válida:
+
+```
+$ curl <%= root_url %>/activities \
+    -H "Authorization: Token token=user-authorized-key" \
+    -H "Accept: application/vnd.checkinar.v1+json" \
+    -H "Content-Type: application/json"
+```
+
+## Headers
+
+Tal y como se observa en el ejemplo anterior hay *3 headers* de carácter obligatorio en todas las peticiones a realizar en la API de checkinar.io
+
+1. Authorization
+
+        Authorization: Token token=user-authorized-key
+
+2. Accept
+
+        Accept: application/vnd.checkinar.v1+json
+
+    ó
+
+        Accept: application/json
+
+3. Content-Type (peticiones diferentes a GET)
+
+        Content-Type: application/json
+
+La API de checkinar.io responderá con un código 401 si no se envía el header de `Authorization`
+
+# Group Autenticación de Usuarios
+
+## Autenticación de Usuarios [/authenticate_users]
+
+### Crear una Autenticación de Usuario [POST]
+
+Crea una nueva Autenticación de Usuario. Recibe un objeto de JSON con el `email` y `password`.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/vnd.creditar.v1+json
+            Authorization: Token token=BMBE96Wva8NaYMmVx4RavpXSy6Y6HKFe
+
+    + Attributes (object)
+        + email: `eltio@chekinar.io` (string, required)
+        + password: `***********` (string, required)
+
++ Response 201 (application/json)
+
+    + Attributes (User Authenticated Data)
+
+
++ Response 401 (application/json)
+
+    + Attributes
+        + data (object, fixed-type, required) - Error ocurrido
+            + id: `error` (string, required)
+            + type: `error` (string, required)
+            + attributes (object, required)
+                + errors: `Usuario no autorizado` (string, required) - Mensage descriptivo del Error
+
+# Group Actividades
+
+Una Actividad es la representación de una Actividad.
+
+## Actividades [/activities]
+
+Esta ruta solo listará los Actividades activas del Usuario autenticado.
+
+### Listar todas las Actividades [GET]
+
++ Request (application/json)
+    + Headers
+
+            Accept: application/vnd.creditar.v1+json
+            Authorization: Token token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.2PitnINRSTm2csuVcQos4OCSMSMJvvmEpUYbWhnLkAA
+
++ Response 200 (application/json)
+
+    + Attributes (Activity List Data)
+
+## Actividad [/activities/{id}{?include}]
+
+Obtiene una Actividad y todos sus detalles.
+
++ Parameters
+    + id (required, string, `6313ac69-dc0d-45a8-8804-4ac451e1db5c`) ... `id` de la Actividad a obtener
+    + include (optional, string, `participant`) ... Cadena de texto para indicar si la respuesta debe incluir recursos relacionados.
+
+### Obtener una Actividad [GET]
+
++ Request include is not set (application/json)
+
+    + Headers
+
+            Accept: application/vnd.creditar.v1+json
+            Authorization: Token token=BMBE96Wva8NaYMmVx4RavpXSy6Y6HKFe
+
++ Response 200 (application/json)
+
+    + Attributes (Activity not expanded Data)
+
+
++ Response 404 (application/json)
+
+    + Attributes
+        + data (object, fixed-type, required) - Error ocurrido
+            + id: `error` (string, required)
+            + type: `error` (string, required)
+            + attributes (object, required)
+                + errors: `Registro no encontrado` (string, required) - Mensage descriptivo del Error
+
++ Request include is set to participant (application/json)
+
+    + Headers
+
+            Accept: application/vnd.creditar.v1+json
+            Authorization: Token token=BMBE96Wva8NaYMmVx4RavpXSy6Y6HKFe
+
++ Response 200 (application/json)
+
+    + Attributes (Activity with Participant expanded Data)
+
+
+## Group Participaciones
+
+## Participación [/participants/{id}{?include}]
+
+Obtiene una Participación y todos sus detalles.
+
++ Parameters
+    + id (required, string, `6313ac69-dc0d-45a8-8804-4ac451e1db5c`) ... `id` de la Participación a obtener
+
+### Obtener una Participación [GET]
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/vnd.creditar.v1+json
+            Authorization: Token token=BMBE96Wva8NaYMmVx4RavpXSy6Y6HKFe
+
+    + Attributes (Participant Data)
+
++ Response 404 (application/json)
+
+    + Attributes
+        + data (object, fixed-type, required) - Error ocurrido
+            + id: `error` (string, required)
+            + type: `error` (string, required)
+            + attributes (object, required)
+                + errors: `Registro no encontrado` (string, required) - Mensage descriptivo del Error
+
+# Data Structures
+
+# User Authenticated (object)
+
++ id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único del Usuario
++ type: `user_authenticated` (string, required) - Tipo del recurso
++ attributes (object, required)
+  + id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único del Usuario
+  + email: `eltio@checkinar.io` (string, required) - Correo eletronico del Usuario
+  + authentication_token: `eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.2PitnINRSTm2csuVcQos4OCSMSMJvvmEpUYbWhnLkAA` (string, required) - Token de la autenticación del Usuario
+
+# User Authenticated Data (object)
+
++ data (User Authenticated, fixed-type, required)
+
+## Activity (object)
+
++ id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único de la Actividad
++ type: `activity` (string, required) - Tipo del recurso
++ attributes (object, required)
+  + id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único de la Actividad
+  + name: `Book Club` (string, required) - Nombre de la Actividad
+  + description: `Actividad de lectura de libros` (string, required) - Descripción de la Actividad
+  + occurs_on: `En Fecha` (string, required) - En que momento Sucede la Actividad
+  + occurs_frequency: `Lunes, Martes y Viernes` (string, required) - Días de la semana en que Sucede la Actividad
+  + occurs_at: `2019-08-12` (string, required) - Fecha en que sucede la Actividad
+  + start_at: `13:00` (string, required) - Hora en que comienza la Actividad
+  + duration: 60 (number, required) - Duración en minutos de la Actividad
+  + active: true (boolean, required) - Activo
+  + latitude: `19.266651` (string, required) - Latitud de la ubicación de la Actividad
+  + longitude: `-103.7179345` (string, required) - Longitud de la ubicación de la Actividad
+  + radius: 25 (number, required) - Radio de la ubicación de la Actividad
+  + created_at: `2018-05-02` (string, required) - Fecha de Creación de la Actividad
+  + updated_at: `2018-05-02` (string, required) - Última modificación de la Actividad
+
+## Activity Relationships (Activity)
+
++ relationships (object, required)
+  + participants (object, required)
+      + data (array[Participant Relation], fixed-type, required)
+
+## Activity not expanded Data (object)
+
++ data (Activity, fixed-type, required) - Actividad.
+
+## Activity with Participant expanded Data (object)
+
++ data (Activity Relationships, fixed-type, required) - Actividad.
+
+## Activity List Data (object)
+
++ data (array[Activity], fixed-type, required) - Actividades.
+
+## Participant (object)
+
++ id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único de la Participación
++ type: `participant` (string, required) - Tipo del recurso
++ attributes (object, required)
+  + id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único de la Participación
+  + email: `et@helloworld.io` (string, required) - Correo electronico del Participante
+  + roles: `Asistente` (string, required) - Rol del Participante
+
+## Participant Relation (object)
+
++ id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único de la Actividad
++ type: `participant` (string, required) - Tipo del recurso
+
+## Participant Data (object)
+
++ data (Participant, fixed-type, required) - Participación.

@@ -4,12 +4,13 @@ module API
   class CreateAttendance
     include Interactor
 
-    attr_accessor :activity, :attendance
+    attr_accessor :activity, :user, :attendance
 
     def call
       context.response = { status: :unprocessable_entity }
 
       find_activity
+      find_user
       initialize_attendance
       user_location_is_inside_at_activity_location
       create_attendance
@@ -17,7 +18,15 @@ module API
 
     private
       def find_activity
-        @activity = context.organization.activities.find(context.attributes[:activity_id])
+        @activity = context.organization.activities.find_by!(uuid: context.attributes[:activity_id])
+      rescue ActiveRecord::RecordNotFound
+        context.response[:json] =  ErrorSerializer.new(:record_not_found, is_collection: false)
+        context.response[:status] = :not_found
+        context.fail!
+      end
+
+      def find_user
+        @user = activity.users.find_by!(uuid: context.attributes[:user_id])
       rescue ActiveRecord::RecordNotFound
         context.response[:json] =  ErrorSerializer.new(:record_not_found, is_collection: false)
         context.response[:status] = :not_found
@@ -26,7 +35,9 @@ module API
 
       def initialize_attendance
         @attendance = Attendance.new(
-          context.attributes.merge(
+          context.attributes.slice(:latitude, :longitude).merge(
+            activity_id: activity.id,
+            user_id: user.id,
             attended_at: Time.zone.now,
             status: activity.validate_attendance? ? Attendance.statuses[:pending] : Attendance.statuses[:confirmed]
           )

@@ -7,7 +7,10 @@ module API
     def create
       result = API::CreateAttendance.call(organization: current_organization, attributes: attendance_params)
 
-      render result.response
+      respond_to do |format|
+        format.json { render result.response }
+        format.json_api_v1 { render result.response }
+      end
     end
 
     private

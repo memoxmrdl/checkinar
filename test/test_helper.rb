@@ -4,8 +4,12 @@ ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 require "mocha/minitest"
+require "json_matchers/minitest/assertions"
 
 Dir[Rails.root.join("test/support/**/*test_helper.rb")].each { |f| require f }
+
+JsonMatchers.schema_root = "test/support/schemas"
+Minitest::Test.send(:include, JsonMatchers::Minitest::Assertions)
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers

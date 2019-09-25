@@ -8,6 +8,8 @@
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
+    "aglio": "^2.3.0",
+    "apib2json": "https://github.com/mariochavez/apib2json.git#additional-metadata",
     "bulma": "^0.7.5",
     "daterangepicker": "^3.0.5",
     "jquery": "^3.4.1",
