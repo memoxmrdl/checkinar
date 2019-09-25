@@ -13,7 +13,9 @@
 umbrella:
   name: Umbrella
   api_key: jaz4VGY8JSt4C6iWuVchpAueKLWnvyYq
+  slack_webhook_url: https://hooks.slack.com
 
 michelada:
   name: michelada
   api_key: WymbohxVZHKHGWj4qXKhmijSRTemJg5T
+  slack_webhook_url: https://hooks.slack.com

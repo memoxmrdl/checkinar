@@ -26,6 +26,7 @@ es:
         radius: Alcance de la actividad en metros
         mark_activity_place: ¿Marcar el lugar donde se llevara acabo la actividad?
         participants: No. de participantes
+        slack_channel: Canal de Slack
       participant:
         roles_mask: Roles
       attendance:
@@ -34,6 +35,7 @@ es:
         location: Ubicación
       organization:
         name: Nombre
+        slack_webhook_url: Webhook de Slack
         api_key: API key
     errors:
       models:
@@ -95,8 +97,6 @@ es:
       true: Sí
       false: No
     n_a: N/A
-
-  management:
-    activities:
-      edit:
-        title: Editar %{resource_name}
+  slack:
+    messages:
+      user_attended_to_activity: "%{user_name} registró una asistencia :white-check-mark:"

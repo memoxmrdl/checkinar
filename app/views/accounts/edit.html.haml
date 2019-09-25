@@ -20,5 +20,6 @@
         %hr
         = form.fields_for :organization do |org_form|
           = org_form.field_with_label :name
+          = org_form.field_with_label :slack_webhook_url
           = org_form.field_with_label :api_key, disabled: true
       = form.field_submit class: "button is-link is-pulled-right"

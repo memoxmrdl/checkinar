@@ -9,6 +9,10 @@ module API
     attr_reader :current_organization
     attr_reader :current_user
 
+    def current_organization
+      @current_organization ||= current_user.organization
+    end
+
     protected
       def authenticate_user!
         authenticate_or_request_with_http_token do |token, options|
