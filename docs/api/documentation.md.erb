@@ -15,7 +15,7 @@ La API de checkinar.io solo responde a JSON, los estándares utilizados son JSON
 
 La autenticación utilizada es basada en tokens. Tienes que incluir la llave de autenticación del usuario en todas las peticiones realizadas, utilizando el header de `Authorization`.
 
-Para obtener una token de autenticación por el usuario puedo consultar en:
+Para obtener un token de autorización por el usuario autenticado puede consultar en [Autenticación de Usuarios](#autenticación-de-usuarios)
 
 Todas las peticiones deben ser hechas mediante *HTTP*, he aquí un ejemplo de una petición válida:
 
@@ -50,7 +50,7 @@ La API de checkinar.io responderá con un código 401 si no se envía el header 
 
 # Group Autenticación de Usuarios
 
-## Autentication de Usuarios [/authenticate_users]
+## Autenticación de Usuarios [/authenticate_users]
 
 ### Crear una Autenticación de Usuario [POST]
 
