@@ -5,7 +5,10 @@ module API
     def create
       result = API::CreateUserAuthentication.call(attributes: authentication_params)
 
-      render result.response
+      respond_to do |format|
+        format.json { render result.response }
+        format.json_api_v1 { render result.response }
+      end
     end
 
     private

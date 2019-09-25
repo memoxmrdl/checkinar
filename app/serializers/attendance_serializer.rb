@@ -17,6 +17,8 @@
 
 
 class AttendanceSerializer < ApplicationSerializer
+  set_id :uuid
+
   attributes :activity_id,
              :user_id,
              :attended_at,

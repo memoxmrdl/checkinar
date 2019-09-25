@@ -2,6 +2,6 @@
 
 class APIConstraint
   def self.matches?(request)
-    /^application\/json$/.match?(request.headers["ACCEPT"])
+    request.headers["ACCEPT"].match?(/\A(application\/json|application\/vnd\.creditar\.v\d\+json)\z/)
   end
 end

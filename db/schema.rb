@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_000351) do
+ActiveRecord::Schema.define(version: 2019_09_25_221136) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -53,7 +54,9 @@ ActiveRecord::Schema.define(version: 2019_09_25_000351) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "validate_attendance", default: false, null: false
     t.string "slack_channel"
+    t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
     t.index ["organization_id"], name: "index_activities_on_organization_id"
+    t.index ["uuid"], name: "index_activities_on_uuid", unique: true
   end
 
   create_table "attendances", force: :cascade do |t|
@@ -65,8 +68,10 @@ ActiveRecord::Schema.define(version: 2019_09_25_000351) do
     t.decimal "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
     t.index ["activity_id"], name: "index_attendances_on_activity_id"
     t.index ["user_id"], name: "index_attendances_on_user_id"
+    t.index ["uuid"], name: "index_attendances_on_uuid", unique: true
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -84,8 +89,10 @@ ActiveRecord::Schema.define(version: 2019_09_25_000351) do
     t.integer "roles_mask"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
     t.index ["activity_id"], name: "index_participants_on_activity_id"
     t.index ["user_id"], name: "index_participants_on_user_id"
+    t.index ["uuid"], name: "index_participants_on_uuid", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,9 +106,11 @@ ActiveRecord::Schema.define(version: 2019_09_25_000351) do
     t.integer "roles_mask"
     t.bigint "organization_id"
     t.string "full_name"
+    t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uuid"], name: "index_users_on_uuid", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -19,5 +19,7 @@
 
 
 class UserSerializer < ApplicationSerializer
-  attributes :email
+  set_id :uuid
+
+  attributes :email, :full_name
 end

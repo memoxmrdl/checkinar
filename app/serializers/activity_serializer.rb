@@ -24,6 +24,8 @@
 
 
 class ActivitySerializer < ApplicationSerializer
+  set_id :uuid
+
   attributes :name,
              :description,
              :occurs_on,
@@ -36,19 +38,29 @@ class ActivitySerializer < ApplicationSerializer
              :longitude,
              :radius
 
-  attribute :start_at do |activity|
-    I18n.l(activity.start_at, format: :only_time)
+  attribute :description do |object|
+    object.description.to_s
   end
 
-  attribute :created_at do |activity|
-    activity.created_at.to_s
+  attribute :occurs_frequency do |object|
+    Oj.load(object.occurs_frequency).reject(&:blank?).to_sentence
   end
 
-  attribute :updated_at do |activity|
-    activity.updated_at.to_s
+  attribute :start_at do |object|
+    I18n.l(object.start_at, format: :only_time)
   end
 
-  has_many :users, serializer: UserSerializer, if: Proc.new { |actitiy, params| params[:start_date] && params[:end_date] } do |activity, params|
-    User.top_ten_participants(activity.id, params[:start_date], params[:end_date])
+  attribute :created_at do |object|
+    object.created_at.to_s
   end
+
+  attribute :updated_at do |object|
+    object.updated_at.to_s
+  end
+
+  attribute :radius do |object|
+    object.radius.to_i
+  end
+
+  has_many :participants, if: Proc.new { |record, params| params[:include] == "participant" }
 end

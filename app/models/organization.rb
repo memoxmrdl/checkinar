@@ -16,6 +16,7 @@
 class Organization < ApplicationRecord
   has_many :users
   has_many :activities
+  has_many :participants, through: :activities
 
   validates :name, uniqueness: true, presence: true
 

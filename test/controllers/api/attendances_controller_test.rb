@@ -7,8 +7,8 @@ class API::AttendancesControllerTest < ActionDispatch::IntegrationTest
     @user = users(:attender)
     @activity = activities(:book_club)
     @params = {
-      activity_id: @activity.id,
-      user_id: @user.id,
+      activity_id: @activity.uuid,
+      user_id: @user.uuid,
       latitude: 19.257560,
       longitude: -103.719119
     }

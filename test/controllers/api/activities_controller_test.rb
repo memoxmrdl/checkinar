@@ -12,7 +12,7 @@ class API::ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     activity = activities(:book_club)
 
-    get activity_path(activity), headers: headers
+    get activity_path(id: activity.uuid), headers: headers
 
     assert_response :success
   end
