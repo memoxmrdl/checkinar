@@ -30,6 +30,7 @@ book_club:
   latitude: 19.257567
   longitude: -103.719110
   radius: 120
+  slack_channel: "#book-club"
 
 traguitos:
   name: Traguitos

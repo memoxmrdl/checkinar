@@ -18,6 +18,10 @@
             = form.field_with_label :start_at, class: "input-time", autocomplete: "off"
           .column.is-6
             = form.select_with_label :duration, duration_options, prompt: true, class: "is-fullwidth"
+        - if current_organization.slack_webhook_url.present?
+          .columns
+            .column
+              = form.field_with_label :slack_channel
       .column.is-6
         .field
           .control

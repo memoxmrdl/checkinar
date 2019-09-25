@@ -15,5 +15,6 @@ module Checkinar
     config.time_zone = "Mexico City"
     config.active_record.default_timezone = :local
     config.eager_load_paths << Rails.root.join("lib")
+    config.active_job.queue_adapter = :sidekiq
   end
 end
