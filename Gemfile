@@ -55,6 +55,7 @@ group :test do
   gem "mocha"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "json_matchers"
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -31,3 +31,8 @@ yarn-debug.log*
 .yarn-integrity
 
 .DS_Store
+
+# Ignore api documentation
+/public/api/*
+!/public/api/.keep
+docs/api/documentation.md
