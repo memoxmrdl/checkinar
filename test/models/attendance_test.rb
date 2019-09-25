@@ -38,10 +38,30 @@ class AttendanceTest < ActiveSupport::TestCase
     @subject.attended_at = Time.zone.now
     @subject.status = Attendance.statuses[:confirmed]
 
-    assert_not @subject.save
+    assert_not @subject.valid?
   end
 
-  def test_it_creates_invalid
-    assert_not @subject.save
+  def test_it_is_not_valid_without_attendded_at_attribute
+    @subject.activity = activities(:book_club)
+    @subject.user = users(:attender)
+    @subject.status = Attendance.statuses[:confirmed]
+
+    assert_not @subject.valid?
+  end
+
+  def test_it_is_not_valid_without_an_activity_relation
+    @subject.user = users(:laura)
+    @subject.attended_at = Time.zone.now
+    @subject.status = Attendance.statuses[:confirmed]
+
+    assert_not @subject.valid?
+  end
+
+  def test_it_is_not_valid_without_an_user_relation
+    @subject.activity = activities(:book_club)
+    @subject.attended_at = Time.zone.now
+    @subject.status = Attendance.statuses[:confirmed]
+
+    assert_not @subject.valid?
   end
 end

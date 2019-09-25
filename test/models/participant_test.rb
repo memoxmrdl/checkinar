@@ -28,7 +28,31 @@ class ParticipantTest < ActiveSupport::TestCase
     assert @subject.save
   end
 
-  def test_it_creates_participant_invalid
-    assert_not @subject.save
+  def test_it_is_not_valid_without_role
+    @subject.user = users(:laura)
+    @subject.activity = activities(:book_club)
+
+    assert_not @subject.valid?
+  end
+
+  def test_it_is_not_valid_without_a_user_relation
+    @subject.activity = activities(:book_club)
+    @subject.roles << :attender
+
+    assert_not @subject.valid?
+  end
+
+  def test_it_is_not_valid_without_an_activity_relation
+    @subject.user = users(:laura)
+    @subject.roles << :attender
+
+    assert_not @subject.valid?
+  end
+
+  def test_it_creates_participant_valid
+    @subject.user = users(:laura)
+    @subject.roles << :attender
+
+    assert_not @subject.valid?
   end
 end

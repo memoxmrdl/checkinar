@@ -26,16 +26,43 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_it_creates_valid
-    @subject.email = "correo@checkinar.io"
-    @subject.full_name = "Dummy Name"
-    @subject.password = "12345678"
+    @subject.email = "example_user@checkinar.io"
+    @subject.full_name = "Erick Torrez"
+    @subject.password = "example$password"
     @subject.roles << :normal
     @subject.organization = organizations(:michelada)
 
     assert @subject.save
   end
 
-  def test_it_create_invalid
+  def test_it_wont_createdsinvalid
     assert_not @subject.save
+  end
+
+  def test_it_is_not_valid_without_an_email
+    @subject.full_name = "Annabel Robles"
+    @subject.password = "example$password"
+    @subject.roles << :normal
+    @subject.organization = organizations(:michelada)
+
+    assert_not @subject.valid?
+  end
+
+  def test_it_is_not_valid_without_a_name
+    @subject.password = "example$password"
+    @subject.organization = organizations(:michelada)
+    @subject.roles << :normal
+    @subject.organization = organizations(:michelada)
+
+    assert_not @subject.valid?
+  end
+
+  def test_it_is_not_valid_with_no_organization_relation
+    @subject.email = "example_user@checkinar.io"
+    @subject.full_name = "Diego Zaizar"
+    @subject.password = "example$password"
+    @subject.roles << :normal
+
+    assert_not @subject.valid?
   end
 end

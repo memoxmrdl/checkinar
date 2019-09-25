@@ -38,7 +38,7 @@ class Participant < ApplicationRecord
     end
 
     def user_belongs_to_activity_validation
-      if user_id_changed? && activity.users.exists?(id: user)
+      if user_id_changed? && activity && activity.users.exists?(id: user)
         errors.add(:email, :user_belongs_to_activity)
       end
     end
