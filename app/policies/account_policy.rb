@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserPolicy < ApplicationPolicy
+class AccountPolicy < ApplicationPolicy
   def edit?
     true
   end
