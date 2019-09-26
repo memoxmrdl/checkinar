@@ -754,5 +754,62 @@
         ]
       }
     }
+  ],
+  "[GET]/attendances_users{?activity_id}{?order_by}{?start_date}{?end_date}{?limit}": [
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Asistencia de usuarios",
+        "statusCode": "200"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "ID único del Usuario"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Tipo del recurso"
+                },
+                "attributes": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID único del Usuario"
+                    },
+                    "email": {
+                      "type": "string",
+                      "description": "Correo eletronico del Usuario"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "email"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "attributes"
+              ]
+            }
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    }
   ]
 }

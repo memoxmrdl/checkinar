@@ -5,6 +5,13 @@ module API
     module Serializable
       extend ActiveSupport::Concern
 
+      class_methods do
+        def resource(resource)
+          self.class_attribute :resource_name, instance_writer: false
+          self.resource_name = resource.to_s
+        end
+      end
+
       included do
         before_action :serialize_collection, only: :index
         before_action :serialize_resource, only: :show
@@ -31,12 +38,18 @@ module API
           current_scope.joins(resource_associations).where(resource_conditions).find_by!(uuid: params[:id])
         end
 
+        def resource_name
+          return self.resource_name if defined?(self.resource_name)
+
+          self.controller_name
+        end
+
         def singular_resource_name
-          self.controller_name.singularize
+          resource_name.singularize
         end
 
         def plural_resource_name
-          self.controller_name
+          resource_name.pluralize
         end
 
         def model_serializer_class

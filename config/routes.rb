@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :activities, only: %i[index show]
     resources :participants, only: %i[index show]
     resources :attendances, only: %i[index create]
+    resources :attendances_users, only: :index
   end
 
   resources :activities do
