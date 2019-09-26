@@ -10,6 +10,7 @@
     "@rails/webpacker": "^4.0.7",
     "aglio": "^2.3.0",
     "bulma": "^0.7.5",
+    "bulma-slider": "^2.0.0",
     "daterangepicker": "^3.0.5",
     "jquery": "^3.4.1",
     "load-google-maps-api": "^2.0.1",
@@ -23,8 +24,8 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3.8.0",
-    "apib2json": "https://github.com/mariochavez/apib2json.git#additional-metadata"
+    "apib2json": "https://github.com/mariochavez/apib2json.git#additional-metadata",
+    "webpack-dev-server": "^3.8.0"
   },
   "engines": {
     "node": "8.x"

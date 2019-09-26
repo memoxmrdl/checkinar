@@ -11,6 +11,7 @@ class PartipantTest < ApplicationSystemTestCase
 
     find("td", text: book_club.name).click
     find("a[href='/activities/#{book_club.id}/participants/#{participant.id}']").click
+    page.driver.browser.switch_to.alert.accept
 
     assert page.has_content?(I18n.t("participants.destroy.notice"))
   end

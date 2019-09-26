@@ -73,6 +73,7 @@ class ActivitiesController < ApplicationController
         :latitude,
         :longitude,
         :radius,
+        :validate_attendance,
         occurs_frequency: [],
       )
     end

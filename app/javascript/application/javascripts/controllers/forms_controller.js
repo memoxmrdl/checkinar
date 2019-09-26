@@ -86,10 +86,10 @@ export default class extends Controller {
     ranges['Hoy'] = [moment(), moment()];
     ranges['Ayer'] = [moment().subtract(1, 'days'), moment().subtract(1, 'days')];
     ranges['Últimos 7 dias'] = [moment().subtract(6, 'days'), moment()];
-    ranges['Ultimos 30 dias'] = [moment().subtract(29, 'days'), moment()];
+    ranges['Últimos 30 dias'] = [moment().subtract(29, 'days'), moment()];
     ranges['Este mes'] = [moment().startOf('month'), moment().endOf('month')];
-    ranges['Ultimo mes'] = [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')];
-    ranges['Ultimos 3 meses'] = [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')];
+    ranges['Último mes'] = [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')];
+    ranges['Últimos 3 meses'] = [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')];
 
     return ranges;
   }

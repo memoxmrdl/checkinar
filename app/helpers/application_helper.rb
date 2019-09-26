@@ -23,21 +23,12 @@ module ApplicationHelper
     model.model_name.human
   end
 
-  def date_daynames_options
-    (0..6).map do |day_number|
-      [
-        I18n.t("date.day_names", locale: :en)[day_number].downcase,
-        I18n.t("date.day_names", locale: I18n.default_locale)[day_number].capitalize
-      ]
-    end
-  end
-
   def duration_options
     [
-      ["15 Minutos", 15],
-      ["30 Minutos", 30],
-      ["1 Hora", 60],
-      ["2 Horas", 120]
+      [t(:fifteen, scope: :duration_minutes), 15],
+      [t(:thirty, scope: :duration_minutes), 30],
+      [t(:hour, scope: :duration_minutes), 60],
+      [t(:two_hours, scope: :duration_minutes), 120]
     ]
   end
 
@@ -60,15 +51,10 @@ module ApplicationHelper
         value = l(value)
       when :time
         value = l(value, format: :only_time)
-      when :list
-        value = Oj.load(resource.send(attribute)).reject(&:blank?)
-        value = if value.blank?
-          t(:n_a, scope: :generic)
-        else
-          value.join(",")
-        end
       when :enum
         value = resource.send("i18n_#{attribute}")
+      when :boolean
+        value = I18n.t(resource.send(attribute), scope: "generic.true_or_false")
       end
     end
 

@@ -33,6 +33,7 @@ es:
         mark_activity_place: ¿Marcar el lugar donde se llevara acabo la actividad?
         participants: No. de participantes
         slack_channel: Canal de Slack
+        validate_attendance: Confirmar asistencia
       participant:
         roles_mask: Roles
       attendance:
@@ -65,6 +66,9 @@ es:
       title: Invitar participante
     update:
       alert: Error actualizado la actividad
+      notice: Actividad ha sido actualizada
+    edit:
+      title: "Editar %{activity_name}"
   api:
     errors:
       invalid_user_location: Ubicación invalida
@@ -97,16 +101,15 @@ es:
       alert: Errror eliminado al participante
       notice: El participante ha sido eliminado
   shared:
-    buttons:
-      invite: Invitar
     navbar:
       menu_items_end:
         sign_in: Acceder
         sign_out: Salir
     buttons:
+      invite: Invitar
       confirm: Confirmar
       close_session: Cerrar sesión
-      choose_file: Selecciona un archivo...
+      choose_button: Selecciona un archivo
       delete: Eliminar
       filter: Filtrar
       invite: Invitar
@@ -128,18 +131,19 @@ es:
     delete: Eliminar
     cancel: Cancelar
     records_count: "%{count} registros"
+    confirm: ¿Está seguro?
     true_or_false:
       true: Sí
       false: No
     n_a: N/A
+  duration_minutes:
+    fifteen: 15 Minutos
+    thirty: 30 Minutos
+    hour: 1 Hora
+    two_hours: 2 Horas
   slack:
     messages:
       user_attended_to_activity: "%{user_name} registró una asistencia :white-check-mark:"
-
-  management:
-    activities:
-      edit:
-        title: Editar %{resource_name}
   participant:
     invite: Invitar participante
 

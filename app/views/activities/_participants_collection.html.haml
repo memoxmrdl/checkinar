@@ -1,0 +1,29 @@
+.columns.is-clearfix.is-marginless
+  .column
+    %h3.title.is-3= model_plural_name(Participant)
+  .column
+    = button_tag t("shared.buttons.invite"), class: "button is-primary is-pulled-right", data: { action: "modals#openModal" }, modalTrigger: "invite-participant-modal"
+%hr
+.columns
+  .column
+    %table.table.is-fullwidth.is-hoverable
+      %thead
+        %th= User.human_attribute_name(:email)
+        %th= Participant.human_attribute_name(:roles)
+        %th
+      %tbody
+        - unless @participants.blank?
+          - @participants.each do |participant|
+            %tr
+              %td=participant.user.email
+              %td=participant.i18n_roles.values.to_sentence
+              %td
+                - if policy(participant).destroy?
+                  = link_to activity_participant_path(@activity, participant), method: :delete, data: { confirm: t(:confirm, scope: :generic) } do
+                    .icon.is-large.has-text-danger
+                      %i.fas.fa-minus-circle
+        - else
+          %tr
+            %td.has-text-centered{colspan: 5}
+              .has-text-weight-semibold= t(:no_records, scope: :generic, model: model_plural_name(Participant))
+= render "shared/paginate", collection: @participants, param_name: :participants_page

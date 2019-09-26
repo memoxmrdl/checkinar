@@ -1,58 +1,43 @@
-.columns{"data-controller": "modals forms"}
-  .column.is-6
-    .columns.is-clearfix.is-marginless
-      .column
-        %h3.title.is-3= "#{model_singular_name(Activity)} #{@activity.name}"
-      .column
-        - if policy(@activity).edit?
-          = link_to t(:edit, scope: :generic), edit_activity_path(@activity), class: "button is-pulled-right", "data-turbolinks" => "false"
-    %hr
-    .columns
-      .column= resource_attribute_and_value @activity, :name
-      .column= resource_attribute_and_value @activity, :occurs_on, format: :enum
-    .columns
-      .column= resource_attribute_and_value @activity, :occurs_frequency, format: :list
-    .columns
-      .column= resource_attribute_and_value @activity, :occurs_at, format: :date
-      .column= resource_attribute_and_value @activity, :start_at, format: :time
-      .column= resource_attribute_and_value @activity, :duration
-    .columns
-      .column
-        = resource_attribute_and_value label_text: t("labels.activities.place") do
-          load_map_here
-    .columns
-      .column= resource_attribute_and_value @activity, :description
+.box
+  .columns{"data-controller": "modals forms"}
+    .column.is-6
+      .columns.is-clearfix.is-marginless
+        .column
+          %h3.title.is-3= "#{model_singular_name(Activity)} #{@activity.name}"
+        .column
+          - if policy(@activity).edit?
+            = link_to t(:edit, scope: :generic), edit_activity_path(@activity), class: "button is-link is-pulled-right", "data-turbolinks" => "false"
+      %hr
+      .columns
+        .column= resource_attribute_and_value @activity, :name
+        .column= resource_attribute_and_value @activity, :occurs_on, format: :enum
+      .columns
+        .column
+          = resource_attribute_and_value label_text: Activity.human_attribute_name(:occurs_frequency) do
+            = @activity.i18n_occurs_frequency.to_sentence
+      .columns
+        .column= resource_attribute_and_value @activity, :occurs_at, format: :date
+        .column= resource_attribute_and_value @activity, :start_at, format: :time
+        .column
+          = resource_attribute_and_value label_text: Activity.human_attribute_name(:duration) do
+            - real_duration = duration_options.find { |option| option.second == @activity.duration  }
+            = real_duration.first
+      - if @activity.has_location?
+        .columns
+          .column
+            = resource_attribute_and_value label_text: t("labels.activities.place") do
+              load_map_here
+      .columns
+        .column= resource_attribute_and_value @activity, :description
+      .columns
+        .column
+          = resource_attribute_and_value @activity, :active, format: :boolean
+        .column
+          = resource_attribute_and_value @activity, :validate_attendance, format: :boolean
+    .column.is-6
+      = render "participants_collection"
 
-  .column.is-6
-    .columns.is-clearfix.is-marginless
-      .column
-        %h3.title.is-3= model_plural_name(Participant)
-      .column
-        = button_tag t("shared.buttons.invite"), class: "button is-pulled-right", data: { action: "modals#openModal" }, modalTrigger: "invite-participant-modal"
-    %hr
-    .columns
-      .column
-        %table.table.is-fullwidth.is-hoverable
-          %thead
-            %th= User.human_attribute_name(:email)
-            %th= Participant.human_attribute_name(:roles)
-            %th
-          %tbody
-            - unless @participants.blank?
-              - @participants.each do |participant|
-                %tr
-                  %td=participant.user.email
-                  %td=participant.i18n_roles.values.to_sentence
-                  %td
-                    - if policy(participant).destroy?
-                      = link_to t("shared.buttons.delete"), activity_participant_path(@activity, participant), method: :delete, class: "button is-danger"
-            - else
-              %tr
-                %td.has-text-centered{colspan: 5}
-                  .has-text-weight-semibold= t(:no_records, scope: :generic, model: model_plural_name(Participant))
-    = render "shared/paginate", collection: @participants, param_name: :participants_page
+    = render "invite_participant_modal" if policy(@activity).edit?
 
-  = render "invite_participant_modal" if policy(@activity).edit?
-
-- if policy(@activity).edit?
-  = render "attendances_collection"
+  - if policy(@activity).edit?
+    = render "attendances_collection"

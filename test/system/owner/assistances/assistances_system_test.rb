@@ -11,6 +11,7 @@ class  AttendancesTest < ApplicationSystemTestCase
 
     find("td", text: traguitos.name).click
     find("a[href='/activities/#{traguitos.id}/confirm_attendances/#{attendance.id}']").click
+    page.driver.browser.switch_to.alert.accept
 
     assert page.has_content?(I18n.t("confirm_attendances.update.notice"))
   end

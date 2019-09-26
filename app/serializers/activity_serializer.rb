@@ -47,7 +47,7 @@ class ActivitySerializer < ApplicationSerializer
   end
 
   attribute :occurs_frequency do |object|
-    Oj.load(object.occurs_frequency).reject(&:blank?).to_sentence
+    object.i18n_occurs_frequency.to_sentence
   end
 
   attribute :start_at do |object|
