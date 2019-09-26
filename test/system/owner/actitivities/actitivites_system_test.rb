@@ -14,7 +14,7 @@ class ActivitiesTest < ApplicationSystemTestCase
     find("option[value='more_than_once']").click
     find(:css, "input[id='activity_occurs_frequency_sunday']").set(true)
 
-    fill_in "activity_start_at", with: "09:00"
+    fill_in "activity_start_at", with: "09:00AM"
     within "#activity_duration" do
       find("option[value='15']").click
     end
