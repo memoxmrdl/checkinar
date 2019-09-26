@@ -30,8 +30,6 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :organization, update_only: true
 
-  validates :full_name, presence: true
-
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
   scope :by_attendances, ->(activity_id, order_by: :desc, start_date: Time.zone.now, end_date: Time.zone.now, limit: 10) {
