@@ -4,7 +4,7 @@ class CreateActivities < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.string :description
       t.string :occurs_on
-      t.string :occurs_frequency
+      t.text :occurs_frequency, array: true
       t.date :occurs_at
       t.time :start_at
       t.integer :duration

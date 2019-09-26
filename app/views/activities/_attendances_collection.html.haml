@@ -20,12 +20,16 @@
                 %td #{attendance.latitude} #{attendance.longitude}
               %td
                 - if attendance.confirmed?
-                  = attendance.i18n_status
+                  .icon.is-large.has-text-success
+                    %i.fas.fa-check
                 - elsif policy(attendance).update? && attendance.pending?
-                  = link_to t("shared.buttons.confirm"), activity_confirm_attendance_path(@activity, attendance), method: :patch, class: "button"
+                  = link_to activity_confirm_attendance_path(@activity, attendance), method: :patch, class: "button is-link", data: { confirm: t(:confirm, scope: :generic) } do
+                    %span.icon.is-large
+                      %i.fas.fa-check
+                    %span= t("shared.buttons.confirm")
         - else
           %tr
-            %td.has-text-centered{colspan: 2}
+            %td.has-text-centered{colspan: 4}
               .has-text-weight-semibold= t(:no_records, scope: :generic, model: model_plural_name(Attendance))
 
 = render "shared/paginate", collection: @attendances, param_name: :attendances_page

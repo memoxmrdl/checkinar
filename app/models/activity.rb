@@ -51,6 +51,18 @@ class Activity < ApplicationRecord
   end
 
   def has_location?
-    latitude && longitude
+    !(latitude.to_f.zero? || longitude.to_f.zero?)
+  end
+
+  def self.i18n_occurs_frequency_options(locale: I18n.default_locale)
+    I18n.t("date.day_names", locale: :en).each_with_object({}).with_index do |(day_name, day_names), index|
+      day_names[day_name.downcase] = I18n.t("date.day_names", locale: locale)[index]
+    end
+  end
+
+  def i18n_occurs_frequency
+    occurs_frequency.to_a.reject(&:blank?).each_with_object([]) do |day_name, day_names|
+      day_names << Activity.i18n_occurs_frequency_options[day_name.downcase]
+    end
   end
 end

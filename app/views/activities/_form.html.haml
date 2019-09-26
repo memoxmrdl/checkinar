@@ -1,5 +1,7 @@
 .box
   = form_with model: @activity, local: true do |form|
+    = form.hidden_field :latitude, class: "input", "data-target": "activity-form.latitude", value: @activity.latitude
+    = form.hidden_field :longitude, class: "input", "data-target": "activity-form.longitude", value: @activity.longitude
     .columns
       .column.is-6
         = form.field_with_label :name
@@ -9,39 +11,44 @@
         .field
           .control
             = form.label :occurs_frequency, class: "label"
-            = form.collection_check_boxes :occurs_frequency, date_daynames_options, :first, :last, checked: JSON.parse(@activity.occurs_frequency || "[]") do |b|
+            = form.collection_check_boxes :occurs_frequency, Activity.i18n_occurs_frequency_options.transform_values(&:capitalize), :first, :last, checked: JSON.parse(@activity.occurs_frequency || "[]") do |b|
               = b.label class: "checkbox m-r-10", "data-target": "activity-form.inputCheckboxLabel" do
                 = b.check_box "data-target": "activity-form.inputCheckbox"
                 = b.text
         .columns
           .column.is-6
-            = form.field_with_label :start_at, class: "input-time", autocomplete: "off"
+            = form.field_with_label :start_at, type: :time_field, class: "input-time", autocomplete: "off"
           .column.is-6
             = form.select_with_label :duration, duration_options, prompt: true, class: "is-fullwidth"
         - if current_organization.slack_webhook_url.present?
           .columns
             .column
               = form.field_with_label :slack_channel
+        .columns
+          .column
+            .field
+              = form.label :active
+              = form.check_box :active
+          .column
+            .field
+              = form.label :validate_attendance
+              = form.check_box :validate_attendance
       .column.is-6
         .field
           .control
             = form.label :place, class: "checkbox" do |text|
               = form.check_box :place, class: "checkbox", "data-target": "activity-form.selectActivityPlace", "data-action": "click->activity-form#toggleMapSection"
               = I18n.t('activerecord.attributes.activity.mark_activity_place')
-        .map-section.is-hidden{ "data-target": "activity-form.mapSection" }
-          #map-viewer.map-viewer{ "data-target": "activity-form.mapViewer" }
-          .field
-            .control
-              = form.field_with_label :radius, "data-target": "activity-form.slider", placeholder: "radius in meters", value: @activity.radius
-          .field.is-grouped
-            .control
-              = form.hidden_field :latitude, class: "input", "data-target": "activity-form.latitude", value: @activity.latitude
-            .control
-              = form.hidden_field :longitude, class: "input", "data-target": "activity-form.longitude", value: @activity.longitude
+        .field
+          .map-section.is-hidden{ "data-target": "activity-form.mapSection" }
+            #map-viewer.m-b-15.map-viewer{ "data-target": "activity-form.mapViewer" }
+            .field
+              .control
+                = form.field_with_label :radius, type: :range_field, class: "slider is-marginless", "data-target": "activity-form.slider", placeholder: "radius in meters", value: @activity.radius
     .columns
       .column
-        .field.is-grouped
+        .field.is-grouped.is-pulled-right
           .control
-            = link_to t(:cancel, scope: :generic), activities_path, class: "button"
+            = link_to t(:cancel, scope: :generic), :back, class: "button"
           .control
             = form.submit class: "button is-primary"

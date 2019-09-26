@@ -38,8 +38,15 @@ gem "webpacker", "~> 4.0"
 gem "bootsnap", ">= 1.4.2", require: false
 
 group :development, :test do
-  gem "pry"
+  gem "pry-rails"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "bullet"
+  gem "i18n-debug"
+  gem "memory_profiler"
+  gem "rack-mini-profiler"
+  gem "stackprof"
+  gem "brakeman"
+  gem "bundle-audit"
 end
 
 group :development do

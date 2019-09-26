@@ -3,7 +3,7 @@
     %h2.title= model_plural_name(Activity)
   .column.is-6
     - if policy(Activity).new?
-      = link_to t(:new_resource, scope: :generic, resource: model_singular_name(Activity)), new_activity_path, class: "button is-primary is-pulled-right"
+      = link_to t(:new_resource, scope: :generic, resource: model_singular_name(Activity)), new_activity_path, class: "button is-primary is-pulled-right", "data-turbolinks" => "false"
 
 .columns
   .column
