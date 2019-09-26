@@ -9,7 +9,6 @@
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
     "aglio": "^2.3.0",
-    "apib2json": "https://github.com/mariochavez/apib2json.git#additional-metadata",
     "bulma": "^0.7.5",
     "daterangepicker": "^3.0.5",
     "jquery": "^3.4.1",
@@ -24,6 +23,10 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.8.0",
+    "apib2json": "https://github.com/mariochavez/apib2json.git#additional-metadata"
+  },
+  "engines": {
+    "node": "8.x"
   }
 }
