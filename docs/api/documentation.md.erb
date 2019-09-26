@@ -146,6 +146,27 @@ Obtiene una Actividad y todos sus detalles.
 
 ## Group Participaciones
 
+## Participaciones [/participants{?activity_id}]
+
+Esta ruta solo listará las Participaciones del Usuario.
+
+Es posible filtrar las Participaciones por Actividad es necesario mandar el parametro *activity_id* con el ID.
+
++ Parameters
+    + activity_id (required, string, `6313ac69-dc0d-45a8-8804-4ac451e1db5c`) ... `id` de la Actividad a filtrar
+
+### Listar todas las Participaciones [GET]
+
++ Request (application/json)
+    + Headers
+
+            Accept: application/vnd.creditar.v1+json
+            Authorization: Token token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.2PitnINRSTm2csuVcQos4OCSMSMJvvmEpUYbWhnLkAA
+
++ Response 200 (application/json)
+
+    + Attributes (Participant List Data)
+
 ## Participación [/participants/{id}{?include}]
 
 Obtiene una Participación y todos sus detalles.
@@ -216,15 +237,15 @@ Obtiene una Participación y todos sus detalles.
 
 ## Activity not expanded Data (object)
 
-+ data (Activity, fixed-type, required) - Actividad.
++ data (Activity, fixed-type, required) - Actividad
 
 ## Activity with Participant expanded Data (object)
 
-+ data (Activity Relationships, fixed-type, required) - Actividad.
++ data (Activity Relationships, fixed-type, required) - Actividad
 
 ## Activity List Data (object)
 
-+ data (array[Activity], fixed-type, required) - Actividades.
++ data (array[Activity], fixed-type, required) - Actividades
 
 ## Participant (object)
 
@@ -242,4 +263,8 @@ Obtiene una Participación y todos sus detalles.
 
 ## Participant Data (object)
 
-+ data (Participant, fixed-type, required) - Participación.
++ data (Participant, fixed-type, required) - Participación
+
+## Participant List Data (object)
+
++ data (array[Participant], fixed-type, required) - Participaciones

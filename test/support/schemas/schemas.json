@@ -4,7 +4,7 @@
       "meta": {
         "type": "request",
         "title": null,
-        "group": "Autentication de Usuarios"
+        "group": "Autenticación de Usuarios"
       },
       "schema": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -27,7 +27,7 @@
       "meta": {
         "type": "response",
         "title": null,
-        "group": "Autentication de Usuarios",
+        "group": "Autenticación de Usuarios",
         "statusCode": "201"
       },
       "schema": {
@@ -85,7 +85,7 @@
       "meta": {
         "type": "request",
         "title": null,
-        "group": "Autentication de Usuarios"
+        "group": "Autenticación de Usuarios"
       },
       "schema": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -108,7 +108,7 @@
       "meta": {
         "type": "response",
         "title": null,
-        "group": "Autentication de Usuarios",
+        "group": "Autenticación de Usuarios",
         "statusCode": "401"
       },
       "schema": {
@@ -180,6 +180,10 @@
                 "attributes": {
                   "type": "object",
                   "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID único de la Actividad"
+                    },
                     "name": {
                       "type": "string",
                       "description": "Nombre de la Actividad"
@@ -234,6 +238,7 @@
                     }
                   },
                   "required": [
+                    "id",
                     "name",
                     "description",
                     "occurs_on",
@@ -256,7 +261,7 @@
                 "attributes"
               ]
             },
-            "description": "Actividades."
+            "description": "Actividades"
           }
         },
         "required": [
@@ -291,6 +296,10 @@
               "attributes": {
                 "type": "object",
                 "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "ID único de la Actividad"
+                  },
                   "name": {
                     "type": "string",
                     "description": "Nombre de la Actividad"
@@ -345,6 +354,7 @@
                   }
                 },
                 "required": [
+                  "id",
                   "name",
                   "description",
                   "occurs_on",
@@ -367,7 +377,7 @@
               "attributes"
             ],
             "additionalProperties": false,
-            "description": "Actividad."
+            "description": "Actividad"
           }
         },
         "required": [
@@ -447,6 +457,10 @@
               "attributes": {
                 "type": "object",
                 "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "ID único de la Actividad"
+                  },
                   "name": {
                     "type": "string",
                     "description": "Nombre de la Actividad"
@@ -501,6 +515,7 @@
                   }
                 },
                 "required": [
+                  "id",
                   "name",
                   "description",
                   "occurs_on",
@@ -560,7 +575,70 @@
               "relationships"
             ],
             "additionalProperties": false,
-            "description": "Actividad."
+            "description": "Actividad"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    }
+  ],
+  "[GET]/participants{?activity_id}": [
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Participaciones",
+        "statusCode": "200"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "ID único de la Participación"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Tipo del recurso"
+                },
+                "attributes": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID único de la Participación"
+                    },
+                    "email": {
+                      "type": "string",
+                      "description": "Correo electronico del Participante"
+                    },
+                    "roles": {
+                      "type": "string",
+                      "description": "Rol del Participante"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "email",
+                    "roles"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "attributes"
+              ]
+            },
+            "description": "Participaciones"
           }
         },
         "required": [
@@ -586,7 +664,7 @@
             "properties": {
               "id": {
                 "type": "string",
-                "description": "ID único de la Actividad"
+                "description": "ID único de la Participación"
               },
               "type": {
                 "type": "string",
@@ -595,6 +673,10 @@
               "attributes": {
                 "type": "object",
                 "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "ID único de la Participación"
+                  },
                   "email": {
                     "type": "string",
                     "description": "Correo electronico del Participante"
@@ -605,6 +687,7 @@
                   }
                 },
                 "required": [
+                  "id",
                   "email",
                   "roles"
                 ]
@@ -616,7 +699,7 @@
               "attributes"
             ],
             "additionalProperties": false,
-            "description": "Participación."
+            "description": "Participación"
           }
         },
         "required": [

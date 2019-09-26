@@ -38,6 +38,10 @@ class ActivitySerializer < ApplicationSerializer
              :longitude,
              :radius
 
+  attribute :id do |object|
+    object.uuid
+  end
+
   attribute :description do |object|
     object.description.to_s
   end
