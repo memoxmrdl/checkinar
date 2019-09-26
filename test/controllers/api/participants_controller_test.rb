@@ -8,6 +8,14 @@ class API::ParticipantsControllerTest < ActionDispatch::IntegrationTest
     @participant = participants(:attender)
   end
 
+  def test_it_lists_participants_of_user
+    authenticate @attender
+
+    get participants_path, headers: headers
+
+    assert_response :success
+  end
+
   def test_it_returns_a_participant_of_user
     authenticate @attender
 

@@ -1,0 +1,5 @@
+%p
+  Hola #{@resource.email}!
+%p Tu cuenta ha sido bloqueada debido a un grna numero de intentos fallidos de inicio de sesión
+%p Da click en el siguiente enlace para desbloquearla:
+%p= link_to 'Desbloquear mi cuenta', unlock_url(@resource, unlock_token: @token)

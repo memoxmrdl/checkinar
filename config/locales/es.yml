@@ -1,4 +1,10 @@
 es:
+  accounts:
+    edit:
+      my_account: Mi cuenta
+    update:
+      alert: Error actualizando información de la cuenta
+      notice: Información actualizada correctamente
   activerecord:
     models:
       user: Usuario
@@ -51,6 +57,14 @@ es:
               user_belongs_to_activity: El correo electronico ya pertenece a la actividad
             roles_mask:
               choose_one: Elige que Rol tendrá el participante
+  activities:
+    create:
+      alert: Error creando actividad
+      notice: La actividad ha sido creada
+    invite_participant_modal:
+      title: Invitar participante
+    update:
+      alert: Error actualizado la actividad
   api:
     errors:
       invalid_user_location: Ubicación invalida
@@ -58,6 +72,9 @@ es:
     update:
       alert: Error confirmando asistencia
       notice: Asistencia confirmada
+  labels:
+    activities:
+      place: Lugar donde se llevará acabo la actividad
   users:
     sessions:
       new:
@@ -86,6 +103,14 @@ es:
       menu_items_end:
         sign_in: Acceder
         sign_out: Salir
+    buttons:
+      confirm: Confirmar
+      close_session: Cerrar sesión
+      choose_file: Selecciona un archivo...
+      delete: Eliminar
+      filter: Filtrar
+      invite: Invitar
+
   helpers:
     prompt:
       models:
@@ -110,3 +135,11 @@ es:
   slack:
     messages:
       user_attended_to_activity: "%{user_name} registró una asistencia :white-check-mark:"
+
+  management:
+    activities:
+      edit:
+        title: Editar %{resource_name}
+  participant:
+    invite: Invitar participante
+

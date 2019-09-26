@@ -5,6 +5,10 @@ class ParticipantSerializer < ApplicationSerializer
 
   attributes :email
 
+  attribute :id do |object|
+    object.uuid
+  end
+
   attribute :roles do |object|
     object.user.i18n_roles.values.to_sentence
   end
