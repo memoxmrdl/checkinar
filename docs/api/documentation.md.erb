@@ -116,7 +116,7 @@ Obtiene una Actividad y todos sus detalles.
     + Headers
 
             Accept: application/vnd.creditar.v1+json
-            Authorization: Token token=BMBE96Wva8NaYMmVx4RavpXSy6Y6HKFe
+            Authorization: Token token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.2PitnINRSTm2csuVcQos4OCSMSMJvvmEpUYbWhnLkAA
 
 + Response 200 (application/json)
 
@@ -146,6 +146,27 @@ Obtiene una Actividad y todos sus detalles.
 
 ## Group Participaciones
 
+## Participaciones [/participants{?activity_id}]
+
+Esta ruta solo listará las Participaciones del Usuario.
+
+Es posible filtrar las Participaciones por Actividad es necesario mandar el parametro *activity_id* con el ID.
+
++ Parameters
+    + activity_id (required, string, `6313ac69-dc0d-45a8-8804-4ac451e1db5c`) ... `id` de la Actividad a filtrar
+
+### Listar todas las Participaciones [GET]
+
++ Request (application/json)
+    + Headers
+
+            Accept: application/vnd.creditar.v1+json
+            Authorization: Token token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.2PitnINRSTm2csuVcQos4OCSMSMJvvmEpUYbWhnLkAA
+
++ Response 200 (application/json)
+
+    + Attributes (Participant List Data)
+
 ## Participación [/participants/{id}{?include}]
 
 Obtiene una Participación y todos sus detalles.
@@ -160,7 +181,7 @@ Obtiene una Participación y todos sus detalles.
     + Headers
 
             Accept: application/vnd.creditar.v1+json
-            Authorization: Token token=BMBE96Wva8NaYMmVx4RavpXSy6Y6HKFe
+            Authorization: Token token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.2PitnINRSTm2csuVcQos4OCSMSMJvvmEpUYbWhnLkAA
 
     + Attributes (Participant Data)
 
@@ -173,7 +194,49 @@ Obtiene una Participación y todos sus detalles.
             + attributes (object, required)
                 + errors: `Registro no encontrado` (string, required) - Mensage descriptivo del Error
 
+# Group Asistencias de usuarios
+
+Una Asistencia de Usuario es la representación de un Usuario.
+
+## Asistencia de usuarios [/attendances_users{?activity_id}{?order_by}{?start_date}{?end_date}{?limit}]
+
+Esta ruta solo listará los Usuarios que tenga mas asistencias sobre una Actividad, es necesario mandar con el parametro *activity_id* para obtener los resultados.
+
+Si no se mandan *start_date* y *end_date* por defecto retornara Usuarios con fecha de hoy.
+
++ Parameters
+    + activity_id (required, string, `6313ac69-dc0d-45a8-8804-4ac451e1db5c`) ... ID de la Actividad
+    + order_by (optional, string, `asc`) ... Utilizar *asc* como ascendente o *desc* como descendente. Por defecto es descendente
+    + start_date (optional, string `2019-08-01`) ... Fecha inicial
+    + end_date (optional, string, `2019-09-01`) ... Fecha final
+    + limit (optional, number, `10`) ... Obtener el número de registros. Por defecto es 10 registros.
+
+### Listar [GET]
+
++ Request (application/json)
+    + Headers
+
+            Accept: application/vnd.creditar.v1+json
+            Authorization: Token token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.2PitnINRSTm2csuVcQos4OCSMSMJvvmEpUYbWhnLkAA
+
++ Response 200 (application/json)
+
+    + Attributes (User List Data)
+
 # Data Structures
+
+# User (object)
+
++ id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único del Usuario
++ type: `user` (string, required) - Tipo del recurso
++ attributes (object, required)
+  + id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único del Usuario
+  + email: `eltio@checkinar.io` (string, required) - Correo eletronico del Usuario
+  + avatar_url: `URL del Recurso` (string, required) - URL del avatar del Usuario
+
+# User List Data (object)
+
++ data (array[User], fixed-type, required)
 
 # User Authenticated (object)
 
@@ -182,6 +245,7 @@ Obtiene una Participación y todos sus detalles.
 + attributes (object, required)
   + id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único del Usuario
   + email: `eltio@checkinar.io` (string, required) - Correo eletronico del Usuario
+  + avatar_url: `URL del Recurso` (string, required) - URL del avatar del Usuario
   + authentication_token: `eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.2PitnINRSTm2csuVcQos4OCSMSMJvvmEpUYbWhnLkAA` (string, required) - Token de la autenticación del Usuario
 
 # User Authenticated Data (object)
@@ -216,15 +280,15 @@ Obtiene una Participación y todos sus detalles.
 
 ## Activity not expanded Data (object)
 
-+ data (Activity, fixed-type, required) - Actividad.
++ data (Activity, fixed-type, required) - Actividad
 
 ## Activity with Participant expanded Data (object)
 
-+ data (Activity Relationships, fixed-type, required) - Actividad.
++ data (Activity Relationships, fixed-type, required) - Actividad
 
 ## Activity List Data (object)
 
-+ data (array[Activity], fixed-type, required) - Actividades.
++ data (array[Activity], fixed-type, required) - Actividades
 
 ## Participant (object)
 
@@ -242,4 +306,8 @@ Obtiene una Participación y todos sus detalles.
 
 ## Participant Data (object)
 
-+ data (Participant, fixed-type, required) - Participación.
++ data (Participant, fixed-type, required) - Participación
+
+## Participant List Data (object)
+
++ data (array[Participant], fixed-type, required) - Participaciones

@@ -93,15 +93,21 @@ module ApplicationHelper
     end
   end
 
-  def figure_image_tag(resource, options = {})
-    options[:size] = "is-256x256" unless resource.attached?
+  def figure_image_tag(image, options = {})
+    image = if image.attached?
+      image = image.variant(resize_to_limit: options[:variant_resize].split("x").map(&:to_i)).processed if options[:variant_resize]
+
+      url_for(image)
+    else
+      options[:size] = "is-256x256"
+
+      asset_pack_path("media/application/images/placeholder.png")
+    end
 
     wrapper_class = "figure image #{options[:size] || "is-32x32"}"
 
-    resource = resource.attached? ? url_for(resource) : asset_pack_path("media/application/images/placeholder.png")
-
     content_tag(:div, class: wrapper_class) do
-      image_tag(resource, class: options[:class])
+      image_tag(image, class: options[:class])
     end
   end
 end

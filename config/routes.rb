@@ -6,14 +6,15 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
+  devise_for :users
+
   scope module: :api, constraints: APIConstraint do
     resource :authenticate_users, only: %i[create]
-    resources :activities, except: %i[destroy edit]
-    resources :participants, only: %i[show]
-    resources :attendances, only: %i[create]
+    resources :activities, only: %i[index show]
+    resources :participants, only: %i[index show]
+    resources :attendances, only: %i[index create]
+    resources :attendances_users, only: :index
   end
-
-  devise_for :users
 
   resources :activities do
     resources :participants, only: %i[create destroy]

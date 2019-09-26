@@ -28,5 +28,11 @@ two:
 third:
   activity: traguitos
   user: attender
-  attended_at: <%= Time.zone.now - 10.days %>
+  attended_at: <%= Time.zone.now - 4.days %>
   status: pending
+
+four:
+  activity: traguitos
+  user: attender
+  attended_at: <%= Time.zone.now - 6.days %>
+  status: confirmed
