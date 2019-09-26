@@ -56,6 +56,10 @@
                     "type": "string",
                     "description": "Correo eletronico del Usuario"
                   },
+                  "avatar_url": {
+                    "type": "string",
+                    "description": "URL del avatar del Usuario"
+                  },
                   "authentication_token": {
                     "type": "string",
                     "description": "Token de la autenticación del Usuario"
@@ -64,6 +68,7 @@
                 "required": [
                   "id",
                   "email",
+                  "avatar_url",
                   "authentication_token"
                 ]
               }
@@ -790,11 +795,16 @@
                     "email": {
                       "type": "string",
                       "description": "Correo eletronico del Usuario"
+                    },
+                    "avatar_url": {
+                      "type": "string",
+                      "description": "URL del avatar del Usuario"
                     }
                   },
                   "required": [
                     "id",
-                    "email"
+                    "email",
+                    "avatar_url"
                   ]
                 }
               },

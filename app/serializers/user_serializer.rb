@@ -22,4 +22,12 @@ class UserSerializer < ApplicationSerializer
   set_id :uuid
 
   attributes :email, :full_name
+
+  attribute :avatar_url do |object|
+    if object.avatar.attached?
+      Rails.application.routes.url_helpers.url_for(object.avatar.variant(resize_to_limit: [128, 128]))
+    else
+      ""
+    end
+  end
 end
