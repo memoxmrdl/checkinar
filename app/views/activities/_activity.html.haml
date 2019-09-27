@@ -1,6 +1,6 @@
 %tr
-  = see_record_cell(activity_path(activity), activity.name)
-  = see_record_cell(activity_path(activity), activity.users.size.to_s)
-  = see_record_cell(activity_path(activity), t(activity.active, scope: "generic.true_or_false"))
-  = see_record_cell(activity_path(activity), l(activity.created_at, format: :long))
-  = see_record_cell(activity_path(activity), l(activity.updated_at, format: :long))
+  %td= link_to activity.name, activity_path(activity), "data-turbolinks" => "false"
+  %td= activity.users.size.to_s
+  %td= t(activity.active, scope: "generic.true_or_false")
+  %td= l(activity.created_at, format: :long)
+  %td= l(activity.updated_at, format: :long)

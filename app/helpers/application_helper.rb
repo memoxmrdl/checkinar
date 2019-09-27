@@ -72,7 +72,8 @@ module ApplicationHelper
 
   def see_record_cell(record_path, content, html_options = {})
     html_options[:class] = "cursor-pointer #{html_options[:class]}"
-    html_options[:onclick] = "Turbolinks.visit('#{record_path}')"
+    html_options["data-turbolinks-eval"] = true
+    html_options[:onclick] = "Turbolinks.enableTransitionCache(false); Turbolinks.visit('#{record_path}');"
 
     content_tag :td, html_options do
       content
@@ -85,15 +86,13 @@ module ApplicationHelper
 
       url_for(image)
     else
-      options[:size] = "is-256x256"
-
       asset_pack_path("media/application/images/placeholder.png")
     end
 
-    wrapper_class = "figure image #{options[:size] || "is-32x32"}"
+    wrapper_class = "image #{options.delete(:wrapper_class)}"
 
-    content_tag(:div, class: wrapper_class) do
-      image_tag(image, class: options[:class])
+    content_tag(:figure, class: wrapper_class) do
+      image_tag(image, options)
     end
   end
 end

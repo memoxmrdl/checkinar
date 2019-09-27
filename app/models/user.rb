@@ -29,7 +29,10 @@ class User < ApplicationRecord
   belongs_to :organization
 
   accepts_nested_attributes_for :organization, update_only: true
+
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
+
+  validates :full_name, presence: true, if: Proc.new { |user| user.full_name_changed?  }
   validates :avatar, blob: { content_type: :image, size_range: 0..5.megabytes }
 
   scope :by_attendances, ->(activity_id, order_by: :desc, start_date: Time.zone.now, end_date: Time.zone.now, limit: 10) {
@@ -46,4 +49,8 @@ class User < ApplicationRecord
 
   roles_attribute :roles_mask
   roles :owner, :normal
+
+  def full_name_or_email
+    full_name || email
+  end
 end

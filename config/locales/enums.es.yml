@@ -5,7 +5,7 @@ es:
         attributes:
           occurs_on:
             date: Por fecha
-            more_than_once: Dias de la semana
+            more_than_once: Días de la semana
       attendance:
         attributes:
           status:

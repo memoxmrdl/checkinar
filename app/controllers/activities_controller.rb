@@ -11,7 +11,10 @@ class ActivitiesController < ApplicationController
 
   def show
     @participants = @activity.participants.page(params[:participants_page])
-    @attendances = SearchAttendances.call(activity: @activity, attributes: search_attendance_params).attendances.page(params[:attendances_page])
+    @attendances = SearchAttendances.call(
+      scope: @activity.attendances,
+      attributes: search_attendance_params
+    ).attendances.page(params[:attendances_page])
   end
 
   def new

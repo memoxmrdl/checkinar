@@ -105,6 +105,7 @@ es:
   shared:
     navbar:
       menu_items_end:
+        my_account: Mi cuenta
         sign_in: Acceder
         sign_out: Salir
     buttons:
@@ -138,6 +139,7 @@ es:
       true: Sí
       false: No
     n_a: N/A
+    my_model: "Mis %{model}"
   duration_minutes:
     fifteen: 15 Minutos
     thirty: 30 Minutos
@@ -148,4 +150,5 @@ es:
       user_attended_to_activity: "%{user_name} registró una asistencia :white-check-mark:"
   participant:
     invite: Invitar participante
-
+  pundit:
+    no_authorized: Acceso no autorizado
