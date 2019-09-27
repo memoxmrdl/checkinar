@@ -23,6 +23,7 @@ class Attendance < ApplicationRecord
   belongs_to :user
 
   validates :attended_at, presence: true
+  validate :activity_should_be_active_validation
   validate :user_belongs_to_activity_validation
   validate :attendance_in_accordance_to_activity_validation, on: :create
 
@@ -47,6 +48,12 @@ class Attendance < ApplicationRecord
         errors.add(:attended_at, :activity_occurs_at_different_than)
       elsif activity && activity.more_than_once? && activity.occurs_frequency.include?(attended_at.strftime("%A").downcase)
         errors.add(:attended_at, :activity_occurs_frequency_invalid)
+      end
+    end
+
+    def activity_should_be_active_validation
+      if activity && !activity.active?
+        errors.add(:activity, :inactive)
       end
     end
 end
