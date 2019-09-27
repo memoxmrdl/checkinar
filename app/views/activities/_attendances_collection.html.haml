@@ -14,7 +14,9 @@
         - unless @attendances.blank?
           - @attendances.each do |attendance|
             %tr
-              %td= attendance.user.email
+              %td
+                %span.icon.is-small.m-r-5= figure_image_tag(attendance.user.avatar, variant_resize: "64x64", class: "is-rounded")
+                %span= attendance.user.full_name_or_email
               %td= l(attendance.attended_at, format: :long)
               - if attendance.activity.has_location?
                 %td #{attendance.latitude} #{attendance.longitude}

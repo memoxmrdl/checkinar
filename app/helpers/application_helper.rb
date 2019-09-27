@@ -86,15 +86,13 @@ module ApplicationHelper
 
       url_for(image)
     else
-      options[:size] = "is-256x256"
-
       asset_pack_path("media/application/images/placeholder.png")
     end
 
-    wrapper_class = "figure image #{options[:size] || "is-32x32"}"
+    wrapper_class = "image #{options.delete(:wrapper_class)}"
 
-    content_tag(:div, class: wrapper_class) do
-      image_tag(image, class: options[:class])
+    content_tag(:figure, class: wrapper_class) do
+      image_tag(image, options)
     end
   end
 end

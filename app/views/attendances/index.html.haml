@@ -1,4 +1,4 @@
-= render "shared/attendances_filter", title: t(".my_attendances"), url: attendances_path
+= render "shared/attendances_filter", title: t(:my_model, scope: :generic, model: model_plural_name(Attendance)), url: attendances_path
 
 .columns
   .column

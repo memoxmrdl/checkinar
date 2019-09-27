@@ -46,4 +46,8 @@ class User < ApplicationRecord
 
   roles_attribute :roles_mask
   roles :owner, :normal
+
+  def full_name_or_email
+    full_name || email
+  end
 end
