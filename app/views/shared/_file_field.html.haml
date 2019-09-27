@@ -1,7 +1,7 @@
 .field
   = form.label attribute, class: "label"
   %label.file-label
-    = form.file_field attribute, class: "file-input"
+    = form.file_field attribute, class: "file-input", accept: '.png,.jpeg,.jpg,image/jpeg,image/jpg,image/png'
     %span.file-cta
       %span.file-icon
         %i.fas.fa-upload
