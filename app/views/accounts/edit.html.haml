@@ -1,20 +1,19 @@
-.box
-  .columns
-    .column
-      %h3.title.is-3=t(".my_account")
-  %hr
-  .columns
-    .column
-      = form_with model: current_user, local: true, method: :put, url: account_path do |form|
-        .columns
-          .column.is-2.has-text-centered
-            = figure_image_tag(current_user.avatar, variant_resize: "256x256", size: "is-256x256")
-          .column.is-10
-            = form.field_with_label :email, disabled: true
-            = form.field_with_label :full_name
-        = render "shared/file_field", form: form, attribute: :avatar
-        = resource_attribute_and_value label_text: User.human_attribute_name(:roles_mask) do
-          = current_user.i18n_roles.values.to_sentence
+.columns.is-flex.is-centered
+  .column.is-two-thirds.is-four-fifths-mobile
+    %h3.title.is-3 Mi cuenta
+%hr
+.columns.is-flex.is-centered
+  .column.is-two-thirds.is-four-fifths-mobile
+    = form_with model: current_user, local: true, method: :put, url: account_path do |form|
+      .columns
+        .column.is-2.has-text-centered
+          = figure_image_tag(current_user.avatar, size: "is-256x256")
+        .column.is-10
+          = form.field_with_label :email, disabled: true
+          = form.field_with_label :full_name
+      = render "shared/file_field", form: form, attribute: :avatar
+      = resource_attribute_and_value label_text: User.human_attribute_name(:roles_mask) do
+        = current_user.i18n_roles.values.to_sentence
 
         - if current_user.is_owner?
           %h3.title.is-3= Organization.model_name.human

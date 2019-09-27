@@ -36,3 +36,4 @@ yarn-debug.log*
 /public/api/*
 !/public/api/.keep
 docs/api/documentation.md
+tags

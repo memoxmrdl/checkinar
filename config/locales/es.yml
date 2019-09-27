@@ -80,14 +80,16 @@ es:
     activities:
       place: Lugar donde se llevará acabo la actividad
   users:
+    my_account: Mi cuenta
     sessions:
+      close: Cerrar sesión
       new:
         title: Iniciar sesión
         submit: Entrar
     passwords:
       new:
         forgot_your_password: Recuperar mi contraseña
-        send_me_intruccions: Enviar instrucciones para recuperar mi contraseña
+        send_me_intruccions: Enviar instrucciones
       edit:
         change_your_password: Cambiar mi contraseña
         password_label: Nueva contraseña

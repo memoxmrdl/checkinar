@@ -1,20 +1,45 @@
-main {
-  margin-top: 40px;
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.has-flex-direction-row {
+  flex-direction: row;
+}
+
+.has-regular-margin {
+  margin: 25px;
+}
+
+.has-margin-right-auto {
+  margin-right: auto;
 }
 
 .has-regular-padding {
   padding: 25px;
 }
 
+hr {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.image.navbar-size {
+  margin: 5px;
+  width: 250px;
+}
+
 .is-justified-center {
   justify-content: center;
 }
 
-.cursor-pointer {
-  cursor: pointer;
+main {
+  margin-top: 40px;
 }
 
-hr {
-  margin-top: 0;
-  margin-bottom: 15px;
+#background-map {
+  background: linear-gradient(
+        rgba(0, 0, 0, -1),
+              rgba(0, 0, 0, 0.57)
+                  ), url('background-map.jpg') no-repeat center center fixed;
+  background-size: cover;
 }

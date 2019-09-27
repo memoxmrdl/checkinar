@@ -1,5 +1,5 @@
-.columns
-  .column.is-4.is-offset-4
+.columns.is-centered.is-flex
+  .column.is-4.is-four-fifths-mobile
     %h2.title=t(".title")
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
