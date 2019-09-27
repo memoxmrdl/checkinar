@@ -10,7 +10,7 @@
               = figure_image_tag(current_user.avatar, variant_resize: "256x256", size: "is-256x256", class: "is-rounded")
         #dropdown-menu-options.dropdown-menu{:role => "menu"}
           .dropdown-content
-            = link_to "Mi cuenta", edit_account_path, class: "dropdown-item", "data-turbolinks" => "false"
+            = link_to t("users.my_account"), edit_account_path, class: "dropdown-item", "data-turbolinks" => "false"
             %hr.dropdown-divider
             = link_to t(".sign_out"),  destroy_user_session_path, class: "dropdown-item", method: :delete
     - else

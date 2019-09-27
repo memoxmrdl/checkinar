@@ -1,0 +1,48 @@
+%section.hero.is-fullheight.columns.is-marginless#background-map
+  %nav.navbar
+    .container.is-flex
+      .navbar-start.has-margin-right-auto
+        .image.navbar-size
+          %img{src: asset_pack_path("media/application/images/app-logo.png")}
+      .navbar-end
+        %span.navbar-item
+          = link_to t("users.sessions.new.title"), new_user_session_path, class: "button is-primary is-medium"
+  .hero-body.columns.is-vcentered
+    .container.has-text-centered
+      .column.is-6.is-offset-3
+        %h1.title.is-size-1.has-text-centered.has-text-white
+          = t("generic.app_name")
+        %h2.subtitle.is-size-3.has-text-white
+          = t("landing_page.manage_attendance")
+%section.hero.is-info.is-fullheight.columns.is-vcentered.has-flex-direction-row.is-marginless
+  .column
+    #services.section-color.services
+      .container
+        .columns.is-multiline
+          .column.is-12.has-regular-margin{"data-aos" => "fade-in", "data-aos-easing" => "linear"}
+            %h2.has-text-centered.section-title.is-size-2
+              = t("landing_page.lets_you")
+          .column.is-full.has-regular-margin
+            .columns
+              .column.is-half.has-text-centered{"data-aos" => "fade-in", "data-aos-easing" => "linear"}
+                %i.fas.fa-calendar-alt.fa-4x.has-regular-margin
+                %hr/
+                %p.is-size-4
+                  = t("landing_page.activities_section")
+              .column.is-half.has-text-centered{"data-aos" => "fade-in", "data-aos-easing" => "linear"}
+                %i.fas.fa-map-marker-alt.fa-4x.has-regular-margin
+                %hr/
+                %p.is-size-4
+                  = t("landing_page.location_section")
+          .column.has-regular-margin.is-full
+            .columns
+              .column.is-half.has-text-centered{"data-aos" => "fade-in", "data-aos-easing" => "linear"}
+                %i.fas.fa-users.fa-4x.has-regular-margin
+                %hr/
+                %p.is-size-4
+                  = t("landing_page.attenders_section")
+              .column.is-half.has-text-centered{"data-aos" => "fade-in", "data-aos-easing" => "linear"}
+                %i.fas.fa-sort-numeric-up.fa-4x.has-regular-margin
+                %hr/
+                %p.is-size-4
+                  = t("landing_page.numbers_section")
