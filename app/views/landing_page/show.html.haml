@@ -12,7 +12,7 @@
         %h1.title.is-size-1
           = t("generic.app_name")
         %h2.subtitle.is-size-3
-          Controlar las asistencias a las actividades desde tu ordenar
+          = t("landing_page.manage_attendance")
 
 %section.hero.is-info.is-fullheight.columns.is-vcentered.has-flex-direction-row.is-marginless
   .column
@@ -21,28 +21,28 @@
         .columns.is-multiline
           .column.is-12.has-regular-margin{"data-aos" => "fade-in", "data-aos-easing" => "linear"}
             %h2.has-text-centered.section-title.is-size-2
-              Checkinario te permite...
+              = t("landing_page.lets_you")
           .column.is-full.has-regular-margin
             .columns
               .column.is-half.has-text-centered{"data-aos" => "fade-in", "data-aos-easing" => "linear"}
                 %i.fas.fa-calendar-alt.fa-4x.has-regular-margin
                 %hr/
                 %p.is-size-4
-                  Registra tus actividades. Asigna una frecuencia de ocurrencia. Define la ubicación y tiempo requerido.
+                  = t("landing_page.activities_section")
               .column.is-half.has-text-centered{"data-aos" => "fade-in", "data-aos-easing" => "linear"}
                 %i.fas.fa-map-marker-alt.fa-4x.has-regular-margin
                 %hr/
                 %p.is-size-4
-                  Los participantes hacen checkin. La ubicación del participante se compara con la definida en la aplicación. Se verifica el tiempo de estadía.
+                  = t("landing_page.location_section")
           .column.has-regular-margin.is-full
             .columns
               .column.is-half.has-text-centered{"data-aos" => "fade-in", "data-aos-easing" => "linear"}
                 %i.fas.fa-users.fa-4x.has-regular-margin
                 %hr/
                 %p.is-size-4
-                  Gestiona a los participantes de las actividadesy asigna a un responsable.
+                  = t("landing_page.attenders_section")
               .column.is-half.has-text-centered{"data-aos" => "fade-in", "data-aos-easing" => "linear"}
                 %i.fas.fa-sort-numeric-up.fa-4x.has-regular-margin
                 %hr/
                 %p.is-size-4
-                  Valores cuantitativos de las asistencias. Obtén el top de los asistentes a las actividades.
+                  = t("landing_page.numbers_section")

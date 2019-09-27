@@ -1,0 +1,9 @@
+en:
+  landing_page:
+    activities_section: Register your activitites. Assign an occurrency frecuence. Define an activity location and a minimum required time.
+    attenders_section: Manage the activities attenders and assign it a leader.
+    lets_you: Checkinario lets you...
+    location_section: Attnders made checkin. Attender location is compared to activity location. Stay time is validated.
+    manage_attendance: Control activity's attendances from your computer.
+    numbers_section: Qualitative attendances values. Get the activity top attenders.
+

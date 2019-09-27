@@ -1,0 +1,9 @@
+es:
+  landing_page:
+    activities_section: Registra tus actividades. Asigna una frecuencia de ocurrencia. Define la ubicación y tiempo requerido.
+    attenders_section: Gestiona a los participantes de las actividadesy asigna a un responsable.
+    lets_you: Checkinario te permite...
+    location_section: Los participantes hacen checkin. La ubicación del participante se compara con la definida en la actividad. Se verifica el tiempo de estadía.
+    manage_attendance: Controlar las asistencias a las actividades desde tu ordenador
+    numbers_section: Valores cuantitativos de las asistencias. Obtén el top de los asistentes a las actividades.
+
