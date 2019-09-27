@@ -20,7 +20,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     }
   end
 
-  def test_it_index_activities_as_owner
+  def test_it_gets_index_activities_as_owner
     sign_in @owner
 
     get activities_path
@@ -28,7 +28,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  def test_it_index_activities_as_leader
+  def test_it_gets_index_activities_as_leader
     sign_in @leader
 
     get activities_path

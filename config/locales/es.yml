@@ -148,4 +148,9 @@ es:
       user_attended_to_activity: "%{user_name} registró una asistencia :white-check-mark:"
   participant:
     invite: Invitar participante
+  pundit:
+    no_authorized: Acceso no autorizado
+  attendances:
+    index:
+      my_attendances: Mis asistencias
 

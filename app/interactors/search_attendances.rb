@@ -14,9 +14,9 @@ class SearchAttendances
 
       context.attendances = if date_range.size == 2
         date_range = date_range.map(&:to_date)
-        context.activity.attendances.having_attended_at_between(*date_range)
+        context.scope.having_attended_at_between(*date_range)
       else
-        context.activity.attendances
+        context.scope
       end
     end
 end

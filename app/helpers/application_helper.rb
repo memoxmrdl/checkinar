@@ -72,7 +72,8 @@ module ApplicationHelper
 
   def see_record_cell(record_path, content, html_options = {})
     html_options[:class] = "cursor-pointer #{html_options[:class]}"
-    html_options[:onclick] = "Turbolinks.visit('#{record_path}')"
+    html_options["data-turbolinks-eval"] = true
+    html_options[:onclick] = "Turbolinks.enableTransitionCache(false); Turbolinks.visit('#{record_path}');"
 
     content_tag :td, html_options do
       content
