@@ -22,9 +22,9 @@ class Attendance < ApplicationRecord
   belongs_to :activity
   belongs_to :user
 
-  validates :attended_at, :user_id, :activity_id, presence: true
+  validates :attended_at, presence: true
   validate :user_belongs_to_activity_validation
-  validate :attendance_in_accordance_to_activity_validation
+  validate :attendance_in_accordance_to_activity_validation, on: :create
 
   enum status: {
     pending: "pending",
