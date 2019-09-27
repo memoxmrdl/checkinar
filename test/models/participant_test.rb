@@ -55,4 +55,15 @@ class ParticipantTest < ActiveSupport::TestCase
 
     assert_not @subject.valid?
   end
+
+  def test_it_is_not_valud_participant_when_activity_is_inactive
+    activity = activities(:book_club)
+    activity.toggle(:active)
+
+    @subject.user = users(:laura)
+    @subject.activity = activity
+    @subject.roles << :attender
+
+    assert_not @subject.save
+  end
 end

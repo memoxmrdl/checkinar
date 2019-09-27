@@ -48,6 +48,8 @@ es:
       models:
         attendance:
           attributes:
+            activity:
+              inactive: La actividad se encuentra inactiva
             base:
               user_is_not_at_activity_location: El usuario no se encuentra en el radio de la ubicación de la actividad
             user:
@@ -62,6 +64,8 @@ es:
               blank: Debes agregar un nombre
         participant:
           attributes:
+            activity:
+              inactive: La actividad se encuentra inactiva
             email:
               user_belongs_to_activity: El correo electronico ya pertenece a la actividad
             roles_mask:

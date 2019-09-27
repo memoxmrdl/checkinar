@@ -21,6 +21,7 @@ class Participant < ApplicationRecord
   belongs_to :activity
 
   validate :roles_mask_validation
+  validate :activity_should_be_active_validation
   validate :user_belongs_to_activity_validation
 
   roles_attribute :roles_mask
@@ -39,6 +40,12 @@ class Participant < ApplicationRecord
     def user_belongs_to_activity_validation
       if user_id_changed? && activity && activity.users.exists?(id: user)
         errors.add(:email, :user_belongs_to_activity)
+      end
+    end
+
+    def activity_should_be_active_validation
+      if activity && !activity.active?
+        errors.add(:activity, :inactive)
       end
     end
 end

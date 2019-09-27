@@ -2,7 +2,8 @@
   .column
     %h3.title.is-3= model_plural_name(Participant)
   .column
-    = button_tag t("shared.buttons.invite"), class: "button is-primary is-pulled-right", data: { action: "modals#openModal" }, modalTrigger: "invite-participant-modal"
+    - if @activity.active?
+      = button_tag t("shared.buttons.invite"), class: "button is-primary is-pulled-right", data: { action: "modals#openModal" }, modalTrigger: "invite-participant-modal"
 %hr
 .columns
   .column

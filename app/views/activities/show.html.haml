@@ -37,7 +37,7 @@
     .column.is-6
       = render "participants_collection"
 
-    = render "invite_participant_modal" if policy(@activity).edit?
+    = render "invite_participant_modal" if policy(@activity).edit? || @activity.active?
 
   - if policy(@activity).edit?
     = render "attendances_collection"

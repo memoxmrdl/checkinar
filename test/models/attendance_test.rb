@@ -32,6 +32,18 @@ class AttendanceTest < ActiveSupport::TestCase
     assert @subject.save
   end
 
+  def test_it_is_not_valid_when_activity_is_inactive
+    activity = activities(:book_club)
+    activity.toggle(:active)
+
+    @subject.activity = activity
+    @subject.user = users(:attender)
+    @subject.attended_at = Time.zone.now
+    @subject.status = Attendance.statuses[:confirmed]
+
+    assert_not @subject.save
+  end
+
   def test_it_does_not_creates_if_user_does_not_belongs_to_activity
     @subject.activity = activities(:book_club)
     @subject.user = users(:laura)
