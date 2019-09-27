@@ -8,6 +8,7 @@ ruby "2.6.2"
 gem "rails", "~> 6.0.0"
 
 gem "administrate", git: "https://github.com/thoughtbot/administrate.git"
+gem "activestorage-validator"
 gem "aws-sdk-s3", require: false
 gem "bcrypt", "~> 3.1.7"
 gem "devise"

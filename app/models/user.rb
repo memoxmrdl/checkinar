@@ -29,8 +29,8 @@ class User < ApplicationRecord
   belongs_to :organization
 
   accepts_nested_attributes_for :organization, update_only: true
-
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
+  validates :avatar, blob: { content_type: :image, size_range: 0..5.megabytes }
 
   scope :by_attendances, ->(activity_id, order_by: :desc, start_date: Time.zone.now, end_date: Time.zone.now, limit: 10) {
     joins(:activities, :attendances)
