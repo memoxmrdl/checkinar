@@ -61,6 +61,16 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "checkinar_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.smtp_settings = {
+    user_name: ENV["SENDGRID_USERNAME"],
+    password: ENV["SENDGRID_PASSWORD"],
+    domain: ENV["SENDGRID_DOMAIN"],
+    address: "smtp.sendgrid.net",
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options = { host: ENV["APP_DOMAIN"] }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -110,3 +120,5 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 end
+
+Rails.application.routes.default_url_options[:host] = ENV["APP_DOMAIN"]
