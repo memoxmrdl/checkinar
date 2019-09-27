@@ -38,9 +38,11 @@ class Activity < ApplicationRecord
   validates :occurs_frequency,
             :start_at,
             :duration, presence: true, if: Proc.new { |a| a.occurs_on_changed? && a.more_than_once? }
+  validates :duration, presence: true, if: Proc.new { |a| a.occurs_on_changed? && a.free? }
 
   enum occurs_on: {
     date: "date",
+    free: "free",
     more_than_once: "more_than_once"
   }
 

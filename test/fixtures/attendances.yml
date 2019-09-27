@@ -28,7 +28,7 @@ two:
 third:
   activity: traguitos
   user: attender
-  attended_at: <%= Time.zone.now - 4.days %>
+  attended_at: <%= Date.parse("2019-10-24") %>
   status: pending
 
 four:
@@ -36,3 +36,9 @@ four:
   user: attender
   attended_at: <%= Time.zone.now - 6.days %>
   status: confirmed
+
+five:
+  activity: fitness
+  user: attender
+  attended_at: <%= Time.zone.now %>
+  status: pending

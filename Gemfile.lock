@@ -161,8 +161,6 @@ GEM
       ruby_parser (~> 3.5)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    i18n-debug (1.2.0)
-      i18n (< 2)
     image_processing (1.9.3)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.13, < 3)
@@ -391,7 +389,6 @@ DEPENDENCIES
   devise-i18n
   fast_jsonapi
   haml-rails (~> 2.0)
-  i18n-debug
   image_processing (~> 1.2)
   interactor-rails
   json_matchers

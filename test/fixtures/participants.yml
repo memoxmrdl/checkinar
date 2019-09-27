@@ -24,3 +24,8 @@ attender:
   user: attender
   activity: book_club
   roles_mask: <%= Participant.mask_for :attender %>
+
+attender_in_fitness:
+  user: attender
+  activity: fitness
+  roles_mask: <%= Participant.mask_for :attender %>

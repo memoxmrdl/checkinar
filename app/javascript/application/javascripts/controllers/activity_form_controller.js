@@ -72,6 +72,9 @@ export default class extends Controller {
     } else if(valueSelectedOption == 'more_than_once') {
       this.inputDateDisabled(true);
       this.inputCheckboxesDisabled(false);
+    } else if(valueSelectedOption == 'free'){
+      this.inputDateDisabled(true);
+      this.inputCheckboxesDisabled(true);
     } else {
       this.inputDateDisabled(true);
       this.inputCheckboxesDisabled(true);
@@ -79,7 +82,9 @@ export default class extends Controller {
   }
 
   inputDateDisabled(true_or_false) {
-    this.inputDateTarget.disabled = true_or_false;
+    this.inputDateTargets.forEach((input)=> {
+      input.disabled = true_or_false
+    })
   }
 
   inputCheckboxesDisabled(true_or_false) {

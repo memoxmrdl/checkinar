@@ -47,6 +47,14 @@ es:
     errors:
       models:
         attendance:
+          attributes:
+            base:
+              user_is_not_at_activity_location: El usuario no se encuentra en el radio de la ubicación de la actividad
+            user:
+              user_not_belongs_to_activity: El usuario no es participante en la actividad
+            attended_at:
+              activity_occurs_at_different_than: La fecha de la actividad es diferente con la fecha de la asistencia
+              activity_occurs_frequency_invalid: los días de la semana de la actividad no coincide con el día de la fecha de la asistencia
           invalid: Registro invalido
         organization:
           attributes:
