@@ -5,6 +5,8 @@ import faUsers from '@fortawesome/fontawesome-free-solid/faUsers';
 import faSortNumeric from '@fortawesome/fontawesome-free-solid/faSortNumericUp';
 import faMobile from '@fortawesome/fontawesome-free-solid/faMobileAlt';
 import faCalendarAlt  from '@fortawesome/fontawesome-free-solid/faCalendarAlt';
+import faMinusCircle  from '@fortawesome/fontawesome-free-solid/faMinusCircle';
+import faCheck  from '@fortawesome/fontawesome-free-solid/faCheck';
 
 export default class FontAwesome {
   static start() {
@@ -14,5 +16,7 @@ export default class FontAwesome {
     fontawesome.library.add(faSortNumeric);
     fontawesome.library.add(faMobile);
     fontawesome.library.add(faCalendarAlt);
+    fontawesome.library.add(faMinusCircle);
+    fontawesome.library.add(faCheck);
   }
 }
