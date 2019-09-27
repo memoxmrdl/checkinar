@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "webdrivers"
+require "webdrivers/chromedriver"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   if ENV["CI"]
-    Capybara.server = :puma, { Silent: true }
-
     Capybara.register_driver :ci_headless_chrome do |app|
       options = ::Selenium::WebDriver::Chrome::Options.new
 
