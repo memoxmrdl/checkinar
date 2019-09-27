@@ -1,7 +1,7 @@
 import { Controller } from 'stimulus';
 import loadMapViewer from '../utilities/googleMaps';
 export default class extends Controller {
-  static targets = ['inputDate', 'inputCheckbox', 'inputCheckboxLabel', 'source', 'mapViewer', 'slider', 'latitude', 'longitude', 'mapSection', 'selectActivityPlace']
+  static targets = ['inputTime', 'inputDate', 'inputCheckbox', 'inputCheckboxLabel', 'source', 'mapViewer', 'slider', 'latitude', 'longitude', 'mapSection', 'selectActivityPlace']
 
   initialize() {
     this.change(this.sourceTarget);
@@ -67,18 +67,28 @@ export default class extends Controller {
     let valueSelectedOption = target.options[target.selectedIndex].value;
 
     if(valueSelectedOption == 'date') {
+      this.inputTimeDisabled(false);
       this.inputDateDisabled(false);
       this.inputCheckboxesDisabled(true);
     } else if(valueSelectedOption == 'more_than_once') {
+      this.inputTimeDisabled(false);
       this.inputDateDisabled(true);
       this.inputCheckboxesDisabled(false);
     } else if(valueSelectedOption == 'free'){
+      this.inputTimeDisabled(true);
       this.inputDateDisabled(true);
       this.inputCheckboxesDisabled(true);
     } else {
       this.inputDateDisabled(true);
       this.inputCheckboxesDisabled(true);
     }
+  }
+
+
+  inputTimeDisabled(true_or_false) {
+    this.inputTimeTargets.forEach((input)=> {
+      input.disabled = true_or_false
+    })
   }
 
   inputDateDisabled(true_or_false) {
