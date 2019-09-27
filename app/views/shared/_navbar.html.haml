@@ -1,6 +1,7 @@
 %nav.navbar.is-link.has-shadow{"aria-label" => "main navigation", :role => "navigation"}
   .container.is-flex
     .navbar-brand.has-margin-right-auto
-      = link_to image_tag("app-logo.png"), real_root_path, class: "navbar-item has-text-weight-bold"
+      = link_to real_root_path, class: "navbar-item has-text-weight-bold" do
+        %img{src: asset_pack_path("media/application/images/app-logo.png")}
     = render "shared/navbar/menu_items"
     = render "shared/navbar/menu_items_end"

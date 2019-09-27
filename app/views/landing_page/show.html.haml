@@ -1,19 +1,19 @@
-    %nav.navbar
-      .container.is-flex
-        .navbar-start.has-margin-right-auto
-          .image.navbar-size
-            = image_tag("app-logo.png")
-        .navbar-end
-          %span.navbar-item
-            = link_to t("users.sessions.new.title"), new_user_session_path, class: "button is-primary is-medium"
-  .hero-body
+%section.hero.is-fullheight.columns.is-marginless#background-map
+  %nav.navbar
+    .container.is-flex
+      .navbar-start.has-margin-right-auto
+        .image.navbar-size
+          %img{src: asset_pack_path("media/application/images/app-logo.png")}
+      .navbar-end
+        %span.navbar-item
+          = link_to t("users.sessions.new.title"), new_user_session_path, class: "button is-primary is-medium"
+  .hero-body.columns.is-vcentered
     .container.has-text-centered
       .column.is-6.is-offset-3
-        %h1.title.is-size-1
+        %h1.title.is-size-1.has-text-centered.has-text-white
           = t("generic.app_name")
-        %h2.subtitle.is-size-3
+        %h2.subtitle.is-size-3.has-text-white
           = t("landing_page.manage_attendance")
-
 %section.hero.is-info.is-fullheight.columns.is-vcentered.has-flex-direction-row.is-marginless
   .column
     #services.section-color.services
