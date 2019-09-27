@@ -198,23 +198,38 @@
                       "description": "Descripción de la Actividad"
                     },
                     "occurs_on": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "description": "En que momento Sucede la Actividad"
                     },
                     "occurs_frequency": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "description": "Días de la semana en que Sucede la Actividad"
                     },
                     "occurs_at": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "description": "Fecha en que sucede la Actividad"
                     },
                     "start_at": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "description": "Hora en que comienza la Actividad"
                     },
                     "duration": {
-                      "type": "number",
+                      "type": [
+                        "number",
+                        "null"
+                      ],
                       "description": "Duración en minutos de la Actividad"
                     },
                     "active": {
@@ -222,15 +237,24 @@
                       "description": "Activo"
                     },
                     "latitude": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "description": "Latitud de la ubicación de la Actividad"
                     },
                     "longitude": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "description": "Longitud de la ubicación de la Actividad"
                     },
                     "radius": {
-                      "type": "number",
+                      "type": [
+                        "number",
+                        "null"
+                      ],
                       "description": "Radio de la ubicación de la Actividad"
                     },
                     "created_at": {
@@ -246,24 +270,21 @@
                     "id",
                     "name",
                     "description",
-                    "occurs_on",
-                    "occurs_frequency",
-                    "occurs_at",
-                    "start_at",
-                    "duration",
                     "active",
-                    "latitude",
-                    "longitude",
-                    "radius",
                     "created_at",
                     "updated_at"
                   ]
+                },
+                "relationships": {
+                  "type": "object",
+                  "properties": {}
                 }
               },
               "required": [
                 "id",
                 "type",
-                "attributes"
+                "attributes",
+                "relationships"
               ]
             },
             "description": "Actividades"
@@ -314,23 +335,38 @@
                     "description": "Descripción de la Actividad"
                   },
                   "occurs_on": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "En que momento Sucede la Actividad"
                   },
                   "occurs_frequency": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "Días de la semana en que Sucede la Actividad"
                   },
                   "occurs_at": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "Fecha en que sucede la Actividad"
                   },
                   "start_at": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "Hora en que comienza la Actividad"
                   },
                   "duration": {
-                    "type": "number",
+                    "type": [
+                      "number",
+                      "null"
+                    ],
                     "description": "Duración en minutos de la Actividad"
                   },
                   "active": {
@@ -338,15 +374,24 @@
                     "description": "Activo"
                   },
                   "latitude": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "Latitud de la ubicación de la Actividad"
                   },
                   "longitude": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "Longitud de la ubicación de la Actividad"
                   },
                   "radius": {
-                    "type": "number",
+                    "type": [
+                      "number",
+                      "null"
+                    ],
                     "description": "Radio de la ubicación de la Actividad"
                   },
                   "created_at": {
@@ -362,24 +407,21 @@
                   "id",
                   "name",
                   "description",
-                  "occurs_on",
-                  "occurs_frequency",
-                  "occurs_at",
-                  "start_at",
-                  "duration",
                   "active",
-                  "latitude",
-                  "longitude",
-                  "radius",
                   "created_at",
                   "updated_at"
                 ]
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {}
               }
             },
             "required": [
               "id",
               "type",
-              "attributes"
+              "attributes",
+              "relationships"
             ],
             "additionalProperties": false,
             "description": "Actividad"
@@ -475,23 +517,38 @@
                     "description": "Descripción de la Actividad"
                   },
                   "occurs_on": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "En que momento Sucede la Actividad"
                   },
                   "occurs_frequency": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "Días de la semana en que Sucede la Actividad"
                   },
                   "occurs_at": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "Fecha en que sucede la Actividad"
                   },
                   "start_at": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "Hora en que comienza la Actividad"
                   },
                   "duration": {
-                    "type": "number",
+                    "type": [
+                      "number",
+                      "null"
+                    ],
                     "description": "Duración en minutos de la Actividad"
                   },
                   "active": {
@@ -499,15 +556,24 @@
                     "description": "Activo"
                   },
                   "latitude": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "Latitud de la ubicación de la Actividad"
                   },
                   "longitude": {
-                    "type": "string",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "description": "Longitud de la ubicación de la Actividad"
                   },
                   "radius": {
-                    "type": "number",
+                    "type": [
+                      "number",
+                      "null"
+                    ],
                     "description": "Radio de la ubicación de la Actividad"
                   },
                   "created_at": {
@@ -523,15 +589,7 @@
                   "id",
                   "name",
                   "description",
-                  "occurs_on",
-                  "occurs_frequency",
-                  "occurs_at",
-                  "start_at",
-                  "duration",
                   "active",
-                  "latitude",
-                  "longitude",
-                  "radius",
                   "created_at",
                   "updated_at"
                 ]
@@ -718,6 +776,176 @@
         "title": null,
         "group": "Participación",
         "statusCode": "404"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "errors": {
+                    "type": "string",
+                    "description": "Mensage descriptivo del Error"
+                  }
+                },
+                "required": [
+                  "errors"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "additionalProperties": false,
+            "description": "Error ocurrido"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    }
+  ],
+  "[POST]/attendances": [
+    {
+      "meta": {
+        "type": "request",
+        "title": null,
+        "group": "Asistencias"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "activity_id": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "activity_id",
+          "user_id",
+          "latitude",
+          "longitude"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Asistencias",
+        "statusCode": "201"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "ID único de la Asistencia"
+              },
+              "type": {
+                "type": "string",
+                "description": "Tipo del recurso"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "ID único de la Asistencia"
+                  },
+                  "attended_at": {
+                    "type": "string",
+                    "description": "Fecha de la Asistencia"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "Estatus de la Asistencia"
+                  }
+                },
+                "required": [
+                  "id",
+                  "attended_at",
+                  "status"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "additionalProperties": false,
+            "description": "Asistencia"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "request",
+        "title": null,
+        "group": "Asistencias"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "activity_id": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "activity_id",
+          "user_id",
+          "latitude",
+          "longitude"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Asistencias",
+        "statusCode": "401"
       },
       "schema": {
         "$schema": "http://json-schema.org/draft-04/schema#",

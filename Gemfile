@@ -42,7 +42,6 @@ group :development, :test do
   gem "pry-rails"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "bullet"
-  gem "i18n-debug"
   gem "memory_profiler"
   gem "rack-mini-profiler"
   gem "stackprof"

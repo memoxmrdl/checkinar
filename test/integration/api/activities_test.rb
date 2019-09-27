@@ -24,7 +24,7 @@ class API::ActivitiesTest < ActionDispatch::IntegrationTest
     get activity_path(id: activity.uuid), headers: headers
 
     assert_response :success
-    assert_matches_json_schema response, "GET-Actividad-200"
+    assert_matches_json_schema response, "GET-Actividad-200-include-is-not-set"
   end
 
   def test_retrieve_activity_fail_with_not_found
@@ -33,7 +33,7 @@ class API::ActivitiesTest < ActionDispatch::IntegrationTest
     get activity_path(id: "not_found"), headers: headers
 
     assert_response :not_found
-    assert_matches_json_schema response, "GET-Actividad-404"
+    assert_matches_json_schema response, "GET-Actividad-404-include-is-not-set"
   end
 
   def test_retrieve_activity_of_attender_authorized_with_include_participant

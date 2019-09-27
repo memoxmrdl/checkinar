@@ -19,10 +19,10 @@
 class AttendanceSerializer < ApplicationSerializer
   set_id :uuid
 
-  attributes :activity_id,
-             :user_id,
-             :attended_at,
-             :status,
-             :latitude,
-             :longitude
+  attributes :attended_at,
+             :status
+
+  attribute :id do |object|
+    object.uuid
+  end
 end

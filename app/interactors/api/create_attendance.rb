@@ -26,7 +26,7 @@ module API
       end
 
       def find_user
-        @user = activity.users.find_by!(uuid: context.attributes[:user_id])
+        @user = context.organization.users.find_by!(uuid: context.attributes[:user_id])
       rescue ActiveRecord::RecordNotFound
         context.response[:json] =  ErrorSerializer.new(:record_not_found, is_collection: false)
         context.response[:status] = :not_found
@@ -62,7 +62,7 @@ module API
 
       def create_attendance
         if attendance.save
-          context.response[:json] = AttendanceSerializer.new(attendance)
+          context.response[:json] = AttendanceSerializer.new(attendance.reload)
           context.response[:status] = :created
         else
           context.response[:json] =  ErrorSerializer.new(attendance)

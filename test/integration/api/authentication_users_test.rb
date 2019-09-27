@@ -16,7 +16,7 @@ class API::AuthenticationUsersTest < ActionDispatch::IntegrationTest
     post authenticate_users_path, params: @params, headers: headers
 
     assert_response :created
-    assert_matches_json_schema response, "POST-Autentication de Usuarios-201"
+    assert_matches_json_schema response, "POST-Autenticacion\ de\ Usuarios-201"
   end
 
   def test_it_wont_create_authentication_with_email_invalid
@@ -25,7 +25,7 @@ class API::AuthenticationUsersTest < ActionDispatch::IntegrationTest
     post authenticate_users_path, params: @params, headers: headers
 
     assert_response :unauthorized
-    assert_matches_json_schema response, "POST-Autentication de Usuarios-401"
+    assert_matches_json_schema response, "POST-Autenticacion\ de\ Usuarios-401"
   end
 
   def test_it_wont_create_authentication_with_password_invalid
@@ -34,6 +34,6 @@ class API::AuthenticationUsersTest < ActionDispatch::IntegrationTest
     post authenticate_users_path, params: @params, headers: headers
 
     assert_response :unauthorized
-    assert_matches_json_schema response, "POST-Autentication de Usuarios-401"
+    assert_matches_json_schema response, "POST-Autenticacion\ de\ Usuarios-401"
   end
 end

@@ -50,16 +50,20 @@ class ActivitySerializer < ApplicationSerializer
     object.i18n_occurs_frequency.to_sentence
   end
 
+  attribute :occurs_at do |object|
+    object.occurs_at&.iso8601
+  end
+
   attribute :start_at do |object|
-    I18n.l(object.start_at, format: :only_time)
+    object.start_at&.iso8601
   end
 
   attribute :created_at do |object|
-    object.created_at.to_s
+    object.created_at.iso8601
   end
 
   attribute :updated_at do |object|
-    object.updated_at.to_s
+    object.updated_at.iso8601
   end
 
   attribute :radius do |object|

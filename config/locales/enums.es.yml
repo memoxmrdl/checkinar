@@ -5,6 +5,7 @@ es:
         attributes:
           occurs_on:
             date: Por fecha
+            free: Abierto
             more_than_once: Días de la semana
       attendance:
         attributes:

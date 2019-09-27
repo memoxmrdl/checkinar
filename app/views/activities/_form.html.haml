@@ -17,9 +17,9 @@
                 = b.text
         .columns
           .column.is-6
-            = form.field_with_label :start_at, type: :time_field, class: "input-time", autocomplete: "off"
+            = form.field_with_label :start_at, type: :time_field, class: "input-time", autocomplete: "off", "data-target": "activity-form.inputTime"
           .column.is-6
-            = form.select_with_label :duration, duration_options, prompt: true, class: "is-fullwidth"
+            = form.select_with_label :duration, duration_options, { prompt: true, class: "is-fullwidth" }
         - if current_organization.slack_webhook_url.present?
           .columns
             .column
@@ -44,7 +44,7 @@
             #map-viewer.m-b-15.map-viewer{ "data-target": "activity-form.mapViewer" }
             .field
               .control
-                = form.field_with_label :radius, type: :range_field, class: "slider is-marginless", "data-target": "activity-form.slider", placeholder: "radius in meters", value: @activity.radius
+                = form.field_with_label :radius, type: :range_field, class: "slider is-marginless", "data-target": "activity-form.slider", value: @activity.radius
     .columns
       .column
         .field.is-grouped.is-pulled-right

@@ -194,6 +194,40 @@ Obtiene una Participación y todos sus detalles.
             + attributes (object, required)
                 + errors: `Registro no encontrado` (string, required) - Mensage descriptivo del Error
 
+# Group Asistencias
+
+## Asistencias [/attendances]
+
+### Crear una Asistencia [POST]
+
+Crea una nueva Asistencia. Recibe un objeto de JSON
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/vnd.creditar.v1+json
+            Authorization: Token token=BMBE96Wva8NaYMmVx4RavpXSy6Y6HKFe
+
+    + Attributes (object)
+        + activity_id: `62362221-fc99-4376-b3ed-c6233f46456a` (string, required)
+        + user_id: `bc888e73-32d9-4539-b4c2-26807092d640` (string, required)
+        + latitude: `23.232343245` (string, required)
+        + longitude: `-34.32342343` (string, required)
+
++ Response 201 (application/json)
+
+    + Attributes (Attendance Data)
+
++ Response 401 (application/json)
+
+    + Attributes
+        + data (object, fixed-type, required) - Error ocurrido
+            + id: `error` (string, required)
+            + type: `error` (string, required)
+            + attributes (object, required)
+                + errors: `Usuario no autorizado` (string, required) - Mensage descriptivo del Error
+
 # Group Asistencias de usuarios
 
 Una Asistencia de Usuario es la representación de un Usuario.
@@ -211,7 +245,7 @@ Si no se mandan *start_date* y *end_date* por defecto retornara Usuarios con fec
     + end_date (optional, string, `2019-09-01`) ... Fecha final
     + limit (optional, number, `10`) ... Obtener el número de registros. Por defecto es 10 registros.
 
-### Listar [GET]
+### Listar Asistencias de Usuarios [GET]
 
 + Request (application/json)
     + Headers
@@ -260,17 +294,18 @@ Si no se mandan *start_date* y *end_date* por defecto retornara Usuarios con fec
   + id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único de la Actividad
   + name: `Book Club` (string, required) - Nombre de la Actividad
   + description: `Actividad de lectura de libros` (string, required) - Descripción de la Actividad
-  + occurs_on: `En Fecha` (string, required) - En que momento Sucede la Actividad
-  + occurs_frequency: `Lunes, Martes y Viernes` (string, required) - Días de la semana en que Sucede la Actividad
-  + occurs_at: `2019-08-12` (string, required) - Fecha en que sucede la Actividad
-  + start_at: `13:00` (string, required) - Hora en que comienza la Actividad
-  + duration: 60 (number, required) - Duración en minutos de la Actividad
+  + occurs_on: `En Fecha` (string, nullable) - En que momento Sucede la Actividad
+  + occurs_frequency: `Lunes, Martes y Viernes` (string, nullable) - Días de la semana en que Sucede la Actividad
+  + occurs_at: `2019-08-12` (string, nullable) - Fecha en que sucede la Actividad
+  + start_at: `13:00` (string, nullable) - Hora en que comienza la Actividad
+  + duration: 60 (number, nullable) - Duración en minutos de la Actividad
   + active: true (boolean, required) - Activo
-  + latitude: `19.266651` (string, required) - Latitud de la ubicación de la Actividad
-  + longitude: `-103.7179345` (string, required) - Longitud de la ubicación de la Actividad
-  + radius: 25 (number, required) - Radio de la ubicación de la Actividad
+  + latitude: `19.266651` (string, nullable) - Latitud de la ubicación de la Actividad
+  + longitude: `-103.7179345` (string, nullable) - Longitud de la ubicación de la Actividad
+  + radius: 25 (number, nullable) - Radio de la ubicación de la Actividad
   + created_at: `2018-05-02` (string, required) - Fecha de Creación de la Actividad
   + updated_at: `2018-05-02` (string, required) - Última modificación de la Actividad
++ relationships (object, required)
 
 ## Activity Relationships (Activity)
 
@@ -311,3 +346,16 @@ Si no se mandan *start_date* y *end_date* por defecto retornara Usuarios con fec
 ## Participant List Data (object)
 
 + data (array[Participant], fixed-type, required) - Participaciones
+
+## Attendance (object)
+
++ id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único de la Asistencia
++ type: `attendance` (string, required) - Tipo del recurso
++ attributes (object, required)
+  + id: `636264b1-dc0d-453e-8804-4ac451e1dbd5` (string, required) - ID único de la Asistencia
+  + attended_at: `2019-09-27` (string, required) - Fecha de la Asistencia
+  + status: `Confirmada` (string, required) - Estatus de la Asistencia
+
+## Attendance Data (object)
+
++ data (Attendance, fixed-type, required) - Asistencia
