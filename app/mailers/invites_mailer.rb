@@ -6,6 +6,6 @@ class InvitesMailer < ApplicationMailer
     @user = @participant.user
     @activity = @participant.activity
 
-    mail(to: @user.email)
+    mail(to: @user.email, subject: "Has sido invitado a participat en #{@activity.name} desde Checkinar!")
   end
 end
