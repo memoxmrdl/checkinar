@@ -1,0 +1,8 @@
+test:
+  adapter: postgresql
+  database: mcm_test
+  encoding: unicode
+  host: postgres
+  password: postgres
+  pool: 5
+  username: postgres

@@ -1,0 +1,17 @@
+.navbar-end
+  .navbar-item
+    - if user_signed_in?
+      .dropdown.is-hoverable
+        .dropdown-trigger
+          %button.button.is-link{"aria-controls" => "dropdown-menu-options", "aria-haspopup" => "true"}
+            %span
+              = current_user.full_name_or_email
+            %span.icon
+              = figure_image_tag(current_user.avatar, variant_resize: "64x64", class: "is-rounded")
+        #dropdown-menu-options.dropdown-menu{:role => "menu"}
+          .dropdown-content
+            = link_to t("users.my_account"), edit_account_path, class: "dropdown-item", "data-turbolinks" => "false"
+            %hr.dropdown-divider
+            = link_to t(".sign_out"),  destroy_user_session_path, class: "dropdown-item", method: :delete
+    - else
+      = link_to t(".sign_in"), user_session_path, class: "button is-default"

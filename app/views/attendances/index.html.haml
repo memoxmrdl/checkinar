@@ -1,0 +1,26 @@
+= render "shared/attendances_filter", title: t(:my_model, scope: :generic, model: model_plural_name(Attendance)), url: attendances_path
+
+.columns
+  .column
+    %hr
+    %table.table.is-fullwidth.is-hoverable
+      %thead
+        %th= Attendance.human_attribute_name(:attended_at)
+        %th= Attendance.human_attribute_name(:status)
+      %tbody
+        - unless @attendances.blank?
+          - @attendances.each do |attendance|
+            %tr
+              %td= l(attendance.attended_at, format: :long)
+              %td
+                - if attendance.confirmed?
+                  .icon.is-large.has-text-success
+                    %i.fas.fa-check
+                - else
+                  attendance.i18n_status
+        - else
+          %tr
+            %td.has-text-centered{colspan: 2}
+              .has-text-weight-semibold= t(:no_records, scope: :generic, model: model_plural_name(Attendance))
+
+= render "shared/paginate", collection: @attendances, param_name: :attendances_page

@@ -1,0 +1,24 @@
+#invite-participant-modal.modal{"data-controller": "modals"}
+  .modal-background{data: { action: "click->modals#closeModal" }, id: "invite-participant-modal"}
+  .modal-card
+    %header.modal-card-head
+      %p.modal-card-title
+        =t(".title")
+    = form_with model: [@activity, Participant.new], html: { data: { type: "html", action: "ajax:success->modals#onSuccess ajax:error->modals#onError" } } do |form|
+      %section.modal-card-body
+        .field
+          = label_tag "participant[email]", User.human_attribute_name(:email), class: "label"
+          .control
+            = text_field_tag "participant[email]", nil, class: "input", data: { target: "modals.inputField" }, id: :email
+            = form.error_help "participant[email]", class: "is-invisible", id: :email, data: { target: "modals.errorField" }
+        .field
+          .control
+            = form.label :roles_mask, class: "label"
+            = form.collection_check_boxes :roles_mask, Participant.i18n_valid_roles, :first, :last, id: :roles_mask do |b|
+              = b.label class: "checkbox m-r-10" do
+                = b.check_box
+                = b.text
+            = form.error_help :roles_mask, class: "is-invisible", id: :roles_mask, data: { target: "modals.errorField" }
+      %footer.modal-card-foot
+        = form.submit t("shared.buttons.invite"), class: "button is-pulled-right"
+        = button_tag t(:cancel, scope: :generic), class: "button is-pulled-right", data: { action: "click->modals#closeModal" }, id: "invite-participant-modal"

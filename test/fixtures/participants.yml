@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: participants
+#
+#  id          :bigint           not null, primary key
+#  user_id     :bigint
+#  activity_id :bigint
+#  roles_mask  :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+leader:
+  user: leader
+  activity: book_club
+  roles_mask: <%= Participant.mask_for :leader %>
+
+leader_in_traguitos:
+  user: pedro
+  activity: traguitos
+  roles_mask: <%= Participant.mask_for :leader %>
+
+attender:
+  user: attender
+  activity: book_club
+  roles_mask: <%= Participant.mask_for :attender %>
+
+attender_in_fitness:
+  user: attender
+  activity: fitness
+  roles_mask: <%= Participant.mask_for :attender %>

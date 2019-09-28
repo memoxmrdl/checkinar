@@ -1,0 +1,47 @@
+# == Schema Information
+#
+# Table name: activities
+#
+#  id                  :bigint           not null, primary key
+#  name                :string           not null
+#  description         :string
+#  occurs_on           :string
+#  occurs_frequency    :string
+#  occurs_at           :date
+#  start_at            :time
+#  duration            :integer
+#  active              :boolean          default(TRUE)
+#  latitude            :decimal(, )
+#  longitude           :decimal(, )
+#  radius              :decimal(, )
+#  organization_id     :bigint
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  validate_attendance :boolean          default(FALSE), not null
+#
+
+book_club:
+  name: Book Club
+  occurs_on: "more_than_once"
+  occurs_frequency: ["tuesday"]
+  start_at: "05:00"
+  duration: 60
+  organization: michelada
+  latitude: 19.257567
+  longitude: -103.719110
+  radius: 120
+  slack_channel: "#book-club"
+
+traguitos:
+  name: Traguitos
+  occurs_on: "date"
+  occurs_at: 2019-10-24
+  start_at: "10:00"
+  duration: 60
+  organization: michelada
+
+fitness:
+  name: fitness
+  occurs_on: "free"
+  duration: 60
+  organization: michelada

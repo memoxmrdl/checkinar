@@ -1,0 +1,44 @@
+# == Schema Information
+#
+# Table name: attendances
+#
+#  id          :bigint           not null, primary key
+#  activity_id :bigint
+#  user_id     :bigint
+#  attended_at :datetime         not null
+#  status      :string           default("pending"), not null
+#  latitude    :decimal(, )
+#  longitude   :decimal(, )
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  activity: book_club
+  user: attender
+  attended_at: <%= Time.zone.now %>
+  status: confirmed
+
+two:
+  activity: traguitos
+  user: attender
+  attended_at: <%= Time.zone.now - 2.days %>
+  status: confirmed
+
+third:
+  activity: traguitos
+  user: attender
+  attended_at: <%= Date.parse("2019-10-24") %>
+  status: pending
+
+four:
+  activity: traguitos
+  user: attender
+  attended_at: <%= Time.zone.now - 6.days %>
+  status: confirmed
+
+five:
+  activity: fitness
+  user: attender
+  attended_at: <%= Time.zone.now %>
+  status: pending

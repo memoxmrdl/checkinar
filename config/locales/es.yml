@@ -1,0 +1,166 @@
+es:
+  accounts:
+    edit:
+      my_account: Mi cuenta
+    update:
+      alert: Error actualizando información de la cuenta
+      notice: Información actualizada correctamente
+  activerecord:
+    models:
+      user: Usuario
+      activity: Actividad
+      participant: Participante
+      attendance: Asistencia
+      organization: Organización
+    attributes:
+      user:
+        full_name: Nombre completo
+        email: Correo electrónico
+        password: Contraseña
+        roles_mask: Tipo de usuario
+      activity:
+        name: Nombre
+        description: Descripción
+        occurs_on: Sucede
+        occurs_frequency: Días que sucede
+        occurs_at: Fecha
+        start_at: Hora
+        duration: Tiempo de duración
+        active: Activo
+        created_at: Fecha de creación
+        updated_at: Fecha de actualización
+        radius: Alcance de la actividad en metros
+        mark_activity_place: ¿Marcar el lugar donde se llevara acabo la actividad?
+        participants: No. de participantes
+        slack_channel: Canal de Slack
+        validate_attendance: Confirmar asistencia
+      participant:
+        roles_mask: Roles
+      attendance:
+        attended_at: Fecha de asistencia
+        status: Estatus
+        location: Ubicación
+      organization:
+        name: Nombre
+        slack_webhook_url: Webhook de Slack
+        api_key: API key
+    errors:
+      models:
+        attendance:
+          attributes:
+            activity:
+              inactive: La actividad se encuentra inactiva
+            base:
+              user_is_not_at_activity_location: El usuario no se encuentra en el radio de la ubicación de la actividad
+            user:
+              user_not_belongs_to_activity: El usuario no es participante en la actividad
+            attended_at:
+              activity_occurs_at_different_than: La fecha de la actividad es diferente con la fecha de la asistencia
+              activity_occurs_frequency_invalid: los días de la semana de la actividad no coincide con el día de la fecha de la asistencia
+          invalid: Registro invalido
+        organization:
+          attributes:
+            name:
+              blank: Debes agregar un nombre
+        participant:
+          attributes:
+            activity:
+              inactive: La actividad se encuentra inactiva
+            email:
+              user_belongs_to_activity: El correo electronico ya pertenece a la actividad
+            roles_mask:
+              choose_one: Elige que Rol tendrá el participante
+  activities:
+    create:
+      alert: Error creando actividad
+      notice: La actividad ha sido creada
+    invite_participant_modal:
+      title: Invitar participante
+    update:
+      alert: Error actualizado la actividad
+      notice: Actividad ha sido actualizada
+    edit:
+      title: "Editar %{activity_name}"
+  api:
+    errors:
+      invalid_user_location: Ubicación invalida
+  confirm_attendances:
+    update:
+      alert: Error confirmando asistencia
+      notice: Asistencia confirmada
+  labels:
+    activities:
+      place: Lugar donde se llevará acabo la actividad
+  users:
+    my_account: Mi cuenta
+    sessions:
+      close: Cerrar sesión
+      new:
+        title: Iniciar sesión
+        submit: Entrar
+    passwords:
+      new:
+        forgot_your_password: Recuperar mi contraseña
+        send_me_intruccions: Enviar instrucciones
+      edit:
+        change_your_password: Cambiar mi contraseña
+        password_label: Nueva contraseña
+        password_confirmation_label: Confirmar contraseña
+        change_my_password: Actualizar mi contraseña
+    shared:
+      links:
+        forgot_your_password: Recuperar mi contraseña
+  participants:
+    destroy:
+      alert: Errror eliminado al participante
+      notice: El participante ha sido eliminado
+  shared:
+    navbar:
+      menu_items_end:
+        my_account: Mi cuenta
+        sign_in: Acceder
+        sign_out: Salir
+    buttons:
+      invite: Invitar
+      confirm: Confirmar
+      close_session: Cerrar sesión
+      choose_button: Selecciona un archivo
+      delete: Eliminar
+      filter: Filtrar
+      invite: Invitar
+
+  helpers:
+    prompt:
+      models:
+        activity:
+          attributes:
+            occurs_on: Seleccionar
+            occurs_frequency: Seleccionar
+            duration: Seleccionar
+  generic:
+    app_name: Checkinar
+    no_records: No hay %{model} creados todavía.
+    new_resource: Nueva %{resource}
+    show: Ver
+    edit: Editar
+    delete: Eliminar
+    cancel: Cancelar
+    records_count: "%{count} registros"
+    confirm: ¿Está seguro?
+    true_or_false:
+      true: Sí
+      false: No
+    n_a: N/A
+    my_model: "Mis %{model}"
+  duration_minutes:
+    fifteen: 15 Minutos
+    thirty: 30 Minutos
+    hour: 1 Hora
+    two_hours: 2 Horas
+  slack:
+    messages:
+      user_attended_to_activity: "%{user_name} registró una asistencia :white-check-mark:"
+  participant:
+    invite: Invitar participante
+  pundit:
+    no_authorized: Acceso no autorizado

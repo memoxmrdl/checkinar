@@ -1,0 +1,44 @@
+image: registry.michelada.io/guillermo/checkinar:latest
+
+services:
+  - postgres
+
+cache:
+  paths:
+    - vendor/ruby
+
+stages:
+  - lint
+  - test
+
+before_script:
+  - ruby --version
+  - google-chrome --version
+  - node --version
+  - gem install bundler -v 2.0.2
+  - bundle install -j $(nproc) --path vendor --full-index --clean
+
+rubocop:
+  stage: lint
+  script:
+    - bundle exec rubocop
+
+test:
+  stage: test
+  script:
+    - cp config/database.ci.yml config/database.yml
+    - bundle exec rails db:create RAILS_ENV=test
+    - bundle exec rails db:test:prepare RAILS_ENV=test
+    - yarn
+    - bundle exec rails assets:precompile RAILS_ENV=test
+    - CI=true bundle exec rails test
+
+system_test:
+  stage: test
+  script:
+    - cp config/database.ci.yml config/database.yml
+    - bundle exec rails db:create RAILS_ENV=test
+    - bundle exec rails db:test:prepare RAILS_ENV=test
+    - yarn
+    - bundle exec rails assets:precompile RAILS_ENV=test
+    - CI=true bundle exec rails test:system

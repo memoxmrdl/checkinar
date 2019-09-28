@@ -1,0 +1,10 @@
+@import "~bulma/bulma";
+@import "bulma-slider";
+@import "~daterangepicker/daterangepicker";
+@import "base";
+@import "layout";
+@import "shared/index";
+
+.map-viewer {
+  height: 500px;
+}

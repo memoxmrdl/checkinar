@@ -1,0 +1,10 @@
+.columns{"data-controller": "forms"}
+  .column
+    %h3.title.is-3= title
+  .column
+    = form_with url: url, local: true, method: :get, class: "is-pulled-right" do |form|
+      .field.has-addons
+        .control
+          = text_field_tag "attendance[date_range]", nil, class: "input input-date-range"
+        .control
+          = form.submit t("shared.buttons.filter"), class: "button is-info"

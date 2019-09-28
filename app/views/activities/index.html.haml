@@ -1,0 +1,25 @@
+.columns
+  .column.is-6
+    %h2.title= current_user.owner? ? model_plural_name(Activity) : t(:my_model, scope: :generic, model: model_plural_name(Activity))
+  .column.is-6
+    - if policy(Activity).new?
+      = link_to t(:new_resource, scope: :generic, resource: model_singular_name(Activity)), new_activity_path, class: "button is-primary is-pulled-right", "data-turbolinks" => "false"
+
+.columns
+  .column
+    %table.table.is-fullwidth.is-hoverable
+      %thead
+        %th=Activity.human_attribute_name(:name)
+        %th=Activity.human_attribute_name(:participants)
+        %th=Activity.human_attribute_name(:active)
+        %th=Activity.human_attribute_name(:created_at)
+        %th=Activity.human_attribute_name(:updated_at)
+      %tbody
+        - unless @activities.blank?
+          = render @activities
+        - else
+          %tr
+            %td.has-text-centered{colspan: 5}
+              .has-text-weight-semibold= t(:no_records, scope: :generic, model: model_plural_name(Activity))
+
+= render "shared/paginate", collection: @activities, param_name: :page

@@ -1,0 +1,1053 @@
+{
+  "[POST]/authenticate_users": [
+    {
+      "meta": {
+        "type": "request",
+        "title": null,
+        "group": "Autenticación de Usuarios"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Autenticación de Usuarios",
+        "statusCode": "201"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "ID único del Usuario"
+              },
+              "type": {
+                "type": "string",
+                "description": "Tipo del recurso"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "ID único del Usuario"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "Correo eletronico del Usuario"
+                  },
+                  "avatar_url": {
+                    "type": "string",
+                    "description": "URL del avatar del Usuario"
+                  },
+                  "authentication_token": {
+                    "type": "string",
+                    "description": "Token de la autenticación del Usuario"
+                  }
+                },
+                "required": [
+                  "id",
+                  "email",
+                  "avatar_url",
+                  "authentication_token"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "request",
+        "title": null,
+        "group": "Autenticación de Usuarios"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Autenticación de Usuarios",
+        "statusCode": "401"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "errors": {
+                    "type": "string",
+                    "description": "Mensage descriptivo del Error"
+                  }
+                },
+                "required": [
+                  "errors"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "additionalProperties": false,
+            "description": "Error ocurrido"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    }
+  ],
+  "[GET]/activities": [
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Actividades",
+        "statusCode": "200"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "ID único de la Actividad"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Tipo del recurso"
+                },
+                "attributes": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID único de la Actividad"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Nombre de la Actividad"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Descripción de la Actividad"
+                    },
+                    "occurs_on": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "En que momento Sucede la Actividad"
+                    },
+                    "occurs_frequency": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Días de la semana en que Sucede la Actividad"
+                    },
+                    "occurs_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Fecha en que sucede la Actividad"
+                    },
+                    "start_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Hora en que comienza la Actividad"
+                    },
+                    "duration": {
+                      "type": [
+                        "number",
+                        "null"
+                      ],
+                      "description": "Duración en minutos de la Actividad"
+                    },
+                    "active": {
+                      "type": "boolean",
+                      "description": "Activo"
+                    },
+                    "latitude": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Latitud de la ubicación de la Actividad"
+                    },
+                    "longitude": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Longitud de la ubicación de la Actividad"
+                    },
+                    "radius": {
+                      "type": [
+                        "number",
+                        "null"
+                      ],
+                      "description": "Radio de la ubicación de la Actividad"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "description": "Fecha de Creación de la Actividad"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "description": "Última modificación de la Actividad"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "active",
+                    "created_at",
+                    "updated_at"
+                  ]
+                },
+                "relationships": {
+                  "type": "object",
+                  "properties": {}
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "attributes",
+                "relationships"
+              ]
+            },
+            "description": "Actividades"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    }
+  ],
+  "[GET]/activities/{id}{?include}": [
+    {
+      "meta": {
+        "type": "response",
+        "title": "include is not set",
+        "group": "Actividad",
+        "statusCode": "200"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "ID único de la Actividad"
+              },
+              "type": {
+                "type": "string",
+                "description": "Tipo del recurso"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "ID único de la Actividad"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Nombre de la Actividad"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Descripción de la Actividad"
+                  },
+                  "occurs_on": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "En que momento Sucede la Actividad"
+                  },
+                  "occurs_frequency": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Días de la semana en que Sucede la Actividad"
+                  },
+                  "occurs_at": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Fecha en que sucede la Actividad"
+                  },
+                  "start_at": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Hora en que comienza la Actividad"
+                  },
+                  "duration": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "description": "Duración en minutos de la Actividad"
+                  },
+                  "active": {
+                    "type": "boolean",
+                    "description": "Activo"
+                  },
+                  "latitude": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Latitud de la ubicación de la Actividad"
+                  },
+                  "longitude": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Longitud de la ubicación de la Actividad"
+                  },
+                  "radius": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "description": "Radio de la ubicación de la Actividad"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "description": "Fecha de Creación de la Actividad"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "description": "Última modificación de la Actividad"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "description",
+                  "active",
+                  "created_at",
+                  "updated_at"
+                ]
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "attributes",
+              "relationships"
+            ],
+            "additionalProperties": false,
+            "description": "Actividad"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "response",
+        "title": "include is not set",
+        "group": "Actividad",
+        "statusCode": "404"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "errors": {
+                    "type": "string",
+                    "description": "Mensage descriptivo del Error"
+                  }
+                },
+                "required": [
+                  "errors"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "additionalProperties": false,
+            "description": "Error ocurrido"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "response",
+        "title": "include is set to participant",
+        "group": "Actividad",
+        "statusCode": "200"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "ID único de la Actividad"
+              },
+              "type": {
+                "type": "string",
+                "description": "Tipo del recurso"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "ID único de la Actividad"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Nombre de la Actividad"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Descripción de la Actividad"
+                  },
+                  "occurs_on": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "En que momento Sucede la Actividad"
+                  },
+                  "occurs_frequency": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Días de la semana en que Sucede la Actividad"
+                  },
+                  "occurs_at": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Fecha en que sucede la Actividad"
+                  },
+                  "start_at": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Hora en que comienza la Actividad"
+                  },
+                  "duration": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "description": "Duración en minutos de la Actividad"
+                  },
+                  "active": {
+                    "type": "boolean",
+                    "description": "Activo"
+                  },
+                  "latitude": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Latitud de la ubicación de la Actividad"
+                  },
+                  "longitude": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Longitud de la ubicación de la Actividad"
+                  },
+                  "radius": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "description": "Radio de la ubicación de la Actividad"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "description": "Fecha de Creación de la Actividad"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "description": "Última modificación de la Actividad"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "description",
+                  "active",
+                  "created_at",
+                  "updated_at"
+                ]
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "participants": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "ID único de la Actividad"
+                            },
+                            "type": {
+                              "type": "string",
+                              "description": "Tipo del recurso"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "data"
+                    ]
+                  }
+                },
+                "required": [
+                  "participants"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "attributes",
+              "relationships"
+            ],
+            "additionalProperties": false,
+            "description": "Actividad"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    }
+  ],
+  "[GET]/participants{?activity_id}": [
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Participaciones",
+        "statusCode": "200"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "ID único de la Participación"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Tipo del recurso"
+                },
+                "attributes": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID único de la Participación"
+                    },
+                    "email": {
+                      "type": "string",
+                      "description": "Correo electronico del Participante"
+                    },
+                    "roles": {
+                      "type": "string",
+                      "description": "Rol del Participante"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "email",
+                    "roles"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "attributes"
+              ]
+            },
+            "description": "Participaciones"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    }
+  ],
+  "[GET]/participants/{id}{?include}": [
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Participación",
+        "statusCode": "200"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "ID único de la Participación"
+              },
+              "type": {
+                "type": "string",
+                "description": "Tipo del recurso"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "ID único de la Participación"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "Correo electronico del Participante"
+                  },
+                  "roles": {
+                    "type": "string",
+                    "description": "Rol del Participante"
+                  }
+                },
+                "required": [
+                  "id",
+                  "email",
+                  "roles"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "additionalProperties": false,
+            "description": "Participación"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Participación",
+        "statusCode": "404"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "errors": {
+                    "type": "string",
+                    "description": "Mensage descriptivo del Error"
+                  }
+                },
+                "required": [
+                  "errors"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "additionalProperties": false,
+            "description": "Error ocurrido"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    }
+  ],
+  "[POST]/attendances": [
+    {
+      "meta": {
+        "type": "request",
+        "title": null,
+        "group": "Asistencias"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "activity_id": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "activity_id",
+          "user_id",
+          "latitude",
+          "longitude"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Asistencias",
+        "statusCode": "201"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "ID único de la Asistencia"
+              },
+              "type": {
+                "type": "string",
+                "description": "Tipo del recurso"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "ID único de la Asistencia"
+                  },
+                  "attended_at": {
+                    "type": "string",
+                    "description": "Fecha de la Asistencia"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "Estatus de la Asistencia"
+                  }
+                },
+                "required": [
+                  "id",
+                  "attended_at",
+                  "status"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "additionalProperties": false,
+            "description": "Asistencia"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "request",
+        "title": null,
+        "group": "Asistencias"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "activity_id": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "activity_id",
+          "user_id",
+          "latitude",
+          "longitude"
+        ]
+      }
+    },
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Asistencias",
+        "statusCode": "401"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "errors": {
+                    "type": "string",
+                    "description": "Mensage descriptivo del Error"
+                  }
+                },
+                "required": [
+                  "errors"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "additionalProperties": false,
+            "description": "Error ocurrido"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    }
+  ],
+  "[GET]/attendances_users{?activity_id}{?order_by}{?start_date}{?end_date}{?limit}": [
+    {
+      "meta": {
+        "type": "response",
+        "title": null,
+        "group": "Asistencia de usuarios",
+        "statusCode": "200"
+      },
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "ID único del Usuario"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Tipo del recurso"
+                },
+                "attributes": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID único del Usuario"
+                    },
+                    "email": {
+                      "type": "string",
+                      "description": "Correo eletronico del Usuario"
+                    },
+                    "avatar_url": {
+                      "type": "string",
+                      "description": "URL del avatar del Usuario"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "email",
+                    "avatar_url"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "attributes"
+              ]
+            }
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    }
+  ]
+}
