@@ -39,6 +39,7 @@ class Activity < ApplicationRecord
             :start_at,
             :duration, presence: true, if: Proc.new { |a| a.occurs_on_changed? && a.more_than_once? }
   validates :duration, presence: true, if: Proc.new { |a| a.occurs_on_changed? && a.free? }
+  validates :radius, numericality: { greater_than: 0  }, if: Proc.new { |a| a.latitude_changed? && a.longitude_changed? }
 
   enum occurs_on: {
     date: "date",
