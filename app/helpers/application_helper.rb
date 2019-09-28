@@ -81,7 +81,7 @@ module ApplicationHelper
   end
 
   def figure_image_tag(image, options = {})
-    image = if image.attached?
+    image = if image.attached? && !image.record.errors.any?
       image = image.variant(resize_to_limit: options[:variant_resize].split("x").map(&:to_i)).processed if options[:variant_resize]
 
       url_for(image)
