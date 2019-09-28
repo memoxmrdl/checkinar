@@ -5,7 +5,7 @@
     %hr
     %table.table.is-fullwidth.is-hoverable
       %thead
-        %th= User.human_attribute_name(:email)
+        %th= User.model_name.human
         %th= Attendance.human_attribute_name(:attended_at)
         - if @activity.has_location?
           %th= Attendance.human_attribute_name(:location)
