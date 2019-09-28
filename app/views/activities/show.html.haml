@@ -22,11 +22,6 @@
           = resource_attribute_and_value label_text: Activity.human_attribute_name(:duration) do
             - real_duration = duration_options.find { |option| option.second == @activity.duration  }
             = real_duration.first
-      - if @activity.has_location?
-        .columns
-          .column
-            = resource_attribute_and_value label_text: t("labels.activities.place") do
-              load_map_here
       .columns
         .column= resource_attribute_and_value @activity, :description
       .columns

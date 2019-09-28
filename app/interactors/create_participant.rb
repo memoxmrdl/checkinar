@@ -52,7 +52,11 @@ class CreateParticipant
     end
 
     def send_email_notification
-      InvitesMailer.with(participant: participant).invite_email.deliver_now
+      if user.invited_at.nil?
+        user.update_column(:invited_at, Time.zone.now)
+
+        InvitesMailer.with(participant: participant).invite_email.deliver_now
+      end
     end
 
     def create_participant

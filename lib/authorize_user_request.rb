@@ -13,7 +13,6 @@ class AuthorizeUserRequest
 
   def user
     @user ||= User.find_by(id: user_id) if user_id?
-    @user || errors.add(:base, :token_invalid) && nil
   end
 
   private

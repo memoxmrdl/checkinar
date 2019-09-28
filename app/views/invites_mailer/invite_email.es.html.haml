@@ -1,6 +1,6 @@
 %h3 ¡Hola #{@user.email} has sido invitado a Checkinar!
 
-%p Has sido invitado a participar en la actividad #{@activity.name} como #{@participant.i18n_roles.values.to_sentence}.
+%p Has sido invitado a participar en la actividad #{link_to(@activity.name, activity_url(@activity))} como #{@participant.i18n_roles.values.to_sentence}.
 
 %p Para acceder a la aplicación es necesario reestablecer tu contraseña en el siguiente link #{link_to "Reestablecer mi contraseña", new_user_password_url, target: "_blank"}
 
