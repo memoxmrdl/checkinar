@@ -68,15 +68,31 @@ function createMarker(google, map, coords) {
   });
 }
 
+function createAutoComplete(google, map) {
+  let card = document.getElementById('autocomplete-container')
+  let input = document.getElementById('autocomplete_address')
+
+  map.controls[google.ControlPosition.TOP_LEFT].push(card)
+
+  let autocomplete = new google.places.Autocomplete(input)
+
+  autocomplete.bindTo('bounds', map)
+  autocomplete.setFields(['address_components', 'geometry', 'icon', 'name'])
+
+  return autocomplete
+}
+
 export default function loadMapViewer (target, { coords, radius }, onChangePointer) {
   const options = {
-    key: process.env.google_maps_api_key
+    key: process.env.google_maps_api_key,
+    libraries: ['places']
   }
 
   return loadGoogleMapsApi(options)
     .then(function (google) {
       const map = initialMap(google, target, coords)
       const marker = createMarker(google, map, coords)
+      const autoComplete = createAutoComplete(google, map)
       const roundedArea = createArea(google, map, radius, coords)
 
       function moveAreaToMarkerPosition(radius) {
@@ -92,7 +108,29 @@ export default function loadMapViewer (target, { coords, radius }, onChangePoint
         })
       }
 
+      function moveAreaToPlaceAutoComplete() {
+        let place = autoComplete.getPlace()
+
+        marker.setVisible(false)
+
+        if (!place.geometry) {
+          return false
+        }
+
+        if (place.geometry.viewport) {
+          map.fitBounds(place.geometry.viewport)
+        } else {
+          map.setCenter(place.geometry.location)
+          map.setZoom(17)
+        }
+
+        marker.setPosition(place.geometry.location)
+        marker.setVisible(true)
+      }
+
       marker.addListener('dragend', () => moveAreaToMarkerPosition(roundedArea.getRadius()))
+
+      autoComplete.addListener('place_changed', () => moveAreaToPlaceAutoComplete())
 
       return {
         destroy: function () {

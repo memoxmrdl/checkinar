@@ -41,12 +41,15 @@
               = I18n.t('activerecord.attributes.activity.mark_activity_place')
         .field
           .map-section.is-hidden{ "data-target": "activity-form.mapSection" }
+            .is-hidden
+              .field#autocomplete-container
+                = text_field_tag "autocomplete_address", nil, id: :autocomplete_address, class: "input", style: "width:350px;margin: 15px;"
             #map-viewer.m-b-15.map-viewer{ "data-target": "activity-form.mapViewer" }
             .field
               .control
                 = form.field_with_label :radius, type: :range_field, class: "slider is-marginless", "data-target": "activity-form.slider", value: @activity.radius
     .columns
-      .column
+      .column.is-clearfix
         .field.is-grouped.is-pulled-right
           .control
             = link_to t(:cancel, scope: :generic), :back, class: "button"

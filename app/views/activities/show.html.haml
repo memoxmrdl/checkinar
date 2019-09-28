@@ -4,7 +4,7 @@
       .columns.is-clearfix.is-marginless
         .column
           %h3.title.is-3= "#{model_singular_name(Activity)} #{@activity.name}"
-        .column
+        .column.is-clearfix
           - if policy(@activity).edit?
             = link_to t(:edit, scope: :generic), edit_activity_path(@activity), class: "button is-link is-pulled-right", "data-turbolinks" => "false"
       %hr

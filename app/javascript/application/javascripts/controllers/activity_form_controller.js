@@ -31,8 +31,7 @@ export default class extends Controller {
 
       loadMapViewer(mapViewerTarget, { coords, radius }, function ({ radius, latitude, longitude }) {
         updateLatitudeLongitude(latitude, longitude)
-      })
-        .then(function ({ setRadius, destroy }) {
+      }).then(function ({ setRadius, destroy }) {
           selectActivityPlaceTarget.addEventListener('click', (ev) => !ev.target.checked && destroy())
           sliderTarget.addEventListener('input', (ev) => setRadius(Number(ev.target.value)))
         })
@@ -83,7 +82,6 @@ export default class extends Controller {
       this.inputCheckboxesDisabled(true);
     }
   }
-
 
   inputTimeDisabled(true_or_false) {
     this.inputTimeTargets.forEach((input)=> {

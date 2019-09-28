@@ -1,7 +1,7 @@
 .columns{"data-controller": "forms"}
   .column
     %h3.title.is-3= title
-  .column
+  .column.is-clearfix
     = form_with url: url, local: true, method: :get, class: "is-pulled-right" do |form|
       .field.has-addons
         .control
