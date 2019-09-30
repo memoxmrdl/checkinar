@@ -12,7 +12,7 @@ class AuthorizeUserRequest
   end
 
   def user
-    @user ||= User.find_by(id: user_id) if user_id?
+    @user ||= User.find_by(uuid: user_id) if user_id?
   end
 
   private

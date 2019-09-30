@@ -9,7 +9,7 @@ class UserAuthenticatedSerializer < ApplicationSerializer
 
   attribute :avatar_url do |object|
     if object.avatar.attached?
-      Rails.application.routes.url_helpers.url_for4(object.avatar.variant(resize_to_limit: [128, 128]))
+      Rails.application.routes.url_helpers.url_for(object.avatar.variant(resize_to_limit: [128, 128]))
     else
       ""
     end

@@ -4,7 +4,7 @@ module AuthorizationTestHelper
   attr_reader :authorization_token
 
   def authenticate(user)
-    @authorization_token = JsonWebToken.encode(user_id: user.id)
+    @authorization_token = JsonWebToken.encode(user_id: user.uuid)
   end
 
   def headers(options = {})
