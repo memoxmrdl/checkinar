@@ -56,7 +56,7 @@ class AttendanceTest < ActiveSupport::TestCase
   def test_it_is_not_valid_without_attendded_at_attribute
     @subject.activity = activities(:book_club)
     @subject.user = users(:attender)
-    @subject.attended_at = Date.parse("2019-09-10")
+    @subject.attended_at = Date.parse("2019-09-11")
     @subject.status = Attendance.statuses[:confirmed]
 
     assert_not @subject.valid?

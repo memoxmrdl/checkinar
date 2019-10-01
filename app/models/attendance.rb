@@ -46,7 +46,7 @@ class Attendance < ApplicationRecord
     def attendance_in_accordance_to_activity_validation
       if activity && activity.date? && activity.occurs_at != attended_at.to_date
         errors.add(:attended_at, :activity_occurs_at_different_than)
-      elsif activity && activity.more_than_once? && activity.occurs_frequency.include?(attended_at.strftime("%A").downcase)
+      elsif activity && activity.more_than_once? && !activity.occurs_frequency.include?(attended_at.strftime("%A").downcase)
         errors.add(:attended_at, :activity_occurs_frequency_invalid)
       end
     end
