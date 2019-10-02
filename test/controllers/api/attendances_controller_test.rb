@@ -17,7 +17,9 @@ class API::AttendancesControllerTest < ActionDispatch::IntegrationTest
   def test_it_create_attendance
     authenticate @user
 
-    post attendances_path, params: @params, headers: headers
+    travel_to Date.parse("2019-10-01") do
+      post attendances_path, params: @params, headers: headers
+    end
 
     assert_response :success
   end

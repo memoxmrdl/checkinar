@@ -18,7 +18,9 @@ class API::AttendancesTest < ActionDispatch::IntegrationTest
     @params[:latitude] = 19.257567
     @params[:longitude] = -103.719110
 
-    post attendances_path, params: @params, headers: headers
+    travel_to Date.parse("2019-10-01") do
+      post attendances_path, params: @params, headers: headers
+    end
 
     assert_response :created
     assert_matches_json_schema response, "POST-Asistencias-201"

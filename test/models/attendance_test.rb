@@ -26,7 +26,7 @@ class AttendanceTest < ActiveSupport::TestCase
   def test_it_creates_valid_if_user_belongs_to_activity
     @subject.activity = activities(:book_club)
     @subject.user = users(:attender)
-    @subject.attended_at = Time.zone.now
+    @subject.attended_at = Date.parse("2019-10-01")
     @subject.status = Attendance.statuses[:confirmed]
 
     assert @subject.save
