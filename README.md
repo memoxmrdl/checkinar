@@ -38,6 +38,14 @@ or:
     bin/rails db:migrate
     bin/rails db:seed
     
+## Build API Documentation
+
+To build API Documentation you need to run the following command:
+
+    bin/rails api:documentation
+   
+If you want to see API Documentation only visit to `/api/documentation` from your server that you are running.
+    
 ## Tests
 
 You should run the tests with the following command:
