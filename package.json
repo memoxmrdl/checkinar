@@ -14,7 +14,7 @@
     "daterangepicker": "^3.0.5",
     "jquery": "^3.4.1",
     "load-google-maps-api": "^2.0.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "popper.js": "^1.15.0",
     "rails-erb-loader": "^5.5.2",
     "stimulus": "^1.1.1",
